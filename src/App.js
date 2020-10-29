@@ -1,5 +1,5 @@
 // Package imports
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -35,15 +35,6 @@ import Header from './ui/organisms/Header/Header';
 const App = () => {
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
-
-  // manage window height
-  let windowHeight;
-
-  useEffect(() => {
-    if (window.innerHeight) {
-      windowHeight = window.innerHeight + 'px';
-    } else windowHeight = '100vh';
-  }, [windowHeight, window.innerHeight]);
 
   // Define routes
   const routes = (
