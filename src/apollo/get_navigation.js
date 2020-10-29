@@ -11,7 +11,7 @@ query navigation {
         ... on Cta {
           title
           hasIcon
-          iconName
+          iconLeads
           prompt
         }
       }

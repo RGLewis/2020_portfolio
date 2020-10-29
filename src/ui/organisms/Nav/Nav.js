@@ -132,9 +132,9 @@ const Nav = () => {
             isButton
             onClick={handleShowMainNav}
             hasCaret
-            icon={backCta.iconName}
             ariaLabel={backCta.prompt}
-            iconLeads
+            // must be string for Font Awesome icon
+            iconLeads={backCta.iconLeads ? 'true' : 'false'}
             variant={"menuFontColor"}
           >
             <Body variant="menuFontColor">{backCta.prompt}</Body>
@@ -146,9 +146,9 @@ const Nav = () => {
             isButton
             onClick={handleShowExperienceNav}
             hasCaret
-            icon={forwardCta.iconName}
             ariaLabel={forwardCta.prompt}
-            iconLeads={false}
+            // must be string for Font Awesome icon
+            iconLeads={forwardCta.iconLeads ? 'true' : 'false'}
             variant={"menuFontColor"}
           >
             <Body variant="menuFontColor">{forwardCta.prompt}</Body>

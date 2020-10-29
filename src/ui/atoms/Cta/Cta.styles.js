@@ -9,8 +9,8 @@ export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: ${({ theme, variant }) => theme[variant]};
   pointer-events: none;
   font-size: ${pxToRem(20)};
-  padding-right: ${props => props.iconLeads && pxToRem(5)};
-  padding-left: ${props => !props.iconLeads && pxToRem(5)};
+  padding-right: ${props => props.iconleads === "true" && pxToRem(5)};
+  padding-left: ${props => props.iconleads === "false" && pxToRem(5)};
 `;
 
 export const CtaButton = styled.button`
