@@ -1,0 +1,114 @@
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+
+export const baseFontSize = 16;
+
+export const lightTheme = {
+  background: '#ffffff',
+  primaryFont: '#363636',
+  secondaryFont: '#1f4068',
+  accent: '#1F6CC7',
+  contrast: '#050505',
+  menuBackground: '#1F6CC7',
+  menuBorder: '#1F6CC7',
+  menuFontColor: '#ffffff'
+};
+
+export const darkTheme = {
+  background: '#1f4068',
+  primaryFont: '#ffffff',
+  secondaryFont: '##5cdb95',
+  accent: '#5cdb95',
+  contrast: '#ffffff',
+  menuBackground: '#1f4068',
+  menuBorder: '#5cdb95',
+  menuFontColor: '#ffffff'
+};
+
+
+export const globalTheme = {
+  baseFontSize: `${baseFontSize}px`,
+  fonts: {
+    roboto: 'Roboto, monospace',
+  },
+  fontWeights: {
+    light: '300',
+    regular: '400',
+    medium: '500',
+    bold: '700',
+    black: '900'
+  },
+  breakpoints: {
+    small: '576',
+    medium: '768',
+    large: '992',
+    extraLarge: '1200',
+  },
+  globalValues: {
+    sidebar: 400
+  }
+};
+
+export const GlobalStyle = createGlobalStyle`
+  ${normalize}
+
+  * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  img {
+    max-width:100%;
+    width: 100%;
+    display: block;
+  }
+
+  ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+  button, a, input, textarea {
+    outline: none;
+
+    &:focus, &:active {
+      border-color: ${({ theme }) => theme.accent};
+    }
+  }
+
+  /* override default */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
+    -moz-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+
+  html {
+    font-size: ${baseFontSize}px;
+    /* background: ${({ theme }) => theme.background}; */
+  }
+
+  body {
+    padding: 0;
+    font-family: ${({ theme }) => theme.fonts.roboto};
+    font-weight: ${({ theme }) => theme.fontWeights.light};
+    color: ${({ theme }) => theme.primaryFont};
+    line-height: 1.6;
+    background: ${({ theme }) => theme.background};
+  }
+`;
