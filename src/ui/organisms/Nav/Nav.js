@@ -56,11 +56,11 @@ const Nav = () => {
     const ctas = navData.navigation.ctAsCollection.items
 
     const backCtaArray = ctas.filter((cta) => (
-      cta.title === "Nav > Back"
+      cta.sys.id === "20GbFYwt866lSj4i58DV0C"
     ))
 
     const forwardCtaArray = ctas.filter((cta) => (
-      cta.title === "Nav > Forward"
+      cta.sys.id === "1RzUfpJ1ATaHT1byUyfIHp"
     ))
 
     // There will be only 1 array index for both variables, so we can grab the first index
@@ -72,11 +72,11 @@ const Nav = () => {
   const defineNavLinks = () => {
     // define our two navLinks
     const mainNavLinksArray = navData.navigation.navigationItemsCollection.items.filter((nav) => (
-      nav.title === "Main Navigation"
+      nav.sys.id === "6yIDuM1mAqoF7VnhTIV5Eo"
     ))
 
     const experienceNavLinksArray = navData.navigation.navigationItemsCollection.items.filter((nav) => (
-      nav.title === "Experience Navigation"
+      nav.sys.id === "5CGjIyepTYX9K6MDwBOpR"
     ))
 
     // There will only ever be one object returned, so we can just grab the first index
@@ -88,6 +88,7 @@ const Nav = () => {
   if (navData) {
     defineNavLinks()
     defineCtas()
+    console.log(navData)
   }
 
   // if the main nav is showing, render main nav links, if not, render experience nav links

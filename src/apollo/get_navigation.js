@@ -9,6 +9,9 @@ query navigation {
     ctAsCollection {
       items {
         ... on Cta {
+          sys{
+            id
+          }
           title
           hasIcon
           iconLeads
@@ -19,6 +22,9 @@ query navigation {
     navigationItemsCollection {
       items {
         ... on LinksList {
+          sys{
+            id
+          }
           title
           linksList {
             json
