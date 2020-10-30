@@ -88,7 +88,6 @@ const Nav = () => {
   if (navData) {
     defineNavLinks()
     defineCtas()
-    console.log(navData)
   }
 
   // if the main nav is showing, render main nav links, if not, render experience nav links
@@ -127,7 +126,7 @@ const Nav = () => {
     return (
       <StyledNav>
         {/* CTAs */}
-        <CtaContainer showMainNav={showMainNav}>
+        <CtaContainer showMainNav={showMainNav} >
           {/* Back CTA */}
           {!showMainNav && <Cta 
             isButton

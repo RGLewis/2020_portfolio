@@ -45,7 +45,7 @@ export const globalTheme = {
     extraLarge: '1200',
   },
   globalValues: {
-    sidebar: 350
+    sidebar: 400
   }
 };
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
 import {device} from '../../../globalStyles/Breakpoints'
+import {transition} from '../../../globalStyles/Mixins'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
@@ -20,10 +21,15 @@ export const CtaButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+  ${transition('all', '200ms', 'ease', '0s')};
 
   &:active,
   &:focus {
     border-bottom-color: ${({ theme, variant }) => theme[variant]};
+  }
+
+  &:hover {
+      letter-spacing: ${pxToRem(0.2)}
   }
 `;
 

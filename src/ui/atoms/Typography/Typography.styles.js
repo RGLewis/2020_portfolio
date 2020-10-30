@@ -45,7 +45,7 @@ export const StyledBody = styled.p`
   text-transform: ${(props) => props.textTransform};
 
   @media ${device.large} {
-    font-size: ${(props) => (props.isSmall ? pxToRem(14) : pxToRem(16))};
+    font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(16))};
     font-size: ${(props) => props.isLarge && pxToRem(20)};
   }
 `;

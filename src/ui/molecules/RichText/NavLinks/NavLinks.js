@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import {NavLink, HashLink, NavLinkContainer, NavLinkListContainer} from '../../../atoms/NavLinkElements/NavLinkElements'
+import {NavLinksContainer, StyledParagraph} from './NavLinks.styles'
 
 const NavLinks = ({data, isExperienceLink, handleShowMainNav, handleShowExperienceNav}) => {
   // UL
@@ -17,6 +18,13 @@ const NavLinks = ({data, isExperienceLink, handleShowMainNav, handleShowExperien
     </NavLinkContainer>
   );
 
+  // PARAGRAPH
+  const Paragraph = ({children}) => (
+    <StyledParagraph>
+      {children}
+    </StyledParagraph>
+  )
+
   // render the types
   const options = {
     renderNode: {
@@ -24,6 +32,7 @@ const NavLinks = ({data, isExperienceLink, handleShowMainNav, handleShowExperien
         <UnorderedList>{children}</UnorderedList>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
+      [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       [INLINES.HYPERLINK]: (node, children) =>{
         // define variables
         const isExact = node.data.uri === "/"
@@ -56,7 +65,7 @@ const NavLinks = ({data, isExperienceLink, handleShowMainNav, handleShowExperien
     },
   };
 
-  return <>{documentToReactComponents(data, options)}</>;
+  return <NavLinksContainer>{documentToReactComponents(data, options)}</NavLinksContainer>;
 }
 
 export default NavLinks

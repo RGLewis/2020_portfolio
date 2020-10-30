@@ -54,5 +54,5 @@ Cta.defaultProps = {
   onClick: () => {},
   variant: 'contrast',
   to: undefined,
-  paddingBottom: true
+  paddingBottom: false
 }

@@ -12,5 +12,6 @@ top: 0;
 left: 0;
 bottom: 0;
 z-index: 10;
-padding: ${pxToRem(10)}
+padding: ${pxToRem(10)};
+justify-content: space-between;
 `

@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro';
+import { pxToRem } from '../../../globalStyles/Utils';
 
-export const StyledNav = styled.nav``
+export const StyledNav = styled.nav`
+
+`
 
 export const CtaContainer = styled.div`
 display: flex;
