@@ -16,8 +16,6 @@ const AboutTemplate = () => {
     onCompleted: (data) => setAboutData(data),
   });
 
-  console.log(aboutData);
-
   if (loading) {
     return (
       <AboutPageContainer>

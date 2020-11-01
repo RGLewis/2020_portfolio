@@ -11,6 +11,7 @@ const GET_PAGE = gql`
       componentsCollection {
         items {
           ... on RichTextWriteUp {
+            title
             content {
               json
             }

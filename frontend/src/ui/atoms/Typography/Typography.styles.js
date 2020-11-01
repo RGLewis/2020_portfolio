@@ -45,10 +45,10 @@ export const StyledHeadingSecond = styled.h2`
   letter-spacing: ${pxToRem(0.5)};
 
   margin-bottom: ${pxToRem(10)};
-  text-align: center;
+  border-bottom: ${pxToRem(2)} solid ${({ theme }) => theme.accent};
 
   @media ${device.large} {
-    font-size: ${pxToRem(35)};
+    font-size: ${pxToRem(55)};
   }
 `;
 
@@ -56,11 +56,9 @@ export const StyledHeadingThird = styled.h3`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   font-size: ${pxToRem(20)};
   color: ${({ theme, variant }) => theme[variant]};
-  padding-bottom: ${pxToRem(10)};
+  padding: ${pxToRem(5)} 0;
   text-transform: capitalize;
   letter-spacing: ${pxToRem(0.5)};
-  margin-bottom: ${pxToRem(10)};
-  text-align: center;
 
   @media ${device.large} {
     font-size: ${pxToRem(25)};
@@ -73,7 +71,7 @@ export const StyledHeadingThird = styled.h3`
 
 export const StyledBody = styled.p`
   font-weight: ${({ theme, isBold }) => isBold && theme.fontWeights.medium};
-  margin-bottom: ${(props) => (props.marginBottom ? pxToRem(15) : '0')};
+  margin-bottom: ${(props) => (props.marginBottom ? pxToRem(10) : '0')};
 
   text-align: ${(props) => props.aligned};
   font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(14))};

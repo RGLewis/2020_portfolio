@@ -4,6 +4,7 @@ import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import HeadingFirst from '../../../atoms/Typography/HeadingFirst';
 import HeadingThird from '../../../atoms/Typography/HeadingThird';
+import HeadingSecond from '../../../atoms/Typography/HeadingSecond';
 import Body from '../../../atoms/Typography/Body';
 import RichTextWriteUpLink from '../../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
 
@@ -17,6 +18,11 @@ const RichTextWriteUp = ({ data, variant, isUnderlined, isLarge }) => {
     >
       {children}
     </HeadingFirst>
+  );
+
+  // h2
+  const RichTextHeadingSecond = ({ children }) => (
+    <HeadingSecond>{children}</HeadingSecond>
   );
 
   // h3
@@ -36,6 +42,9 @@ const RichTextWriteUp = ({ data, variant, isUnderlined, isLarge }) => {
     renderNode: {
       [BLOCKS.HEADING_1]: (node, children) => (
         <RichTextHeadingFirst>{children}</RichTextHeadingFirst>
+      ),
+      [BLOCKS.HEADING_2]: (node, children) => (
+        <RichTextHeadingSecond>{children}</RichTextHeadingSecond>
       ),
       [BLOCKS.HEADING_3]: (node, children) => (
         <RichTextHeadingThird>{children}</RichTextHeadingThird>

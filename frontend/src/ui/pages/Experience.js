@@ -1,5 +1,6 @@
 import React from 'react';
+import ExperienceTemplate from '../templates/ExperienceTemplate/ExperienceTemplate';
 
-const Experience = () => <h1>Experience</h1>;
+const Experience = () => <ExperienceTemplate />;
 
 export default Experience;
