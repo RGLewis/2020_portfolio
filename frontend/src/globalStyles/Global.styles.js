@@ -14,6 +14,7 @@ export const lightTheme = {
   menuBackground: '#1F6CC7',
   menuBorder: '#1F6CC7',
   menuFontColor: '#ffffff',
+  black: '#050505',
 };
 
 export const darkTheme = {
@@ -27,6 +28,7 @@ export const darkTheme = {
   menuBackground: '#1f4068',
   menuBorder: '#5cdb95',
   menuFontColor: '#ffffff',
+  black: '#050505',
 };
 
 export const globalTheme = {

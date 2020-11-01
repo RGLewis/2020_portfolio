@@ -8,13 +8,19 @@ export const StyledHeadingFirst = styled.h1`
   line-height: 1.4;
   font-size: ${pxToRem(55)};
   color: ${({ theme, variant }) => theme[variant]};
-  text-transform: capitalize;
+  text-transform: ${(props) =>
+    props.isPageHeading ? 'uppercase' : 'capitalize'};
   padding-bottom: 0;
   border-bottom: ${pxToRem(1)} solid transparent;
   padding-left: ${(props) => props.isUnderlined && pxToRem(10)};
   padding-right: ${(props) => props.isUnderlined && pxToRem(10)};
   border-bottom-color: ${({ theme, isUnderlined }) =>
     isUnderlined && theme.accent};
+  letter-spacing: ${(props) => props.isPageHeading && pxToRem(2)};
+  margin-top: ${(props) => props.isPageHeading && pxToRem(-90)};
+  text-shadow: ${({ theme, isPageHeading }) =>
+    isPageHeading &&
+    `${pxToRem(0)} ${pxToRem(5)} ${pxToRem(30)} ${theme.black}`};
 
   @media ${device.large} {
     font-size: ${pxToRem(70)};
@@ -22,11 +28,11 @@ export const StyledHeadingFirst = styled.h1`
   }
 
   @media ${device.large} {
-    font-size: ${pxToRem(60)};
+    font-size: ${(props) => (props.isPageHeading ? pxToRem(90) : pxToRem(50))};
   }
 
   @media ${device.extraLarge} {
-    font-size: ${pxToRem(70)};
+    font-size: ${(props) => (props.isPageHeading ? pxToRem(100) : pxToRem(70))};
   }
 `;
 
@@ -57,17 +63,17 @@ export const StyledHeadingThird = styled.h3`
   text-align: center;
 
   @media ${device.large} {
-    font-size: ${pxToRem(30)};
+    font-size: ${pxToRem(25)};
   }
 
   @media ${device.extraLarge} {
-    font-size: ${pxToRem(40)};
+    font-size: ${pxToRem(30)};
   }
 `;
 
 export const StyledBody = styled.p`
   font-weight: ${({ theme, isBold }) => isBold && theme.fontWeights.medium};
-  margin-bottom: 0;
+  margin-bottom: ${(props) => (props.marginBottom ? pxToRem(15) : '0')};
 
   text-align: ${(props) => props.aligned};
   font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(14))};

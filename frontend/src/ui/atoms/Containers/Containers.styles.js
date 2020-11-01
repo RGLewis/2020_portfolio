@@ -6,6 +6,10 @@ export const StyledOuterContainer = styled.div`
   max-width: ${pxToRem(1600)};
   width: 90%;
   margin: 0 auto;
+
+  @media ${device.large} {
+    width: 70%;
+  }
 `;
 
 export const StyledMainContentContainer = styled.main`
