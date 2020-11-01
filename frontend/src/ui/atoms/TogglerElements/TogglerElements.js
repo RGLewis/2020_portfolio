@@ -21,4 +21,4 @@ export const Input = ({ onChange, isChecked, label }) => (
   />
 );
 
-export const TogglerSwitch = ({isChecked}) => <StyledTogglerSwitch icon={isChecked ? faMoon : faSun}/>;
+export const TogglerSwitch = ({isChecked}) => <StyledTogglerSwitch icon={isChecked ? faSun : faMoon }/>;

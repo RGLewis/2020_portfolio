@@ -4,8 +4,7 @@ import {device} from '../../../../globalStyles/Breakpoints'
 
 export const NavLinksContainer = styled.div`
   @media ${device.large}{
-  /* align with main content */
-  margin-top: ${pxToRem(61)}
+  margin-top: ${pxToRem(20)}
   }
 `
 

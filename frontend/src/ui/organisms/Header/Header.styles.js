@@ -5,7 +5,8 @@ import {device} from '../../../globalStyles/Breakpoints'
 export const HeaderContainer = styled.header`
 width: 100%;
 display: flex;
-padding: ${pxToRem(15)};
+padding: ${pxToRem(20)};
+position: fixed;
 
 /* account for sidebar */
 @media ${device.large}{

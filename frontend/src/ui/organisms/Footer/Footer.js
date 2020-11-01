@@ -47,8 +47,8 @@ const Footer = () => {
     return (
       <StyledFooter>
         <FooterLinks data={footerData.footer.footerItemsCollection.items[0].linksList.json}/>
-        <Body variant="menuFontColor" isSmall>{footerData.footer.copyright}</Body>
         <Body variant="menuFontColor" isSmall>{footerData.footer.techStack}</Body>
+        <Body variant="menuFontColor" isSmall>{footerData.footer.copyright}</Body>
       </StyledFooter>
     )
   }

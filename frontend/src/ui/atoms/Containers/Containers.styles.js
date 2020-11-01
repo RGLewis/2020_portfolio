@@ -9,6 +9,7 @@ export const StyledOuterContainer = styled.div`
 `;
 
 export const StyledMainContentContainer = styled.main`
+min-height: ${props => props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
 /* to account for sidebar */
 @media ${device.large}{
   margin-left: ${({theme}) => pxToRem(theme.globalValues.sidebar)};
