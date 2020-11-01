@@ -6,5 +6,5 @@ export const Context = createContext({
   toggleLightMode: () => {},
   // splashscreen
   showSplashScreen: true,
-  setShowSplashScreen: () => {}
+  setShowSplashScreen: () => {},
 });
