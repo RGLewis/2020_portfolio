@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import {Context} from '../../../context/context'
-import {HeaderContainer} from './Header.styles'
+import { Context } from '../../../context/context';
+import { HeaderContainer } from './Header.styles';
 import Toggler from '../../molecules/Toggler/Toggler';
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
         darkToggleLabel="dark"
       />
     </HeaderContainer>
-    )
-} 
+  );
+};
 
-export default Header
+export default Header;

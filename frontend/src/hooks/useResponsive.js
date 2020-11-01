@@ -29,7 +29,7 @@ export const UseResponsive = () => {
   return {windowWidth, windowHeight};
 };
 
-// Useage
+// Usage
 // import { UseResponsive } from '<filepath>'
 
 // const {windowHeight, windowWidth} = UseResponsive()

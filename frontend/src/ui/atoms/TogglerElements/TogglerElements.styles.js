@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
-import {transition} from '../../../globalStyles/Mixins'
+import { transition } from '../../../globalStyles/Mixins';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledLabel = styled.label`

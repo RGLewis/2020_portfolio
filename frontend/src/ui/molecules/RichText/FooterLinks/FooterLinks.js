@@ -3,30 +3,30 @@ import PropTypes from 'prop-types';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Body from '../../../atoms/Typography/Body';
-import RichTextLink from '../../../atoms/RichTextLink/RichTextLink'
+import RichTextLink from '../../../atoms/RichTextLink/RichTextLink';
 import {
   UnorderedList,
   ListItem,
 } from '../../../atoms/UnorderedListElements/UnorderedListElements';
-import {StyledSlash, FooterLinksContainer} from './FooterLinks.styles'
+import { StyledSlash, FooterLinksContainer } from './FooterLinks.styles';
 
-const FooterLinks = ({data}) => {
+const FooterLinks = ({ data }) => {
   // UL
   const RichTextUnorderedList = ({ children }) => (
-    <UnorderedList orientation='horizontal'>{children}</UnorderedList>
+    <UnorderedList orientation="horizontal">{children}</UnorderedList>
   );
 
   // LI
   const RichTextListItem = ({ children }) => (
-    <ListItem orientation='horizontal' spaceBetween={false}>
+    <ListItem orientation="horizontal" spaceBetween={false}>
       {children}
     </ListItem>
   );
 
   // P
-  const Paragraph = ({children}) => (
+  const Paragraph = ({ children }) => (
     <Body variant="menuFontColor">{children}</Body>
-  )
+  );
 
   // render the types
   const options = {
@@ -37,19 +37,25 @@ const FooterLinks = ({data}) => {
       [BLOCKS.UL_LIST]: (node, children) => (
         <RichTextUnorderedList>{children}</RichTextUnorderedList>
       ),
-      [BLOCKS.LIST_ITEM]: (node, children) => 
-      
-      <RichTextListItem>{children}</RichTextListItem>,
+      [BLOCKS.LIST_ITEM]: (node, children) => (
+        <RichTextListItem>{children}</RichTextListItem>
+      ),
       [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
-      [INLINES.HYPERLINK]: (node, children) =>{
+      [INLINES.HYPERLINK]: (node, children) => {
         return (
-          <RichTextLink href={node.data.uri} variant="menuFontColor">{children}</RichTextLink>
-        )
-      }
+          <RichTextLink href={node.data.uri} variant="menuFontColor">
+            {children}
+          </RichTextLink>
+        );
+      },
     },
   };
 
-  return <FooterLinksContainer>{documentToReactComponents(data, options)}</FooterLinksContainer>;
-}
+  return (
+    <FooterLinksContainer>
+      {documentToReactComponents(data, options)}
+    </FooterLinksContainer>
+  );
+};
 
-export default FooterLinks
+export default FooterLinks;
