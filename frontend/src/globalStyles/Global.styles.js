@@ -10,9 +10,10 @@ export const lightTheme = {
   secondaryFont: '#1f4068',
   accent: '#1F6CC7',
   contrast: '#050505',
+  blackOpaque: 'rgba(5,5,5, 0.2)',
   menuBackground: '#1F6CC7',
   menuBorder: '#1F6CC7',
-  menuFontColor: '#ffffff'
+  menuFontColor: '#ffffff',
 };
 
 export const darkTheme = {
@@ -22,23 +23,24 @@ export const darkTheme = {
   secondaryFont: '##5cdb95',
   accent: '#5cdb95',
   contrast: '#ffffff',
+  blackOpaque: 'rgba(5,5,5, 0.2)',
   menuBackground: '#1f4068',
   menuBorder: '#5cdb95',
-  menuFontColor: '#ffffff'
+  menuFontColor: '#ffffff',
 };
-
 
 export const globalTheme = {
   baseFontSize: `${baseFontSize}px`,
   fonts: {
     roboto: 'Roboto, monospace',
+    montserrat: 'Montserrat, monospace',
   },
   fontWeights: {
     light: '300',
     regular: '400',
     medium: '500',
-    bold: '700',
-    black: '900'
+    extraBold: '700',
+    black: '900',
   },
   breakpoints: {
     small: '576',
@@ -47,8 +49,8 @@ export const globalTheme = {
     extraLarge: '1200',
   },
   globalValues: {
-    sidebar: 400
-  }
+    sidebar: 400,
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`
