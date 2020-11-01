@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import GET_HOMEPAGE from '../../../apollo/get_homepage';
+import GET_PAGE from '../../../apollo/get_page';
 import { useQuery } from '@apollo/client';
-import { HomepageContainer, Headshot } from './HomeTemplate.styles';
+import { HomePageContainer, Headshot } from './HomeTemplate.styles';
 import { UseResponsive } from '../../../hooks/useResponsive';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
+import { OuterContainer } from '../../atoms/Containers/Containers';
 
 const HomeTemplate = () => {
   const [homeData, setHomeData] = useState();
@@ -12,25 +13,28 @@ const HomeTemplate = () => {
   const { windowHeight } = UseResponsive();
 
   // Apollo query
-  const { error, loading } = useQuery(GET_HOMEPAGE, {
+  const { error, loading } = useQuery(GET_PAGE, {
+    variables: { id: '5NDUJLUkiLqJOqlNFjzOrn' },
     onCompleted: (data) => setHomeData(data),
   });
 
-  console.log(homeData);
-
   if (loading) {
     return (
-      <HomepageContainer minHeight={windowHeight}>
-        <p>Loading</p>
-      </HomepageContainer>
+      <OuterContainer>
+        <HomePageContainer minHeight={windowHeight}>
+          <p>Loading</p>
+        </HomePageContainer>
+      </OuterContainer>
     );
   }
 
   if (error) {
     return (
-      <HomepageContainer minHeight={windowHeight}>
-        <p>Error</p>
-      </HomepageContainer>
+      <OuterContainer>
+        <HomePageContainer minHeight={windowHeight}>
+          <p>Error</p>
+        </HomePageContainer>
+      </OuterContainer>
     );
   }
 
@@ -40,17 +44,19 @@ const HomeTemplate = () => {
 
   if (homeData) {
     return (
-      <HomepageContainer minHeight={windowHeight}>
-        <Headshot
-          src={homeData.page.image.url}
-          alt={homeData.page.image.description}
-        />
-        <RichTextWriteUp
-          data={homeData.page.componentsCollection.items[0].content.json}
-          variant="primary"
-          isUnderlined
-        />
-      </HomepageContainer>
+      <OuterContainer>
+        <HomePageContainer minHeight={windowHeight}>
+          <Headshot
+            src={homeData.page.image.url}
+            alt={homeData.page.image.description}
+          />
+          <RichTextWriteUp
+            data={homeData.page.componentsCollection.items[0].content.json}
+            variant="primaryFont"
+            isUnderlined
+          />
+        </HomePageContainer>
+      </OuterContainer>
     );
   }
 };

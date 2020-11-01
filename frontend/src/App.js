@@ -25,10 +25,7 @@ import Experience from './ui/pages/Experience';
 import Contact from './ui/pages/Contact';
 
 // Component imports
-import {
-  OuterContainer,
-  MainContentContainer,
-} from './ui/atoms/Containers/Containers';
+import { MainContentContainer } from './ui/atoms/Containers/Containers';
 import Sidebar from './ui/organisms/Sidebar/Sidebar';
 import Header from './ui/organisms/Header/Header';
 
@@ -68,9 +65,7 @@ const App = () => {
           <Router>
             <Header />
             <Sidebar />
-            <OuterContainer>
-              <MainContentContainer>{routes}</MainContentContainer>
-            </OuterContainer>
+            <MainContentContainer>{routes}</MainContentContainer>
           </Router>
         </ThemeProvider>
       </ThemeProvider>

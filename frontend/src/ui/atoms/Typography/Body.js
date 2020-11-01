@@ -44,7 +44,7 @@ Body.propTypes = {
 
 Body.defaultProps = {
   isBold: false,
-  marginBottom: true,
+  marginBottom: false,
   variant: 'primaryFont',
   isCentered: false,
   isSmall: false,

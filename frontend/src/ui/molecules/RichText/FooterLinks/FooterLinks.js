@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Body from '../../../atoms/Typography/Body';
-import RichTextLink from '../../../atoms/RichTextLink/RichTextLink';
+import RichTextFooterLink from '../../../atoms/RichTexFooterLink/RichTextFooterLink';
 import {
   UnorderedList,
   ListItem,
@@ -43,9 +43,9 @@ const FooterLinks = ({ data }) => {
       [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       [INLINES.HYPERLINK]: (node, children) => {
         return (
-          <RichTextLink href={node.data.uri} variant="menuFontColor">
+          <RichTextFooterLink href={node.data.uri}>
             {children}
-          </RichTextLink>
+          </RichTextFooterLink>
         );
       },
     },

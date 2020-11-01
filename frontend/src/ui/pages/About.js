@@ -1,5 +1,6 @@
 import React from 'react';
+import AboutTemplate from '../templates/AboutTemplate/AboutTemplate';
 
-const About = () => <h1>About</h1>;
+const About = () => <AboutTemplate />;
 
 export default About;
