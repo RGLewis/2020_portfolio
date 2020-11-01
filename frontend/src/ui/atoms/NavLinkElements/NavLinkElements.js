@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  StyledNavLinkContainer,
   StyledNavLink,
   StyledHashLink,
-  StyledNavLinkListContainer,
 } from './NavLinkElements.styles';
 
 export const NavLink = ({ to, children, isExact, onClick }) => (
@@ -41,20 +39,4 @@ onClick: PropTypes.func
 HashLink.defaultProps = {
 exact: false,
 onClick: () => {}
-}
-
-export const NavLinkContainer = ({children}) => (
-  <StyledNavLinkContainer>{children}</StyledNavLinkContainer>
-)
-
-NavLinkContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export const NavLinkListContainer = ({ children }) => (
-  <StyledNavLinkListContainer>{children}</StyledNavLinkListContainer>
-);
-
-NavLinkListContainer.propTypes = {
-  children: PropTypes.node.isRequired,
 }

@@ -20,7 +20,7 @@ const Toggler = ({
       <Input onChange={onChange} isChecked={isChecked} id={label} />
       <TogglerSwitch isChecked={isChecked}/>
     </Label>
-    <Body variant="primaryFont" textTransform="capitalize">{isChecked ? darkToggleLabel : lightToggleLabel}</Body>
+    {/* <Body variant="primaryFont" textTransform="capitalize">{isChecked ? darkToggleLabel : lightToggleLabel}</Body> */}
   </TogglerContainer>
 );
 

@@ -5,6 +5,7 @@ export const baseFontSize = 16;
 
 export const lightTheme = {
   background: '#ffffff',
+  backgroundOpaque: 'rgba(255,255,255, 0.5)',
   primaryFont: '#363636',
   secondaryFont: '#1f4068',
   accent: '#1F6CC7',
@@ -16,6 +17,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   background: '#1f4068',
+  backgroundOpaque: 'rgba(31,64,104, 0.5)',
   primaryFont: '#ffffff',
   secondaryFont: '##5cdb95',
   accent: '#5cdb95',

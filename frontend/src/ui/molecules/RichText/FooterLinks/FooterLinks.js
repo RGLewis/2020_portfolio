@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BLOCKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Body from '../../../atoms/Typography/Body';
 import RichTextLink from '../../../atoms/RichTextLink/RichTextLink'
+import {
+  UnorderedList,
+  ListItem,
+} from '../../../atoms/UnorderedListElements/UnorderedListElements';
+import {StyledSlash, FooterLinksContainer} from './FooterLinks.styles'
 
 const FooterLinks = ({data}) => {
   // UL
-  const UnorderedList = ({ children }) => (
-    <ul>{children}</ul>
+  const RichTextUnorderedList = ({ children }) => (
+    <UnorderedList orientation='horizontal'>{children}</UnorderedList>
   );
 
   // LI
-  const ListItem = ({ children }) => (
-    <li>
+  const RichTextListItem = ({ children }) => (
+    <ListItem orientation='horizontal' spaceBetween={false}>
       {children}
-      <Body variant="menuFontColor" >/</Body>
-    </li>
+    </ListItem>
   );
 
   // P
@@ -26,13 +30,16 @@ const FooterLinks = ({data}) => {
 
   // render the types
   const options = {
+    renderMark: {
+      [MARKS.BOLD]: (text) => <StyledSlash>{text}</StyledSlash>,
+    },
     renderNode: {
       [BLOCKS.UL_LIST]: (node, children) => (
-        <UnorderedList>{children}</UnorderedList>
+        <RichTextUnorderedList>{children}</RichTextUnorderedList>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => 
-
-      <ListItem>      {console.log(node)}{children}</ListItem>,
+      
+      <RichTextListItem>{children}</RichTextListItem>,
       [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       [INLINES.HYPERLINK]: (node, children) =>{
         return (
@@ -42,7 +49,7 @@ const FooterLinks = ({data}) => {
     },
   };
 
-  return <>{documentToReactComponents(data, options)}</>;
+  return <FooterLinksContainer>{documentToReactComponents(data, options)}</FooterLinksContainer>;
 }
 
 export default FooterLinks
