@@ -2,8 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledHeadingFirst } from './Typography.styles';
 
-const HeadingFirst = ({ variant, children, isUnderlined }) => (
-  <StyledHeadingFirst variant={variant} isUnderlined={isUnderlined}>
+export const HeadingFirst = ({
+  variant,
+  children,
+  isUnderlined,
+  isPageHeading,
+}) => (
+  <StyledHeadingFirst
+    variant={variant}
+    isUnderlined={isUnderlined}
+    isPageHeading={isPageHeading}
+  >
     {children}
   </StyledHeadingFirst>
 );
@@ -18,11 +27,13 @@ HeadingFirst.propTypes = {
     'accent',
   ]),
   isUnderlined: PropTypes.bool,
+  isPageHeading: PropTypes.bool,
 };
 
 HeadingFirst.defaultProps = {
   variant: 'primaryFont',
   isUnderlined: false,
+  isPageHeading: true,
 };
 
 export default HeadingFirst;

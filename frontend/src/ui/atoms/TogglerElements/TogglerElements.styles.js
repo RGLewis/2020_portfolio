@@ -12,8 +12,8 @@ export const StyledLabel = styled.label`
 export const StyledTogglerSwitch = styled(FontAwesomeIcon)`
   position: absolute;
   cursor: pointer;
-  top: ${pxToRem(-5)};
-  left: ${pxToRem(-1)};
+  top: ${pxToRem(-3)};
+  left: 0;
   right: 0;
   bottom: 0;
   color: ${({ theme }) => theme.accent};

@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
 
-export const HomepageContainer = styled.div`
+export const HomePageContainer = styled.div`
   min-height: ${(props) =>
     props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
   flex-direction: column;

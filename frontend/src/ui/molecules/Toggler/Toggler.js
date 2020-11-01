@@ -5,8 +5,8 @@ import {
   Input,
   TogglerSwitch,
 } from '../../atoms/TogglerElements/TogglerElements';
-import { TogglerContainer} from './Toggler.styles';
-import Body from '../../atoms/Typography/Body'
+import { TogglerContainer } from './Toggler.styles';
+import Body from '../../atoms/Typography/Body';
 
 const Toggler = ({
   onChange,
@@ -18,9 +18,8 @@ const Toggler = ({
   <TogglerContainer>
     <Label for={label}>
       <Input onChange={onChange} isChecked={isChecked} id={label} />
-      <TogglerSwitch isChecked={isChecked}/>
+      <TogglerSwitch isChecked={isChecked} />
     </Label>
-    {/* <Body variant="primaryFont" textTransform="capitalize">{isChecked ? darkToggleLabel : lightToggleLabel}</Body> */}
   </TogglerContainer>
 );
 
@@ -31,10 +30,10 @@ Toggler.propTypes = {
   isChecked: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
   lightToggleLabel: PropTypes.string,
-  darkToggleLabel: PropTypes.string
-}
+  darkToggleLabel: PropTypes.string,
+};
 
 Toggler.defaultProps = {
-  lightToggleLabel: "",
-  darkToggleLabel: ""
-}
+  lightToggleLabel: '',
+  darkToggleLabel: '',
+};
