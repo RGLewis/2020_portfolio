@@ -15,6 +15,7 @@ export const StyledOuterContainer = styled.div`
 export const StyledMainContentContainer = styled.main`
   min-height: ${(props) =>
     props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
+  padding-bottom: ${pxToRem(20)};
 
   /* to account for sidebar */
   @media ${device.large} {

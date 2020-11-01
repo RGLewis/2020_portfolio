@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import HeadingFirst from '../../../atoms/Typography/HeadingFirst';
 import HeadingThird from '../../../atoms/Typography/HeadingThird';
 import Body from '../../../atoms/Typography/Body';
+import RichTextWriteUpLink from '../../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
 
 const RichTextWriteUp = ({ data, variant, isUnderlined, isLarge }) => {
   // h1
@@ -42,6 +43,13 @@ const RichTextWriteUp = ({ data, variant, isUnderlined, isLarge }) => {
       [BLOCKS.PARAGRAPH]: (node, children) => (
         <RichTextBody>{children}</RichTextBody>
       ),
+      [INLINES.HYPERLINK]: (node, children, variant) => {
+        return (
+          <RichTextWriteUpLink href={node.data.uri} variant={variant}>
+            {children}
+          </RichTextWriteUpLink>
+        );
+      },
     },
   };
 

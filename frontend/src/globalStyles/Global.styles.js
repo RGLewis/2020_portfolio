@@ -21,12 +21,12 @@ export const darkTheme = {
   background: '#1f4068',
   backgroundOpaque: 'rgba(31,64,104, 0.5)',
   primaryFont: '#ffffff',
-  secondaryFont: '##5cdb95',
+  secondaryFont: '#5cdb95',
   accent: '#5cdb95',
   contrast: '#ffffff',
   blackOpaque: 'rgba(5,5,5, 0.2)',
   menuBackground: '#1f4068',
-  menuBorder: '#5cdb95',
+  menuBorder: '#ffffff',
   menuFontColor: '#ffffff',
   black: '#050505',
 };
@@ -76,11 +76,12 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0;
     }
 
-  button, a, input, textarea {
+  button, input, textarea {
     outline: none;
+    border: 1px solid transparent;
 
     &:focus, &:active {
-      border-color: ${({ theme }) => theme.accent};
+     border-color: ${({ theme }) => theme.accent};
     }
   }
 
@@ -101,12 +102,17 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    outline: 1px solid transparent;
+
+    &:focus, &:active {
+      /* outline: 1px solid ${({ theme }) => theme.secondaryFont}; */
+      outline-color: ${({ theme }) => theme.secondaryFont};
+    }
   }
 
 
   html {
     font-size: ${baseFontSize}px;
-    /* background: ${({ theme }) => theme.background}; */
   }
 
   body {
