@@ -13,7 +13,6 @@ import {
 } from '../../../atoms/UnorderedListElements/UnorderedListElements';
 import { UseResponsive } from '../../../../hooks/useResponsive';
 
-
 let isDesktop;
 
 const NavLinks = ({

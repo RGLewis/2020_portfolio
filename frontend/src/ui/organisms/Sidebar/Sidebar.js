@@ -1,16 +1,14 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Nav from '../Nav/Nav'
-import Footer from '../Footer/Footer'
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
-import {StyledSidebar} from './Sidebar.styles'
+import { StyledSidebar } from './Sidebar.styles';
 
 const Sidebar = () => (
-    <StyledSidebar>
-      <Nav />
-      <Footer />
-    </StyledSidebar>
-  )
+  <StyledSidebar>
+    <Nav />
+    <Footer />
+  </StyledSidebar>
+);
 
-
-export default Sidebar
+export default Sidebar;
