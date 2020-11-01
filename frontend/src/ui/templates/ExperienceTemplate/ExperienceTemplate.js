@@ -4,7 +4,9 @@ import { useQuery } from '@apollo/client';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
 import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
+import HeadingSecond from '../../atoms/Typography/HeadingSecond';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
+import SkillsItem from '../../molecules/SkillsItem/SkillsItem';
 import {
   ExperiencePageContainer,
   ExperiencePageSection,
@@ -73,19 +75,33 @@ const ExperienceTemplate = () => {
           </HeadingFirst>
 
           {/* Profile section */}
-          <ExperiencePageSection id="#profile">
+          <ExperiencePageSection id="profile">
             <RichTextWriteUp
               data={experienceContent.Profile.content.json}
-              variant="primary"
+              variant="primaryFont"
               isLarge
             />
           </ExperiencePageSection>
 
+          {/* Skills section */}
+          <HeadingSecond>{experienceContent.Skills.title}</HeadingSecond>
+          <ExperiencePageSection id="skills">
+            {experienceContent.Skills.skillsItemCollection.items.map(
+              (skill) => (
+                <SkillsItem
+                  key={skill.title}
+                  skillsTitle={skill.title}
+                  level={skill.level}
+                />
+              )
+            )}
+          </ExperiencePageSection>
+
           {/* Education section */}
-          <ExperiencePageSection id="#education">
+          <ExperiencePageSection id="education">
             <RichTextWriteUp
               data={experienceContent.Education.content.json}
-              variant="primary"
+              variant="primaryFont"
               isLarge
             />
           </ExperiencePageSection>
