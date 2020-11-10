@@ -39,10 +39,11 @@ const GET_PAGE = gql`
             accordionItemsCollection {
               items {
                 ... on WorkAccordionItem {
+                  sys {
+                    id
+                  }
                   jobTitle
                   workplace
-                  city
-                  dates
                   accordionContent {
                     json
                   }

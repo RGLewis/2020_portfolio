@@ -69,6 +69,26 @@ export const StyledHeadingThird = styled.h3`
   }
 `;
 
+export const StyledHeadingFourth = styled.h3`
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  font-size: ${pxToRem(20)};
+  color: ${({ theme, variant }) => theme[variant]};
+  padding: ${pxToRem(5)} 0;
+  letter-spacing: ${pxToRem(0.5)};
+
+  @media ${device.large} {
+    font-size: ${pxToRem(25)};
+  }
+`;
+
+export const StyledHeadingFifth = styled.h3`
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
+  font-size: ${pxToRem(20)};
+  color: ${({ theme, variant }) => theme[variant]};
+  padding: ${pxToRem(5)} 0;
+  letter-spacing: ${pxToRem(0.5)};
+`;
+
 export const StyledBody = styled.p`
   font-weight: ${({ theme, isBold }) => isBold && theme.fontWeights.medium};
   margin-bottom: ${(props) => (props.marginBottom ? pxToRem(10) : '0')};
@@ -83,4 +103,9 @@ export const StyledBody = styled.p`
     font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(16))};
     font-size: ${(props) => props.isLarge && pxToRem(20)};
   }
+`;
+
+export const StyledUppercase = styled.span`
+  text-transform: uppercase;
+  letter-spacing: ${pxToRem(1)};
 `;

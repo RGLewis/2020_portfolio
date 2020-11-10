@@ -7,4 +7,7 @@ export const Context = createContext({
   // splashscreen
   showSplashScreen: true,
   setShowSplashScreen: () => {},
+  // active experience section
+  activeExperienceSection: undefined,
+  setExperienceSection: () => {},
 });

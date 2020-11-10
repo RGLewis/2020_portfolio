@@ -19,4 +19,9 @@ const SkillsItem = ({ skillsTitle, level }) => (
   </SkillsContainer>
 );
 
+SkillsItem.propTypes = {
+  skillsTitle: PropTypes.string.isRequired,
+  level: PropTypes.string.isRequired,
+};
+
 export default SkillsItem;

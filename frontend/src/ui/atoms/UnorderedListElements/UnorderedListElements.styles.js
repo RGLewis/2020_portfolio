@@ -14,4 +14,7 @@ export const StyledUnorderedList = styled.ul`
   flex-wrap: wrap;
   flex-direction: ${(props) =>
     props.orientation === 'horizontal' ? 'row' : 'column'};
+  list-style: ${(props) => !props.hasBullets && 'none'};
+  padding-left: ${(props) => props.hasBullets && pxToRem(20)};
+  color: ${({ theme }) => theme.accent};
 `;
