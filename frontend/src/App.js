@@ -17,6 +17,7 @@ import {
 } from './globalStyles/Global.styles';
 import { Context } from './context/context';
 import { UseColorMode } from './hooks/useColorMode';
+import { UseActiveExperienceSection } from './hooks/useActiveExperienceSection';
 
 // Page imports
 import Home from './ui/pages/Home';
@@ -32,6 +33,10 @@ import Header from './ui/organisms/Header/Header';
 const App = () => {
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
+  const {
+    activeExperienceSection,
+    setExperienceSection,
+  } = UseActiveExperienceSection();
 
   // Define routes
   const routes = (
@@ -57,6 +62,8 @@ const App = () => {
       value={{
         isLightMode,
         toggleLightMode,
+        activeExperienceSection,
+        setExperienceSection,
       }}
     >
       <ThemeProvider theme={globalTheme}>

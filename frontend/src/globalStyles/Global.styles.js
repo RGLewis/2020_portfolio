@@ -21,7 +21,7 @@ export const darkTheme = {
   background: '#1f4068',
   backgroundOpaque: 'rgba(31,64,104, 0.5)',
   primaryFont: '#ffffff',
-  secondaryFont: '#5cdb95',
+  secondaryFont: '#D9D9D9',
   accent: '#5cdb95',
   contrast: '#ffffff',
   blackOpaque: 'rgba(5,5,5, 0.2)',
@@ -71,7 +71,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ul {
-      list-style: none;
       padding: 0;
       margin: 0;
     }
