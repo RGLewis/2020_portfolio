@@ -16,8 +16,6 @@ const AboutTemplate = () => {
     onCompleted: (data) => setAboutData(data),
   });
 
-  console.log(aboutData);
-
   if (loading) {
     return (
       <AboutPageContainer>
@@ -51,7 +49,7 @@ const AboutTemplate = () => {
           </HeadingFirst>
           <RichTextWriteUp
             data={aboutData.page.componentsCollection.items[0].content.json}
-            variant="primary"
+            variant="primaryFont"
             isLarge
           />
         </OuterContainer>

@@ -11,6 +11,7 @@ const GET_PAGE = gql`
       componentsCollection {
         items {
           ... on RichTextWriteUp {
+            title
             content {
               json
             }
@@ -38,10 +39,11 @@ const GET_PAGE = gql`
             accordionItemsCollection {
               items {
                 ... on WorkAccordionItem {
+                  sys {
+                    id
+                  }
                   jobTitle
                   workplace
-                  city
-                  dates
                   accordionContent {
                     json
                   }

@@ -5,8 +5,8 @@ import {
   StyledUnorderedList,
 } from './UnorderedListElements.styles';
 
-export const UnorderedList = ({ orientation, children }) => (
-  <StyledUnorderedList orientation={orientation}>
+export const UnorderedList = ({ orientation, children, hasBullets }) => (
+  <StyledUnorderedList orientation={orientation} hasBullets={hasBullets}>
     {children}
   </StyledUnorderedList>
 );
@@ -14,10 +14,12 @@ export const UnorderedList = ({ orientation, children }) => (
 UnorderedList.propTypes = {
   children: PropTypes.node.isRequired,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+  hasBullets: PropTypes.bool,
 };
 
 UnorderedList.defaultProps = {
   orientation: 'horizontal',
+  hasBullets: false,
 };
 
 export const ListItem = ({ orientation, children, spaceBetween }) => (

@@ -8,13 +8,7 @@ import {
 import { TogglerContainer } from './Toggler.styles';
 import Body from '../../atoms/Typography/Body';
 
-const Toggler = ({
-  onChange,
-  isChecked,
-  label,
-  lightToggleLabel,
-  darkToggleLabel,
-}) => (
+const Toggler = ({ onChange, isChecked, label }) => (
   <TogglerContainer>
     <Label for={label}>
       <Input onChange={onChange} isChecked={isChecked} id={label} />
@@ -29,11 +23,4 @@ Toggler.propTypes = {
   onChange: PropTypes.func.isRequired,
   isChecked: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
-  lightToggleLabel: PropTypes.string,
-  darkToggleLabel: PropTypes.string,
-};
-
-Toggler.defaultProps = {
-  lightToggleLabel: '',
-  darkToggleLabel: '',
 };
