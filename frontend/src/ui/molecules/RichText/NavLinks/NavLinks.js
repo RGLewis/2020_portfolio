@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -6,12 +6,17 @@ import {
   NavLink,
   HashLink,
 } from '../../../atoms/NavLinkElements/NavLinkElements';
-import { NavLinksContainer, StyledParagraph } from './NavLinks.styles';
+import {
+  NavLinksContainer,
+  StyledParagraph,
+  Underline,
+} from './NavLinks.styles';
 import {
   UnorderedList,
   ListItem,
 } from '../../../atoms/UnorderedListElements/UnorderedListElements';
 import { UseResponsive } from '../../../../hooks/useResponsive';
+import { Context } from '../../../../context/context';
 
 let isDesktop;
 
@@ -21,6 +26,9 @@ const NavLinks = ({
   handleShowMainNav,
   handleShowExperienceNav,
 }) => {
+  // define context
+  const context = useContext(Context);
+
   // UL
   const RichTextUnorderedList = ({ children }) => {
     const { windowWidth } = UseResponsive();
@@ -50,10 +58,16 @@ const NavLinks = ({
   const options = {
     renderNode: {
       [BLOCKS.UL_LIST]: (node, children) => (
-        <RichTextUnorderedList>{children}</RichTextUnorderedList>
+        <RichTextUnorderedList>
+          {children} {console.log({ node }, { children })}
+        </RichTextUnorderedList>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
-        <RichTextListItem>{children}</RichTextListItem>
+        <RichTextListItem>
+          {children}
+
+          {/* {isActive && <Underline />} */}
+        </RichTextListItem>
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       [INLINES.HYPERLINK]: (node, children) => {
@@ -61,14 +75,21 @@ const NavLinks = ({
         const isExact = node.data.uri === '/';
         const isExperience = node.data.uri.includes('/experience');
 
-        if (isExperienceLink) {
+        const hashLink = node.data.uri.includes('/experience#');
+
+        // define the link
+        const link = children[0];
+
+        const isActive = context.activeExperienceSection === link;
+
+        if (hashLink) {
           return (
             <HashLink
               to={node.data.uri}
-              isExact={isExact}
               onClick={
                 isExperience ? handleShowExperienceNav : handleShowMainNav
               }
+              isActive={isActive}
             >
               {children}
             </HashLink>
