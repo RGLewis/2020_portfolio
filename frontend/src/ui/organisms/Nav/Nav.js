@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import GET_NAVIGATION from '../../../apollo/get_navigation';
 import { useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { Context } from '../../../context/context';
 import { StyledNav, CtaContainer } from './Nav.styles';
 import NavLinks from '../../molecules/RichText/NavLinks/NavLinks';
 import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
 
 const Nav = () => {
+  // define context
+  const context = useContext(Context);
+
   // Hooks
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
@@ -35,6 +39,7 @@ const Nav = () => {
   // functions to set which nav is showing
   const handleShowMainNav = () => {
     setShowMainNav(true);
+    context.setExperienceSection(undefined);
   };
 
   const handleShowExperienceNav = () => {

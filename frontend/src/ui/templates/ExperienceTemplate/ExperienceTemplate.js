@@ -63,11 +63,12 @@ const ExperienceTemplate = () => {
     useEffect(() => {
       const calcTotal = elements.reduce((a, b) => a + b, 0);
 
-      const offset = lastSection / 2;
+      let offset = lastSection / 2;
 
       const withOffset = calcTotal - offset; // calculate with offset to account for last section of page
 
       setTotal(withOffset);
+      console.log({ total });
     }, [intro, profile, work, skills, education]);
 
     return total;
@@ -92,21 +93,24 @@ const ExperienceTemplate = () => {
     education
   );
 
-  // watch scroll position and update active section
+  // watch scroll position and update active section -- manually subtract 100 from intro height to account for profile section offset
   useEffect(() => {
-    if (scrollPosition <= intro) {
-      context.setExperienceSection('intro');
-    } else if (scrollPosition > intro && scrollPosition <= profileHeight) {
-      context.setExperienceSection('profile');
+    if (scrollPosition <= intro - 200) {
+      context.setExperienceSection('Intro');
+    } else if (
+      scrollPosition > intro - 200 &&
+      scrollPosition <= profileHeight
+    ) {
+      context.setExperienceSection('Profile');
     } else if (scrollPosition > profileHeight && scrollPosition <= workHeight) {
-      context.setExperienceSection('work');
+      context.setExperienceSection('Work');
     } else if (scrollPosition > workHeight && scrollPosition <= skillsHeight) {
-      context.setExperienceSection('skills');
+      context.setExperienceSection('Skills');
     } else if (
       scrollPosition > skillsHeight &&
       scrollPosition <= educationHeight
     ) {
-      context.setExperienceSection('education');
+      context.setExperienceSection('Education');
     } else {
       context.setExperienceSection(undefined);
     }
