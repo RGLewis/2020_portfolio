@@ -102,15 +102,31 @@ const ExperienceTemplate = () => {
       scrollPosition <= profileHeight
     ) {
       context.setExperienceSection('Profile');
+
+      // update url
+      window.history.pushState('Profile', 'Profile', '/experience#profile');
     } else if (scrollPosition > profileHeight && scrollPosition <= workHeight) {
       context.setExperienceSection('Work');
+
+      // update url
+      window.history.pushState('Work', 'Work', '/experience#work');
     } else if (scrollPosition > workHeight && scrollPosition <= skillsHeight) {
       context.setExperienceSection('Skills');
+
+      // update url
+      window.history.pushState('Skills', 'Skills', '/experience#skills');
     } else if (
       scrollPosition > skillsHeight &&
       scrollPosition <= educationHeight
     ) {
       context.setExperienceSection('Education');
+
+      // update url
+      window.history.pushState(
+        'Education',
+        'Education',
+        '/experience#education'
+      );
     } else {
       context.setExperienceSection(undefined);
     }
