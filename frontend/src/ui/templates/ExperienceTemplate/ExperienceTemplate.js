@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Context } from '../../../context/context';
 import GET_PAGE from '../../../apollo/get_page';
 import { useQuery } from '@apollo/client';
@@ -15,7 +16,7 @@ import {
   ExperiencePageSection,
 } from './ExperienceTemplate.styles';
 
-const ExperienceTemplate = () => {
+const ExperienceTemplate = ({ data }) => {
   // define context
   const context = useContext(Context);
 
@@ -26,6 +27,13 @@ const ExperienceTemplate = () => {
 
   // use responsive
   const { windowHeight, windowWidth } = UseResponsive();
+
+  // Set data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setExperienceData(data.fetchedData);
+    }
+  }, [data]);
 
   // define page refs
   const pageRef = useRef();
@@ -68,7 +76,6 @@ const ExperienceTemplate = () => {
       const withOffset = calcTotal - offset; // calculate with offset to account for last section of page
 
       setTotal(withOffset);
-      console.log({ total });
     }, [intro, profile, work, skills, education]);
 
     return total;
@@ -132,12 +139,6 @@ const ExperienceTemplate = () => {
     }
   }, [scrollPosition]);
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_PAGE, {
-    variables: { id: '2P5KuyZJQy7UKZdYg9xwi1' },
-    onCompleted: (data) => setExperienceData(data),
-  });
-
   // define experience content sections
   let experienceContent = {};
 
@@ -175,7 +176,7 @@ const ExperienceTemplate = () => {
     }
   };
 
-  if (loading) {
+  if (data.loading) {
     return (
       <ExperiencePageContainer>
         <p>Loading</p>
@@ -183,7 +184,7 @@ const ExperienceTemplate = () => {
     );
   }
 
-  if (error) {
+  if (data.error) {
     return (
       <ExperiencePageContainer>
         <p>Error</p>

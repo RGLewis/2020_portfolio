@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import GET_NAVIGATION from '../../../apollo/get_navigation';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
 import { Context } from '../../../context/context';
 import { StyledNav, CtaContainer } from './Nav.styles';
 import NavLinks from '../../molecules/RichText/NavLinks/NavLinks';
 import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
 
-const Nav = () => {
+const Nav = ({ data }) => {
   // define context
   const context = useContext(Context);
 
@@ -17,10 +16,12 @@ const Nav = () => {
   const [linksToRender, setLinksToRender] = useState();
   const [showMainNav, setShowMainNav] = useState(true);
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_NAVIGATION, {
-    onCompleted: (data) => setNavData(data),
-  });
+  // Set data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setNavData(data.fetchedData);
+    }
+  }, [data]);
 
   // get pathname
   const location = useLocation();
@@ -104,7 +105,7 @@ const Nav = () => {
   }, [showMainNav, mainNavLinks, experienceNavLinks]);
 
   // TO DO - replace with loader
-  if (loading) {
+  if (data.loading) {
     return (
       <StyledNav>
         <p>Loading</p>
@@ -113,7 +114,7 @@ const Nav = () => {
   }
 
   // TO DO - replace with error
-  if (error) {
+  if (data.error) {
     return (
       <StyledNav>
         <p>Error</p>

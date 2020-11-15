@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import GET_FOOTER from '../../../apollo/get_footer';
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { StyledFooter } from './Footer.styles';
 import Body from '../../atoms/Typography/Body';
 import FooterLinks from '../../molecules/RichText/FooterLinks/FooterLinks';
 
-const Footer = () => {
+const Footer = ({ data }) => {
   // hooks
   const [footerData, setFooterData] = useState();
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_FOOTER, {
-    onCompleted: (data) => setFooterData(data),
-  });
+  // Set Data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setFooterData(data.fetchedData);
+    }
+  }, [data]);
 
   // TO DO - replace with loader
-  if (loading) {
+  if (data.loading) {
     return (
       <StyledFooter>
         <p>Loading</p>
@@ -24,7 +25,7 @@ const Footer = () => {
   }
 
   // TO DO - replace with error
-  if (error) {
+  if (data.error) {
     return (
       <StyledFooter>
         <p>Error</p>
