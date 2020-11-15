@@ -65,15 +65,6 @@ const App = () => {
   // Contact Page:
   const { apolloObj: contactData } = UsePrefetchPage('5pHtLLMocmpLzkBT8O2HHP');
 
-  // console.log(
-  //   { navData },
-  //   { footerData },
-  //   { homeData },
-  //   { aboutData },
-  //   { experienceData },
-  //   { contactData }
-  // );
-
   // Define routes
   const routes = (
     <Switch>

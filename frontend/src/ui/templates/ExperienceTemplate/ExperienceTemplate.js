@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Context } from '../../../context/context';
-import GET_PAGE from '../../../apollo/get_page';
-import { useQuery } from '@apollo/client';
 import { UseResponsive } from '../../../hooks/useResponsive';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
 import { OuterContainer } from '../../atoms/Containers/Containers';
@@ -104,6 +102,9 @@ const ExperienceTemplate = ({ data }) => {
   useEffect(() => {
     if (scrollPosition <= intro - 200) {
       context.setExperienceSection('Intro');
+
+      // update url
+      window.history.pushState('Experience', 'Experience', '/experience');
     } else if (
       scrollPosition > intro - 200 &&
       scrollPosition <= profileHeight
@@ -134,8 +135,6 @@ const ExperienceTemplate = ({ data }) => {
         'Education',
         '/experience#education'
       );
-    } else {
-      context.setExperienceSection(undefined);
     }
   }, [scrollPosition]);
 

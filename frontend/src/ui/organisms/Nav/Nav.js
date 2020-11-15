@@ -15,6 +15,7 @@ const Nav = ({ data }) => {
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
   const [showMainNav, setShowMainNav] = useState(true);
+  const [isExperiencePage, setIsExperiencePage] = useState(false);
 
   // Set data
   useEffect(() => {
@@ -31,16 +32,15 @@ const Nav = ({ data }) => {
   useEffect(() => {
     if (pathname.includes('/experience')) {
       handleShowExperienceNav();
+      setIsExperiencePage(true);
+    } else {
+      setIsExperiencePage(false);
     }
-    // disable esLint as we only want to do this check on pageLoad (for if user goes directly to experience page)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathname]);
 
   // functions to set which nav is showing
   const handleShowMainNav = () => {
     setShowMainNav(true);
-    context.setExperienceSection(undefined);
   };
 
   const handleShowExperienceNav = () => {
@@ -147,7 +147,7 @@ const Nav = ({ data }) => {
           )}
 
           {/* Forward CTA -- show if in main nav */}
-          {showMainNav && (
+          {showMainNav && isExperiencePage && (
             <Cta
               isButton
               onClick={handleShowExperienceNav}
