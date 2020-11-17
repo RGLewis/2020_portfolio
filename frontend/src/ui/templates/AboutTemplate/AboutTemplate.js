@@ -7,7 +7,6 @@ import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 
 const AboutTemplate = ({ data }) => {
-  console.log({ data });
   const [aboutData, setAboutData] = useState();
 
   // set data
