@@ -55,3 +55,24 @@ const Footer = ({ data }) => {
 };
 
 export default Footer;
+
+Footer.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      footer: PropTypes.shape({
+        copyright: PropTypes.string,
+        footerItemsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        techStack: PropTypes.string,
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+Footer.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};

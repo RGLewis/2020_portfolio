@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { Context } from '../../../context/context';
@@ -8,9 +8,6 @@ import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
 
 const Nav = ({ data }) => {
-  // define context
-  const context = useContext(Context);
-
   // Hooks
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
@@ -175,3 +172,24 @@ const Nav = ({ data }) => {
 };
 
 export default Nav;
+
+Nav.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      navigation: PropTypes.shape({
+        ctAsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        headline: PropTypes.string,
+        subHeading: PropTypes.string,
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+Nav.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};

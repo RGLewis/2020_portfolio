@@ -8,7 +8,7 @@ export const UsePrefetchPage = (variable) => {
   const [fetchedData, setFetchedData] = useState();
 
   // Apollo query
-  const { error, loading, data } = useQuery(GET_PAGE, {
+  const { error, loading } = useQuery(GET_PAGE, {
     variables: { id: variable },
     onCompleted: (data) => setFetchedData(data),
   });
@@ -22,7 +22,7 @@ export const UsePrefetchFooter = () => {
   const [fetchedData, setFetchedData] = useState();
 
   // Apollo query
-  const { error, loading, data } = useQuery(GET_FOOTER, {
+  const { error, loading } = useQuery(GET_FOOTER, {
     onCompleted: (data) => setFetchedData(data),
   });
 
@@ -35,7 +35,7 @@ export const UsePrefetchNavigation = () => {
   const [fetchedData, setFetchedData] = useState();
 
   // Apollo query
-  const { error, loading, data } = useQuery(GET_NAVIGATION, {
+  const { error, loading } = useQuery(GET_NAVIGATION, {
     onCompleted: (data) => setFetchedData(data),
   });
 

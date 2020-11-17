@@ -7,6 +7,7 @@ import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 
 const AboutTemplate = ({ data }) => {
+  console.log({ data });
   const [aboutData, setAboutData] = useState();
 
   // set data
@@ -59,3 +60,26 @@ const AboutTemplate = ({ data }) => {
 };
 
 export default AboutTemplate;
+
+AboutTemplate.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      page: PropTypes.shape({
+        componentsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        image: PropTypes.shape({
+          description: PropTypes.string,
+          url: PropTypes.string,
+        }),
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+AboutTemplate.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};
