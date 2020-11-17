@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import GET_PAGE from '../../../apollo/get_page';
-import { useQuery } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { AboutPageContainer } from './AboutTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
 import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 
-const AboutTemplate = () => {
+const AboutTemplate = ({ data }) => {
   const [aboutData, setAboutData] = useState();
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_PAGE, {
-    variables: { id: '31UVHLfeMnD3IkrxYABve8' },
-    onCompleted: (data) => setAboutData(data),
-  });
+  // set data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setAboutData(data.fetchedData);
+    }
+  }, [data]);
 
-  if (loading) {
+  if (data.loading) {
     return (
       <AboutPageContainer>
         <p>Loading</p>
@@ -24,7 +24,7 @@ const AboutTemplate = () => {
     );
   }
 
-  if (error) {
+  if (data.error) {
     return (
       <AboutPageContainer>
         <p>Error</p>
@@ -59,3 +59,26 @@ const AboutTemplate = () => {
 };
 
 export default AboutTemplate;
+
+AboutTemplate.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      page: PropTypes.shape({
+        componentsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        image: PropTypes.shape({
+          description: PropTypes.string,
+          url: PropTypes.string,
+        }),
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+AboutTemplate.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};

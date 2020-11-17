@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import GET_PAGE from '../../../apollo/get_page';
-import { useQuery } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { HomePageContainer, Headshot } from './HomeTemplate.styles';
 import { UseResponsive } from '../../../hooks/useResponsive';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import { OuterContainer } from '../../atoms/Containers/Containers';
 
-const HomeTemplate = () => {
+const HomeTemplate = ({ data }) => {
   const [homeData, setHomeData] = useState();
+
+  // set data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setHomeData(data.fetchedData);
+    }
+  }, [data]);
 
   // define window height
   const { windowHeight } = UseResponsive();
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_PAGE, {
-    variables: { id: '5NDUJLUkiLqJOqlNFjzOrn' },
-    onCompleted: (data) => setHomeData(data),
-  });
-
-  if (loading) {
+  if (data.loading) {
     return (
       <OuterContainer>
         <HomePageContainer minHeight={windowHeight}>
@@ -28,7 +28,7 @@ const HomeTemplate = () => {
     );
   }
 
-  if (error) {
+  if (data.error) {
     return (
       <OuterContainer>
         <HomePageContainer minHeight={windowHeight}>
@@ -62,3 +62,26 @@ const HomeTemplate = () => {
 };
 
 export default HomeTemplate;
+
+HomeTemplate.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      page: PropTypes.shape({
+        componentsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        image: PropTypes.shape({
+          description: PropTypes.string,
+          url: PropTypes.string,
+        }),
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+HomeTemplate.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContactTemplate from '../templates/ContactTemplate/ContactTemplate';
 
-const Contact = ({ data }) => <ContactTemplate data={data} />;
+const ContactTemplate = ({ data }) => {
+  return <h1>Contact</h1>;
+};
 
-export default Contact;
+export default ContactTemplate;
 
-Contact.propTypes = {
+ContactTemplate.propTypes = {
   data: PropTypes.shape({
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired,
@@ -25,6 +26,6 @@ Contact.propTypes = {
   }).isRequired,
 };
 
-Contact.defaultProps = {
+ContactTemplate.defaultProps = {
   data: { error: undefined, fetchedData: undefined },
 };
