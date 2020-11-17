@@ -25,7 +25,6 @@ export const HashLink = ({ to, children, onClick, isActive }) => {
 
   // the second element in the array
   const id = splitString[1].toLowerCase();
-  // console.log({ id });
 
   const scrollTo = (e) => {
     // prevent default scroll
@@ -33,7 +32,6 @@ export const HashLink = ({ to, children, onClick, isActive }) => {
 
     // run smooth scroll
     const element = document.getElementById(id);
-    console.log({ element });
     element.scrollIntoView({ behavior: 'smooth' });
 
     // update url

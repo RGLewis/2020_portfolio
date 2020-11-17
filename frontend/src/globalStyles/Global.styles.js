@@ -18,14 +18,14 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  background: '#1f4068',
-  backgroundOpaque: 'rgba(31,64,104, 0.5)',
+  background: '#200C90',
+  backgroundOpaque: 'rgba(32,12,144, 0.5)',
   primaryFont: '#ffffff',
   secondaryFont: '#D9D9D9',
   accent: '#5cdb95',
   contrast: '#ffffff',
   blackOpaque: 'rgba(5,5,5, 0.2)',
-  menuBackground: '#1f4068',
+  menuBackground: '#200C90',
   menuBorder: '#ffffff',
   menuFontColor: '#ffffff',
   black: '#050505',

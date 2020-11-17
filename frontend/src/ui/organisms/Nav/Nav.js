@@ -1,26 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react';
-import GET_NAVIGATION from '../../../apollo/get_navigation';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
 import { Context } from '../../../context/context';
 import { StyledNav, CtaContainer } from './Nav.styles';
 import NavLinks from '../../molecules/RichText/NavLinks/NavLinks';
 import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
 
-const Nav = () => {
-  // define context
-  const context = useContext(Context);
-
+const Nav = ({ data }) => {
   // Hooks
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
   const [showMainNav, setShowMainNav] = useState(true);
+  const [isExperiencePage, setIsExperiencePage] = useState(false);
 
-  // Apollo query
-  const { error, loading } = useQuery(GET_NAVIGATION, {
-    onCompleted: (data) => setNavData(data),
-  });
+  // Set data
+  useEffect(() => {
+    if (data.fetchedData) {
+      setNavData(data.fetchedData);
+    }
+  }, [data]);
 
   // get pathname
   const location = useLocation();
@@ -30,16 +29,15 @@ const Nav = () => {
   useEffect(() => {
     if (pathname.includes('/experience')) {
       handleShowExperienceNav();
+      setIsExperiencePage(true);
+    } else {
+      setIsExperiencePage(false);
     }
-    // disable esLint as we only want to do this check on pageLoad (for if user goes directly to experience page)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathname]);
 
   // functions to set which nav is showing
   const handleShowMainNav = () => {
     setShowMainNav(true);
-    context.setExperienceSection(undefined);
   };
 
   const handleShowExperienceNav = () => {
@@ -104,7 +102,7 @@ const Nav = () => {
   }, [showMainNav, mainNavLinks, experienceNavLinks]);
 
   // TO DO - replace with loader
-  if (loading) {
+  if (data.loading) {
     return (
       <StyledNav>
         <p>Loading</p>
@@ -113,7 +111,7 @@ const Nav = () => {
   }
 
   // TO DO - replace with error
-  if (error) {
+  if (data.error) {
     return (
       <StyledNav>
         <p>Error</p>
@@ -146,7 +144,7 @@ const Nav = () => {
           )}
 
           {/* Forward CTA -- show if in main nav */}
-          {showMainNav && (
+          {showMainNav && isExperiencePage && (
             <Cta
               isButton
               onClick={handleShowExperienceNav}
@@ -174,3 +172,24 @@ const Nav = () => {
 };
 
 export default Nav;
+
+Nav.propTypes = {
+  data: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
+    fetchedData: PropTypes.shape({
+      navigation: PropTypes.shape({
+        ctAsCollection: PropTypes.shape({
+          items: PropTypes.array,
+        }),
+        headline: PropTypes.string,
+        subHeading: PropTypes.string,
+        title: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+Nav.defaultProps = {
+  data: { error: undefined, fetchedData: undefined },
+};

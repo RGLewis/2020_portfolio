@@ -20,12 +20,7 @@ import { Context } from '../../../../context/context';
 
 let isDesktop;
 
-const NavLinks = ({
-  data,
-  isExperienceLink,
-  handleShowMainNav,
-  handleShowExperienceNav,
-}) => {
+const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
   // define context
   const context = useContext(Context);
 
@@ -58,9 +53,7 @@ const NavLinks = ({
   const options = {
     renderNode: {
       [BLOCKS.UL_LIST]: (node, children) => (
-        <RichTextUnorderedList>
-          {children} {console.log({ node }, { children })}
-        </RichTextUnorderedList>
+        <RichTextUnorderedList>{children}</RichTextUnorderedList>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
         <RichTextListItem>

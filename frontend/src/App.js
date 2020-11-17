@@ -18,6 +18,11 @@ import {
 import { Context } from './context/context';
 import { UseColorMode } from './hooks/useColorMode';
 import { UseActiveExperienceSection } from './hooks/useActiveExperienceSection';
+import {
+  UsePrefetchPage,
+  UsePrefetchFooter,
+  UsePrefetchNavigation,
+} from './hooks/usePrefetch';
 
 // Page imports
 import Home from './ui/pages/Home';
@@ -33,25 +38,47 @@ import Header from './ui/organisms/Header/Header';
 const App = () => {
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
+
   const {
     activeExperienceSection,
     setExperienceSection,
   } = UseActiveExperienceSection();
 
+  // PREFETCH DATA
+  // Nav:
+  const { apolloObj: navData } = UsePrefetchNavigation();
+
+  // Footer:
+  const { apolloObj: footerData } = UsePrefetchFooter();
+
+  // Home Page:
+  const { apolloObj: homeData } = UsePrefetchPage('5NDUJLUkiLqJOqlNFjzOrn');
+
+  // About Page:
+  const { apolloObj: aboutData } = UsePrefetchPage('31UVHLfeMnD3IkrxYABve8');
+
+  // Experience Page:
+  const { apolloObj: experienceData } = UsePrefetchPage(
+    '2P5KuyZJQy7UKZdYg9xwi1'
+  );
+
+  // Contact Page:
+  const { apolloObj: contactData } = UsePrefetchPage('5pHtLLMocmpLzkBT8O2HHP');
+
   // Define routes
   const routes = (
     <Switch>
       <Route path="/" exact>
-        <Home />
+        <Home data={homeData} />
       </Route>
       <Route path="/about">
-        <About />
+        <About data={aboutData} />
       </Route>
       <Route path="/experience">
-        <Experience />
+        <Experience data={experienceData} />
       </Route>
       <Route path="/contact">
-        <Contact />
+        <Contact data={contactData} />
       </Route>
       <Redirect to="/" />
     </Switch>
@@ -71,7 +98,7 @@ const App = () => {
           <GlobalStyle />
           <Router>
             <Header />
-            <Sidebar />
+            <Sidebar navData={navData} footerData={footerData} />
             <MainContentContainer>{routes}</MainContentContainer>
           </Router>
         </ThemeProvider>
