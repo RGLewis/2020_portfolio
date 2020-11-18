@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { Context } from '../../../context/context';
 import { StyledNav, CtaContainer } from './Nav.styles';
 import NavLinks from '../../molecules/RichText/NavLinks/NavLinks';
 import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
+import Loader from '../../molecules/Loader/Loader';
 
 const Nav = ({ data }) => {
   // Hooks
@@ -101,11 +101,10 @@ const Nav = ({ data }) => {
     }
   }, [showMainNav, mainNavLinks, experienceNavLinks]);
 
-  // TO DO - replace with loader
   if (data.loading) {
     return (
       <StyledNav>
-        <p>Loading</p>
+        <Loader variant="menuFontColor" />
       </StyledNav>
     );
   }

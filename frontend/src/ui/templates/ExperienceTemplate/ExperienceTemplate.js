@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { Context } from '../../../context/context';
 import { UseResponsive } from '../../../hooks/useResponsive';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import { OuterContainer } from '../../atoms/Containers/Containers';
+import {
+  OuterContainer,
+  FullHeightFlexContainer,
+} from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import HeadingSecond from '../../atoms/Typography/HeadingSecond';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import SkillsItem from '../../molecules/SkillsItem/SkillsItem';
 import Accordion from '../../organisms/Accordion/Accordion';
+import Loader from '../../molecules/Loader/Loader';
 import {
   ExperiencePageContainer,
   ExperiencePageSection,
@@ -177,17 +181,21 @@ const ExperienceTemplate = ({ data }) => {
 
   if (data.loading) {
     return (
-      <ExperiencePageContainer>
-        <p>Loading</p>
-      </ExperiencePageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <Loader />
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 
   if (data.error) {
     return (
-      <ExperiencePageContainer>
-        <p>Error</p>
-      </ExperiencePageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <p>Error</p>
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 

@@ -30,7 +30,7 @@ transporter.verify((error, success) => {
 contactRouter.post('/', (req, res, next) => {
   //make mailable object
   const mail = {
-    from: `"Rafaela" <${process.env.USER}>`,
+    from: `"www.rafaelalewis.com" <${process.env.USER}>`,
     to: process.env.USER,
     subject: `INQUIRY: - ${req.body.subject}`,
     text: `

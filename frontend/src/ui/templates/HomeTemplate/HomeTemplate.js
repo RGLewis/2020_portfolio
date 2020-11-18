@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { HomePageContainer, Headshot } from './HomeTemplate.styles';
+import { Headshot } from './HomeTemplate.styles';
 import { UseResponsive } from '../../../hooks/useResponsive';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
-import { OuterContainer } from '../../atoms/Containers/Containers';
+import {
+  OuterContainer,
+  FullHeightFlexContainer,
+} from '../../atoms/Containers/Containers';
+import Loader from '../../molecules/Loader/Loader';
 
 const HomeTemplate = ({ data }) => {
   const [homeData, setHomeData] = useState();
@@ -21,9 +25,9 @@ const HomeTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <HomePageContainer minHeight={windowHeight}>
-          <p>Loading</p>
-        </HomePageContainer>
+        <FullHeightFlexContainer>
+          <Loader />
+        </FullHeightFlexContainer>
       </OuterContainer>
     );
   }
@@ -31,9 +35,9 @@ const HomeTemplate = ({ data }) => {
   if (data.error) {
     return (
       <OuterContainer>
-        <HomePageContainer minHeight={windowHeight}>
+        <FullHeightFlexContainer>
           <p>Error</p>
-        </HomePageContainer>
+        </FullHeightFlexContainer>
       </OuterContainer>
     );
   }
@@ -45,7 +49,7 @@ const HomeTemplate = ({ data }) => {
   if (homeData) {
     return (
       <OuterContainer>
-        <HomePageContainer minHeight={windowHeight}>
+        <FullHeightFlexContainer>
           <Headshot
             src={homeData.page.image.url}
             alt={homeData.page.image.description}
@@ -55,7 +59,7 @@ const HomeTemplate = ({ data }) => {
             variant="primaryFont"
             isUnderlined
           />
-        </HomePageContainer>
+        </FullHeightFlexContainer>
       </OuterContainer>
     );
   }

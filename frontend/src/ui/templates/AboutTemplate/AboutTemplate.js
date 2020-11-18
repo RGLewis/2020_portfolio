@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AboutPageContainer } from './AboutTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import { OuterContainer } from '../../atoms/Containers/Containers';
+import {
+  OuterContainer,
+  FullHeightFlexContainer,
+} from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
+import Loader from '../../molecules/Loader/Loader';
 
 const AboutTemplate = ({ data }) => {
   const [aboutData, setAboutData] = useState();
@@ -18,17 +22,21 @@ const AboutTemplate = ({ data }) => {
 
   if (data.loading) {
     return (
-      <AboutPageContainer>
-        <p>Loading</p>
-      </AboutPageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <Loader />
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 
   if (data.error) {
     return (
-      <AboutPageContainer>
-        <p>Error</p>
-      </AboutPageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <p>Error</p>
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 
