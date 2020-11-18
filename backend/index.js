@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const nodemailer = require('nodemailer');
 const port = 4444;
 const contactRoute = require('./routes/contact');
 

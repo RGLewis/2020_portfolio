@@ -38,11 +38,7 @@ const ContactForm = ({ data, handleFormSubmit }) => {
   );
 
   return (
-    <FormContainer
-      method="POST"
-      action="http://www.focuspocus.io/magic/rafaela.codes@gmail.com"
-      onSubmit={handleOnSubmit}
-    >
+    <FormContainer onSubmit={handleOnSubmit}>
       {data.inputsCollection.items.map((input) => (
         <Input
           key={input.id}
