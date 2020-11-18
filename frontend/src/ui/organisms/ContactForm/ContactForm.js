@@ -11,7 +11,6 @@ import Loader from '../../molecules/Loader/Loader';
 import { useForm } from '../../../hooks/useForm';
 
 const ContactForm = ({ data, handleFormSubmit, formResponseLoading }) => {
-  console.log({ data });
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = formState.inputs.name.value;

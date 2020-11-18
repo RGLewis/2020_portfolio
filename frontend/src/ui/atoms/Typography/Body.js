@@ -36,6 +36,7 @@ Body.propTypes = {
     'menuFontColor',
     'accent',
     'background',
+    'alert',
   ]),
   isCentered: PropTypes.bool,
   isSmall: PropTypes.bool,

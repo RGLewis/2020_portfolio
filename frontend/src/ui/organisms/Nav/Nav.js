@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { StyledNav, CtaContainer } from './Nav.styles';
+import { StyledNav, CtaContainer, CtaElementWrapper } from './Nav.styles';
 import NavLinks from '../../molecules/RichText/NavLinks/NavLinks';
 import Cta from '../../atoms/Cta/Cta';
 import Body from '../../atoms/Typography/Body';
 import Loader from '../../molecules/Loader/Loader';
+import ErrorBody from '../../atoms/Typography/ErrorBody';
+import StaticCopy from '../../../static/copy/copy';
+import RichTextFooterLink from '../../atoms/RichTexFooterLink/RichTextFooterLink';
 
 const Nav = ({ data }) => {
   // Hooks
@@ -109,11 +112,16 @@ const Nav = ({ data }) => {
     );
   }
 
-  // TO DO - replace with error
   if (data.error) {
     return (
       <StyledNav>
-        <p>Error</p>
+        <ErrorBody variant="menuFontColor">
+          {StaticCopy.navAndFooter.body}{' '}
+          <RichTextFooterLink href="mailto:rafaela.codes@gmail.com">
+            send an email
+          </RichTextFooterLink>
+          .
+        </ErrorBody>
       </StyledNav>
     );
   }
@@ -128,8 +136,9 @@ const Nav = ({ data }) => {
         {/* CTAs */}
         <CtaContainer showMainNav={showMainNav}>
           {/* Back CTA */}
-          {!showMainNav && (
+          <CtaElementWrapper isShowing={!showMainNav}>
             <Cta
+              disabled={showMainNav}
               isButton
               onClick={handleShowMainNav}
               hasCaret
@@ -140,11 +149,12 @@ const Nav = ({ data }) => {
             >
               <Body variant="menuFontColor">{backCta.prompt}</Body>
             </Cta>
-          )}
+          </CtaElementWrapper>
 
           {/* Forward CTA -- show if in main nav */}
-          {showMainNav && isExperiencePage && (
+          <CtaElementWrapper isShowing={showMainNav && isExperiencePage}>
             <Cta
+              disabled={!showMainNav && !isExperiencePage}
               isButton
               onClick={handleShowExperienceNav}
               hasCaret
@@ -155,7 +165,10 @@ const Nav = ({ data }) => {
             >
               <Body variant="menuFontColor">{forwardCta.prompt}</Body>
             </Cta>
-          )}
+          </CtaElementWrapper>
+          {/* {showMainNav && isExperiencePage && ( */}
+
+          {/* )} */}
         </CtaContainer>
 
         {/* Nav Links */}

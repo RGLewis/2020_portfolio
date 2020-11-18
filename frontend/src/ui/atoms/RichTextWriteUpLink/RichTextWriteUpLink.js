@@ -24,6 +24,7 @@ RichTextWriteUpLink.propTypes = {
     'contrast',
     'menuFontColor',
     'accent',
+    'alert',
   ]),
 };
 
