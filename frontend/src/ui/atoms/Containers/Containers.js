@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {
   StyledOuterContainer,
   StyledMainContentContainer,
+  StyledFullHeightFlexContainer,
+  StyledPageContainer,
 } from './Containers.styles';
 import { UseResponsive } from '../../../hooks/useResponsive';
 
@@ -26,4 +28,37 @@ export const MainContentContainer = ({ children }) => {
 
 MainContentContainer.propTypes = {
   children: PropTypes.node.isRequired,
+};
+
+export const PageContainer = ({ children }) => (
+  <StyledPageContainer>{children}</StyledPageContainer>
+);
+
+PageContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export const FullHeightFlexContainer = ({ children, justify, align }) => {
+  const { windowHeight } = UseResponsive();
+
+  return (
+    <StyledFullHeightFlexContainer
+      minHeight={windowHeight}
+      justify={justify}
+      align={align}
+    >
+      {children}
+    </StyledFullHeightFlexContainer>
+  );
+};
+
+FullHeightFlexContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  justify: PropTypes.oneOf(['center', 'space-between']),
+  align: PropTypes.oneOf(['center', 'flex-start']),
+};
+
+FullHeightFlexContainer.defaultProps = {
+  justify: 'center',
+  align: 'center',
 };

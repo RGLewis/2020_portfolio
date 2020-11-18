@@ -2,9 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledFormButton } from './FormButton.styles';
 
-const FormButton = ({ disabled, onClick, type, children }) => {
+const FormButton = ({
+  disabled,
+  onClick,
+  type,
+  children,
+  formResponseLoading,
+}) => {
   return (
-    <StyledFormButton type={type} disabled={disabled} onClick={onClick}>
+    <StyledFormButton
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      formResponseLoading={formResponseLoading}
+    >
       {children}
     </StyledFormButton>
   );
@@ -15,6 +26,7 @@ FormButton.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.node.isRequired,
+  formResponseLoading: PropTypes.bool.isRequired,
 };
 
 FormButton.defaultProps = {

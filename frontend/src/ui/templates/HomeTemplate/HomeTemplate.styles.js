@@ -1,16 +1,6 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
 
-export const HomePageContainer = styled.div`
-  min-height: ${(props) =>
-    props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: ${pxToRem(20)};
-`;
-
 export const Headshot = styled.img`
   width: ${pxToRem(300)};
   height: ${pxToRem(300)};
