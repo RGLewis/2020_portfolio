@@ -8,6 +8,7 @@ export const HomePageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: ${pxToRem(20)};
 `;
 
 export const Headshot = styled.img`

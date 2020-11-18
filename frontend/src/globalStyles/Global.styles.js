@@ -15,11 +15,13 @@ export const lightTheme = {
   menuBorder: '#1F6CC7',
   menuFontColor: '#ffffff',
   black: '#050505',
+  opaqueContrast: 'rgba(31,108,199, 0.7)',
+  alert: '#cf1b1b',
 };
 
 export const darkTheme = {
   background: '#200C90',
-  backgroundOpaque: 'rgba(32,12,144, 0.5)',
+  backgroundOpaque: 'rgba(32,12,144, 0.3)',
   primaryFont: '#ffffff',
   secondaryFont: '#D9D9D9',
   accent: '#5cdb95',
@@ -29,6 +31,8 @@ export const darkTheme = {
   menuBorder: '#ffffff',
   menuFontColor: '#ffffff',
   black: '#050505',
+  opaqueContrast: 'rgba(255,255,255, 0.3)',
+  alert: '#cf1b1b',
 };
 
 export const globalTheme = {
