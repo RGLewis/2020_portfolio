@@ -9,7 +9,8 @@ export const StyledHeroImage = styled.div`
     background-image: url(${(props) => props.src});
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    background-position: ${(props) =>
+      props.isVerticalTop ? 'top center' : 'center center'};
     width: calc(100vw - ${({ theme }) => pxToRem(theme.globalValues.sidebar)});
   }
 `;
