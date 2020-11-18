@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ContactPageContainer } from './ContactTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import { OuterContainer } from '../../atoms/Containers/Containers';
+import {
+  OuterContainer,
+  FullHeightFlexContainer,
+} from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
-import ContactForm from '../../molecules/ContactForm/ContactForm';
+import ContactForm from '../../organisms/ContactForm/ContactForm';
 import axios from 'axios';
+import Loader from '../../molecules/Loader/Loader';
 
 const ContactTemplate = ({ data }) => {
   const [contactData, setContactData] = useState();
   const [formSent, setFormSent] = useState(false);
+  const [formResponseLoading, setFormResponseLoading] = useState(false);
   const [formError, setFormError] = useState(false);
 
   // set data
@@ -20,6 +25,7 @@ const ContactTemplate = ({ data }) => {
   }, [data]);
 
   const handleFormSubmit = (formObj) => {
+    setFormResponseLoading(true);
     axios
       .post('/contact', {
         //make an object to be handled from req.body on the backend.
@@ -31,28 +37,33 @@ const ContactTemplate = ({ data }) => {
       .then((response) => {
         console.log({ response });
         if (response.data.status === 'success') {
-          console.log({ response });
           setFormSent(true);
+          setFormResponseLoading(false);
         } else if (response.data.status === 'fail') {
           setFormSent(true);
           setFormError(true);
+          setFormResponseLoading(false);
         }
       });
   };
 
   if (data.loading) {
     return (
-      <ContactPageContainer>
-        <p>Loading</p>
-      </ContactPageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <Loader />
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 
   if (data.error || formError) {
     return (
-      <ContactPageContainer>
-        <p>Error</p>
-      </ContactPageContainer>
+      <OuterContainer>
+        <FullHeightFlexContainer>
+          <p>Error</p>
+        </FullHeightFlexContainer>
+      </OuterContainer>
     );
   }
 
@@ -78,7 +89,11 @@ const ContactTemplate = ({ data }) => {
           {formSent ? (
             <HeadingFirst>Form has been sent!</HeadingFirst>
           ) : (
-            <ContactForm data={formData} handleFormSubmit={handleFormSubmit} />
+            <ContactForm
+              data={formData}
+              handleFormSubmit={handleFormSubmit}
+              formResponseLoading={formResponseLoading}
+            />
           )}
         </OuterContainer>
       </ContactPageContainer>

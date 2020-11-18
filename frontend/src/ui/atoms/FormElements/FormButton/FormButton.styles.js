@@ -31,8 +31,10 @@ export const StyledFormButton = styled.button`
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.opaqueContrast};
-    color: ${({ theme }) => theme.contrast};
+    background: ${({ theme, formResponseLoading }) =>
+      formResponseLoading ? theme.background : theme.opaqueContrast};
+    color: ${({ theme, formResponseLoading }) =>
+      formResponseLoading ? theme.background : theme.contrast};
     cursor: not-allowed;
   }
 `;

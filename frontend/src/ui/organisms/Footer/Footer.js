@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledFooter } from './Footer.styles';
 import Body from '../../atoms/Typography/Body';
 import FooterLinks from '../../molecules/RichText/FooterLinks/FooterLinks';
+import Loader from '../../molecules/Loader/Loader';
 
 const Footer = ({ data }) => {
   // hooks
@@ -15,11 +16,10 @@ const Footer = ({ data }) => {
     }
   }, [data]);
 
-  // TO DO - replace with loader
   if (data.loading) {
     return (
       <StyledFooter>
-        <p>Loading</p>
+        <Loader variant="menuFontColor" />
       </StyledFooter>
     );
   }

@@ -21,3 +21,19 @@ export const StyledMainContentContainer = styled.main`
     margin-left: ${({ theme }) => pxToRem(theme.globalValues.sidebar)};
   }
 `;
+
+export const StyledFullHeightFlexContainer = styled.div`
+  min-height: ${(props) =>
+    props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
+  padding-bottom: ${pxToRem(20)};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: ${(props) => props.justify};
+  align-items: ${(props) => props.align};
+  padding: ${pxToRem(20)} 0;
+`;
+
+export const StyledPageContainer = styled.div`
+  padding-bottom: ${pxToRem(20)};
+`;

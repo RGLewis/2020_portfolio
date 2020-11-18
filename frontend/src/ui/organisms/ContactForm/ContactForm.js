@@ -6,10 +6,12 @@ import { Emoji } from '../../atoms/FormElements/FormButton/FormButton.styles';
 
 import { FormContainer } from '../../atoms/FormElements/FormElements.styles';
 import Input from '../../atoms/FormElements/Input/Input';
+import Loader from '../../molecules/Loader/Loader';
 
 import { useForm } from '../../../hooks/useForm';
 
-const ContactForm = ({ data, handleFormSubmit }) => {
+const ContactForm = ({ data, handleFormSubmit, formResponseLoading }) => {
+  console.log({ data });
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = formState.inputs.name.value;
@@ -52,11 +54,33 @@ const ContactForm = ({ data, handleFormSubmit }) => {
           name={input.title}
         />
       ))}
-      <FormButton disabled={!formState.isValid} type={'submit'}>
-        {data.submitPrompt} {wave}
+      <FormButton
+        disabled={!formState.isValid || formResponseLoading}
+        type={'submit'}
+        formResponseLoading={formResponseLoading}
+      >
+        {formResponseLoading ? (
+          <Loader isButton />
+        ) : (
+          <>
+            {data.submitPrompt} {wave}
+          </>
+        )}
       </FormButton>
     </FormContainer>
   );
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  data: PropTypes.shape({
+    inputsCollection: PropTypes.shape({
+      items: PropTypes.array,
+    }),
+    submitPrompt: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+  formResponseLoading: PropTypes.bool.isRequired,
+};
