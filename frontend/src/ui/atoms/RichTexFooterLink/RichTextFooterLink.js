@@ -24,9 +24,10 @@ RichTextFooterLink.propTypes = {
     'contrast',
     'menuFontColor',
     'accent',
+    'alert',
   ]),
 };
 
 RichTextFooterLink.defaultProps = {
-  variant: 'primaryFont',
+  variant: 'menuFontColor',
 };
