@@ -24,13 +24,8 @@ const Footer = ({ data }) => {
     );
   }
 
-  // TO DO - replace with error
   if (data.error) {
-    return (
-      <StyledFooter>
-        <p>Error</p>
-      </StyledFooter>
-    );
+    return <StyledFooter />;
   }
 
   if (!footerData) {

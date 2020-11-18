@@ -12,7 +12,11 @@ import HeadingSecond from '../../atoms/Typography/HeadingSecond';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import SkillsItem from '../../molecules/SkillsItem/SkillsItem';
 import Accordion from '../../organisms/Accordion/Accordion';
+import ErrorBody from '../../atoms/Typography/ErrorBody';
+import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
 import Loader from '../../molecules/Loader/Loader';
+import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.jpg';
+import StaticCopy from '../../../static/copy/copy';
 import {
   ExperiencePageContainer,
   ExperiencePageSection,
@@ -191,11 +195,29 @@ const ExperienceTemplate = ({ data }) => {
 
   if (data.error) {
     return (
-      <OuterContainer>
-        <FullHeightFlexContainer>
-          <p>Error</p>
-        </FullHeightFlexContainer>
-      </OuterContainer>
+      <ExperiencePageContainer>
+        <HeroImage
+          src={ErrorImg}
+          description="Photo by Matthew Henry on Unsplash - selective focus photography of fawn pug puppy"
+          isVerticalTop={false}
+        />
+        <OuterContainer>
+          <HeadingFirst isPageHeading variant="menuFontColor">
+            {StaticCopy.general.headline}
+          </HeadingFirst>
+
+          <ErrorBody>
+            {StaticCopy.general.body}{' '}
+            <RichTextWriteUpLink
+              href="mailto:rafaela.codes@gmail.com"
+              variant="alert"
+            >
+              send an email
+            </RichTextWriteUpLink>
+            .
+          </ErrorBody>
+        </OuterContainer>
+      </ExperiencePageContainer>
     );
   }
 

@@ -7,9 +7,14 @@ import {
   FullHeightFlexContainer,
 } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
+import ErrorBody from '../../atoms/Typography/ErrorBody';
+import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
+import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import ContactForm from '../../organisms/ContactForm/ContactForm';
 import axios from 'axios';
 import Loader from '../../molecules/Loader/Loader';
+import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.jpg';
+import StaticCopy from '../../../static/copy/copy';
 
 const ContactTemplate = ({ data }) => {
   const [contactData, setContactData] = useState();
@@ -35,7 +40,6 @@ const ContactTemplate = ({ data }) => {
         message: formObj.message,
       })
       .then((response) => {
-        console.log({ response });
         if (response.data.status === 'success') {
           setFormSent(true);
           setFormResponseLoading(false);
@@ -59,11 +63,29 @@ const ContactTemplate = ({ data }) => {
 
   if (data.error || formError) {
     return (
-      <OuterContainer>
-        <FullHeightFlexContainer>
-          <p>Error</p>
-        </FullHeightFlexContainer>
-      </OuterContainer>
+      <ContactPageContainer>
+        <HeroImage
+          src={ErrorImg}
+          description="Photo by Matthew Henry on Unsplash - selective focus photography of fawn pug puppy"
+          isVerticalTop={false}
+        />
+        <OuterContainer>
+          <HeadingFirst isPageHeading variant="menuFontColor">
+            {StaticCopy.general.headline}
+          </HeadingFirst>
+
+          <ErrorBody>
+            {data.error ? StaticCopy.general.body : StaticCopy.form.body}{' '}
+            <RichTextWriteUpLink
+              href="mailto:rafaela.codes@gmail.com"
+              variant="alert"
+            >
+              send an email
+            </RichTextWriteUpLink>
+            .
+          </ErrorBody>
+        </OuterContainer>
+      </ContactPageContainer>
     );
   }
 
@@ -72,8 +94,16 @@ const ContactTemplate = ({ data }) => {
   }
 
   if (contactData) {
-    // define formData
-    const formData = contactData.page.componentsCollection.items[0];
+    // define formData / thank you data
+    const formData = contactData.page.componentsCollection.items.filter(
+      (item) => item.title === 'Contact'
+    );
+
+    const thankYouData = contactData.page.componentsCollection.items.filter(
+      (item) => item.title === 'Email Confirm'
+    );
+
+    const thankYouJSON = thankYouData[0].content.json;
 
     return (
       <ContactPageContainer>
@@ -87,10 +117,14 @@ const ContactTemplate = ({ data }) => {
             {contactData.page.title}
           </HeadingFirst>
           {formSent ? (
-            <HeadingFirst>Form has been sent!</HeadingFirst>
+            <RichTextWriteUp
+              data={thankYouJSON}
+              variant="primaryFont"
+              isLarge
+            />
           ) : (
             <ContactForm
-              data={formData}
+              data={formData[0]}
               handleFormSubmit={handleFormSubmit}
               formResponseLoading={formResponseLoading}
             />

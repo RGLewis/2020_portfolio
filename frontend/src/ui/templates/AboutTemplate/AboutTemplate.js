@@ -8,7 +8,11 @@ import {
 } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
+import ErrorBody from '../../atoms/Typography/ErrorBody';
+import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
 import Loader from '../../molecules/Loader/Loader';
+import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.jpg';
+import StaticCopy from '../../../static/copy/copy';
 
 const AboutTemplate = ({ data }) => {
   const [aboutData, setAboutData] = useState();
@@ -32,11 +36,29 @@ const AboutTemplate = ({ data }) => {
 
   if (data.error) {
     return (
-      <OuterContainer>
-        <FullHeightFlexContainer>
-          <p>Error</p>
-        </FullHeightFlexContainer>
-      </OuterContainer>
+      <AboutPageContainer>
+        <HeroImage
+          src={ErrorImg}
+          description="Photo by Matthew Henry on Unsplash - selective focus photography of fawn pug puppy"
+          isVerticalTop={false}
+        />
+        <OuterContainer>
+          <HeadingFirst isPageHeading variant="menuFontColor">
+            {StaticCopy.general.headline}
+          </HeadingFirst>
+
+          <ErrorBody>
+            {StaticCopy.general.body}{' '}
+            <RichTextWriteUpLink
+              href="mailto:rafaela.codes@gmail.com"
+              variant="alert"
+            >
+              send an email
+            </RichTextWriteUpLink>
+            .
+          </ErrorBody>
+        </OuterContainer>
+      </AboutPageContainer>
     );
   }
 

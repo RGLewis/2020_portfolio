@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Headshot } from './HomeTemplate.styles';
-import { UseResponsive } from '../../../hooks/useResponsive';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import {
   OuterContainer,
   FullHeightFlexContainer,
 } from '../../atoms/Containers/Containers';
 import Loader from '../../molecules/Loader/Loader';
+import HeadingFirst from '../../atoms/Typography/HeadingFirst';
+import HeadingThird from '../../atoms/Typography/HeadingThird';
+import ErrorBody from '../../atoms/Typography/ErrorBody';
+import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
+import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.jpg';
+import StaticCopy from '../../../static/copy/copy';
 
 const HomeTemplate = ({ data }) => {
   const [homeData, setHomeData] = useState();
@@ -18,9 +23,6 @@ const HomeTemplate = ({ data }) => {
       setHomeData(data.fetchedData);
     }
   }, [data]);
-
-  // define window height
-  const { windowHeight } = UseResponsive();
 
   if (data.loading) {
     return (
@@ -36,7 +38,29 @@ const HomeTemplate = ({ data }) => {
     return (
       <OuterContainer>
         <FullHeightFlexContainer>
-          <p>Error</p>
+          <Headshot
+            src={ErrorImg}
+            description="Photo by Matthew Henry on Unsplash - selective focus photography of fawn pug puppy"
+          />
+
+          <HeadingFirst
+            variant="primaryFont"
+            isPageHeading={false}
+            isUnderlined
+          >
+            {StaticCopy.general.headline}
+          </HeadingFirst>
+
+          <ErrorBody>
+            {data.error ? StaticCopy.general.body : StaticCopy.form.body}{' '}
+            <RichTextWriteUpLink
+              href="mailto:rafaela.codes@gmail.com"
+              variant="alert"
+            >
+              send an email
+            </RichTextWriteUpLink>
+            .
+          </ErrorBody>
         </FullHeightFlexContainer>
       </OuterContainer>
     );

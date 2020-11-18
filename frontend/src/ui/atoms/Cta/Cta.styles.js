@@ -1,17 +1,16 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
-import {device} from '../../../globalStyles/Breakpoints'
-import {transition} from '../../../globalStyles/Mixins'
+import { device } from '../../../globalStyles/Breakpoints';
+import { transition } from '../../../globalStyles/Mixins';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-
 
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: ${({ theme, variant }) => theme[variant]};
   pointer-events: none;
   font-size: ${pxToRem(20)};
-  padding-right: ${props => props.iconleads === "true" && pxToRem(5)};
-  padding-left: ${props => props.iconleads === "false" && pxToRem(5)};
+  padding-right: ${(props) => props.iconleads === 'true' && pxToRem(5)};
+  padding-left: ${(props) => props.iconleads === 'false' && pxToRem(5)};
 `;
 
 export const CtaButton = styled.button`
@@ -29,7 +28,7 @@ export const CtaButton = styled.button`
   }
 
   &:hover {
-      letter-spacing: ${pxToRem(0.2)}
+    letter-spacing: ${pxToRem(0.2)};
   }
 `;
 
@@ -39,7 +38,6 @@ export const CtaLink = styled(Link)`
   padding: ${pxToRem(5)};
   margin-bottom: 0;
   font-size: ${pxToRem(18)};
-
 
   @media ${device.large} {
     margin-bottom: 0;

@@ -3,7 +3,7 @@ import { pxToRem } from '../../../globalStyles/Utils';
 import { transition } from '../../../globalStyles/Mixins';
 
 export const StyledLink = styled.a`
-  color: ${({ theme }) => theme.menuFontColor};
+  color: ${({ theme, variant }) => theme[variant]};
   position: relative;
 
   &::before {

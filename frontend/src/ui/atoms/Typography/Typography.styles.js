@@ -109,3 +109,14 @@ export const StyledUppercase = styled.span`
   text-transform: uppercase;
   letter-spacing: ${pxToRem(1)};
 `;
+
+export const StyledErrorBody = styled(StyledBody)`
+  color: ${({ theme, variant }) => theme[variant]};
+  font-size: ${pxToRem(20)};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  letter-spacing: ${pxToRem(1)};
+
+  @media ${device.large} {
+    font-size: ${pxToRem(30)};
+  }
+`;
