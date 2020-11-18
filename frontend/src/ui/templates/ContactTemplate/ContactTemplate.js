@@ -4,7 +4,6 @@ import { ContactPageContainer } from './ContactTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
 import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
-import Card from '../../atoms/Card/Card';
 import ContactForm from '../../molecules/ContactForm/ContactForm';
 
 const ContactTemplate = ({ data }) => {

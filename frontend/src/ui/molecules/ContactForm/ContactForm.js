@@ -10,7 +10,6 @@ import Input from '../../atoms/FormElements/Input/Input';
 import { useForm } from '../../../hooks/useForm';
 
 const ContactForm = ({ data }) => {
-  console.log({ data });
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = formState.inputs.name.value;
