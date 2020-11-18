@@ -54,6 +54,7 @@ const Input = ({
   onInput,
   initialValue,
   initialValid,
+  name,
 }) => {
   // call useReducer, pass in the reducer function and the initial state (object, optional)
   // use array destructuring to get two elements out of the useReducer function: (1) current state (inputState); (2) dispatch function we can call to dispatch action to the reducer function (inputReducer)
@@ -97,6 +98,7 @@ const Input = ({
         onChange={changeHandler}
         value={inputState.value} // grabbing inputState off useReducer
         isAlert={!inputState.isValid && inputState.isTouched}
+        name={name}
       />
     ) : (
       <StyledTextArea
@@ -106,6 +108,7 @@ const Input = ({
         onBlur={touchHandler}
         value={inputState.value}
         isAlert={!inputState.isValid && inputState.isTouched}
+        name={name}
       />
     );
 

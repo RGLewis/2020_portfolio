@@ -9,14 +9,15 @@ import Input from '../../atoms/FormElements/Input/Input';
 
 import { useForm } from '../../../hooks/useForm';
 
-const ContactForm = ({ data }) => {
+const ContactForm = ({ data, handleFormSubmit }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = formState.inputs.name.value;
     const email = formState.inputs.email.value;
     const subject = formState.inputs.subject.value;
     const message = formState.inputs.message.value;
-    console.log('submitted!', name, email, subject, message);
+
+    handleFormSubmit({ name, email, subject, message });
   };
 
   // define emoji
@@ -37,7 +38,11 @@ const ContactForm = ({ data }) => {
   );
 
   return (
-    <FormContainer onSubmit={handleOnSubmit}>
+    <FormContainer
+      method="POST"
+      action="http://www.focuspocus.io/magic/rafaela.codes@gmail.com"
+      onSubmit={handleOnSubmit}
+    >
       {data.inputsCollection.items.map((input) => (
         <Input
           key={input.id}
@@ -47,7 +52,8 @@ const ContactForm = ({ data }) => {
           validators={input.regex}
           onInput={inputHandler}
           errorMessage={input.errorMessage}
-          initialValid={input.initialValid}
+          // initialValid={input.initialValid}
+          name={input.title}
         />
       ))}
       <FormButton disabled={!formState.isValid} type={'submit'}>
