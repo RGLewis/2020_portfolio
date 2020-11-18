@@ -30,6 +30,7 @@ const GET_PAGE = gql`
                   errorMessage
                   regex
                   label
+                  initialValid
                 }
               }
             }
