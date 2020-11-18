@@ -5,9 +5,12 @@ import HeroImage from '../../atoms/HeroImage/HeroImage';
 import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import ContactForm from '../../molecules/ContactForm/ContactForm';
+import axios from 'axios';
 
 const ContactTemplate = ({ data }) => {
   const [contactData, setContactData] = useState();
+  const [formSent, setFormSent] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   // set data
   useEffect(() => {
@@ -15,6 +18,27 @@ const ContactTemplate = ({ data }) => {
       setContactData(data.fetchedData);
     }
   }, [data]);
+
+  const handleFormSubmit = (formObj) => {
+    axios
+      .post('/contact', {
+        //make an object to be handled from req.body on the backend.
+        email: formObj.email,
+        name: formObj.name,
+        subject: formObj.subject,
+        message: formObj.message,
+      })
+      .then((response) => {
+        console.log({ response });
+        if (response.data.status === 'success') {
+          console.log({ response });
+          setFormSent(true);
+        } else if (response.data.status === 'fail') {
+          setFormSent(true);
+          setFormError(true);
+        }
+      });
+  };
 
   if (data.loading) {
     return (
@@ -24,7 +48,7 @@ const ContactTemplate = ({ data }) => {
     );
   }
 
-  if (data.error) {
+  if (data.error || formError) {
     return (
       <ContactPageContainer>
         <p>Error</p>
@@ -51,7 +75,11 @@ const ContactTemplate = ({ data }) => {
           <HeadingFirst isPageHeading variant="menuFontColor">
             {contactData.page.title}
           </HeadingFirst>
-          <ContactForm data={formData} />
+          {formSent ? (
+            <HeadingFirst>Form has been sent!</HeadingFirst>
+          ) : (
+            <ContactForm data={formData} handleFormSubmit={handleFormSubmit} />
+          )}
         </OuterContainer>
       </ContactPageContainer>
     );
