@@ -7,5 +7,5 @@ export const TogglerContainer = styled.div`
   border-radius: 50%;
   background: ${({ theme }) => theme.backgroundOpaque};
   z-index: 20;
-  position: fixed;
+  position: ${(props) => props.fixed && 'fixed'};
 `;

@@ -5,8 +5,8 @@ export const Context = createContext({
   isLightMode: true,
   toggleLightMode: () => {},
   // splashscreen
-  showSplashScreen: true,
-  setShowSplashScreen: () => {},
+  splashScreenIsShowing: true,
+  handleSplashScreenIsShowing: () => {},
   // active experience section
   activeExperienceSection: undefined,
   setExperienceSection: () => {},

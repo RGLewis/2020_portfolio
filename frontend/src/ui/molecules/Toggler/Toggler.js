@@ -6,10 +6,9 @@ import {
   TogglerSwitch,
 } from '../../atoms/TogglerElements/TogglerElements';
 import { TogglerContainer } from './Toggler.styles';
-import Body from '../../atoms/Typography/Body';
 
-const Toggler = ({ onChange, isChecked, label }) => (
-  <TogglerContainer>
+const Toggler = ({ onChange, isChecked, label, fixed }) => (
+  <TogglerContainer fixed={fixed}>
     <Label for={label}>
       <Input onChange={onChange} isChecked={isChecked} id={label} />
       <TogglerSwitch isChecked={isChecked} />
@@ -23,4 +22,9 @@ Toggler.propTypes = {
   onChange: PropTypes.func.isRequired,
   isChecked: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
+  fixed: PropTypes.bool,
+};
+
+Toggler.defaultProps = {
+  fixed: true,
 };

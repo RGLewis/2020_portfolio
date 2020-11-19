@@ -16,11 +16,14 @@ OuterContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const MainContentContainer = ({ children }) => {
+export const MainContentContainer = ({ children, splashScreenIsShowing }) => {
   const { windowHeight } = UseResponsive();
 
   return (
-    <StyledMainContentContainer minHeight={windowHeight}>
+    <StyledMainContentContainer
+      minHeight={windowHeight}
+      splashScreenIsShowing={splashScreenIsShowing}
+    >
       {children}
     </StyledMainContentContainer>
   );
@@ -28,6 +31,7 @@ export const MainContentContainer = ({ children }) => {
 
 MainContentContainer.propTypes = {
   children: PropTypes.node.isRequired,
+  splashScreenIsShowing: PropTypes.bool.isRequired,
 };
 
 export const PageContainer = ({ children }) => (

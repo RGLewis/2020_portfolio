@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../../../context/context';
-import { HeaderContainer } from './Header.styles';
+import { HeaderContainer} from './Header.styles';
 import Toggler from '../../molecules/Toggler/Toggler';
 
 const Header = () => {

@@ -17,6 +17,7 @@ import {
 } from './globalStyles/Global.styles';
 import { Context } from './context/context';
 import { UseColorMode } from './hooks/useColorMode';
+import { UseSplashScreen } from './hooks/useSplashScreen';
 import { UseActiveExperienceSection } from './hooks/useActiveExperienceSection';
 import {
   UsePrefetchPage,
@@ -34,11 +35,19 @@ import Contact from './ui/pages/Contact';
 import { MainContentContainer } from './ui/atoms/Containers/Containers';
 import Sidebar from './ui/organisms/Sidebar/Sidebar';
 import Header from './ui/organisms/Header/Header';
+import SplashScreen from './ui/organisms/SplashScreen/SplashScreen';
 
 const App = () => {
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
 
+  // manage Splash Screen
+  const {
+    splashScreenIsShowing,
+    handleSplashScreenIsShowing,
+  } = UseSplashScreen();
+
+  // manage active experience section
   const {
     activeExperienceSection,
     setExperienceSection,
@@ -91,15 +100,22 @@ const App = () => {
         toggleLightMode,
         activeExperienceSection,
         setExperienceSection,
+        splashScreenIsShowing,
+        handleSplashScreenIsShowing,
       }}
     >
       <ThemeProvider theme={globalTheme}>
         <ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
           <GlobalStyle />
           <Router>
+            <SplashScreen />
+
             <Header />
             <Sidebar navData={navData} footerData={footerData} />
-            <MainContentContainer>{routes}</MainContentContainer>
+
+            <MainContentContainer splashScreenIsShowing={splashScreenIsShowing}>
+              {routes}
+            </MainContentContainer>
           </Router>
         </ThemeProvider>
       </ThemeProvider>

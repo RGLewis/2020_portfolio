@@ -15,6 +15,12 @@ export const StyledOuterContainer = styled.div`
 export const StyledMainContentContainer = styled.main`
   min-height: ${(props) =>
     props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
+  max-height: ${(props) =>
+    (props.splashScreenIsShowing && props.minHeight === '100vh' && '100vh') ||
+    (props.splashScreenIsShowing &&
+      props.minHeight !== '100vh' &&
+      pxToRem(props.minHeight))};
+  overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
 
   /* to account for sidebar */
   @media ${device.large} {
