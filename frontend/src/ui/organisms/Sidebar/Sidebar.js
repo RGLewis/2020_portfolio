@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import { UseResponsive } from '../../../hooks/useResponsive';
 
 import { StyledSidebar } from './Sidebar.styles';
 
-const Sidebar = ({ navData, footerData }) => (
-  <StyledSidebar>
-    <Nav data={navData} />
-    <Footer data={footerData} />
-  </StyledSidebar>
-);
+const Sidebar = ({ navData, footerData }) => {
+  const { windowWidth } = UseResponsive();
+  const isDesktop = windowWidth >= 992;
+
+  return isDesktop ? (
+    <StyledSidebar>
+      <Nav data={navData} />
+      <Footer data={footerData} />
+    </StyledSidebar>
+  ) : null;
+};
 
 export default Sidebar;
 

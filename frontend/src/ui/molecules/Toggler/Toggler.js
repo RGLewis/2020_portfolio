@@ -26,5 +26,5 @@ Toggler.propTypes = {
 };
 
 Toggler.defaultProps = {
-  fixed: true,
+  fixed: false,
 };

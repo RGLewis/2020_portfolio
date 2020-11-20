@@ -96,7 +96,7 @@ const SplashScreen = () => {
         />
       </TogglerElementContainer>
       <OuterContainer>
-        <FullHeightFlexContainer>
+        <FullHeightFlexContainer isSplash>
           {content.map((item, i) => (
             <Trail animate={animate} key={`trail${i}`}>
               <>
