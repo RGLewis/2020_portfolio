@@ -1,27 +1,30 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
 import { device } from '../../../globalStyles/Breakpoints';
+import { animated } from 'react-spring';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  /* display: flex; */
   padding: ${pxToRem(20)};
   position: fixed;
   background: ${({ theme }) => theme.menuBackground};
   border-bottom: ${pxToRem(3)} solid ${({ theme }) => theme.accent};
+  z-index: 100;
 
   @media ${device.large} {
     border-bottom-color: transparent;
-    background: ${({ theme }) => theme.background};
+    background: transparent;
   }
 `;
 
 export const HeaderTopRowContainer = styled.div`
   width: 100%;
+  /* padding: ${pxToRem(20)}; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: ${pxToRem(50)};
+  /* z-index: 100; */
 
   @media ${device.large} {
     justify-content: flex-end;
@@ -57,4 +60,14 @@ export const HamburgerButton = styled.button`
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
+`;
+
+export const NavContainer = styled(animated.div)`
+  margin-top: ${pxToRem(70)};
+  padding: ${pxToRem(20)};
+  position: fixed;
+  z-index: 10;
+  background: ${({ theme }) => theme.menuBackground};
+  left: 0;
+  right: 0;
 `;

@@ -8,28 +8,28 @@ export const StyledNavLink = styled(NavLink)`
   font-size: ${pxToRem(20)};
   color: ${({ theme }) => theme.menuFontColor};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
-  padding: ${pxToRem(5)};
-  border: 1px solid transparent;
+  padding: 0 ${pxToRem(10)};
   letter-spacing: ${pxToRem(2)};
   text-transform: uppercase;
-  ${transition('all', '200ms', 'ease', '0s')};
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.menuFontColor} 0%,
+    ${({ theme }) => theme.menuFontColor} 100%
+  );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: ${pxToRem(0)} ${pxToRem(0)};
+  ${transition('all', '200ms', 'ease-in-out', '0s')};
 
   &.active {
     font-weight: ${({ theme }) => theme.fontWeights.medium};
-    @media ${device.large} {
-      letter-spacing: ${pxToRem(3)};
-    }
+    color: ${({ theme }) => theme.menuBackground};
+    background-size: ${pxToRem(60)} ${pxToRem(60)};
   }
 
   &:hover {
-    @media ${device.large} {
-      letter-spacing: ${pxToRem(3)};
-    }
-  }
-
-  &:focus,
-  &:active {
-    border-color: ${({ theme }) => theme.menuFontColor};
+    color: ${({ theme }) => theme.menuBackground};
+    background-size: ${pxToRem(10)} ${pxToRem(60)};
   }
 
   @media ${device.large} {
@@ -39,28 +39,33 @@ export const StyledNavLink = styled(NavLink)`
 
 export const StyledHashLink = styled.a`
   font-size: ${pxToRem(20)};
-  color: ${({ theme }) => theme.menuFontColor};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.menuBackground : theme.menuFontColor};
   padding: ${pxToRem(5)};
   font-weight: ${({ theme, isActive }) =>
     isActive ? theme.fontWeights.medium : theme.fontWeights.regular};
-  padding: ${pxToRem(5)};
-  border: 1px solid transparent;
-  border-bottom-color: ${({ theme, isActive }) =>
-    isActive && theme.menuFontColor};
-  letter-spacing: ${(props) => (props.isActive ? pxToRem(3) : pxToRem(2))};
+  padding: 0 ${pxToRem(10)};
   text-transform: uppercase;
-  ${transition('all', '200ms', 'ease', '0s')};
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.menuFontColor} 0%,
+    ${({ theme }) => theme.menuFontColor} 100%
+  );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: ${pxToRem(0)} ${pxToRem(0)};
+  background-size: ${(props) => props.isActive && pxToRem(60)};
+  ${transition('all', '200ms', 'ease-in-out', '0s')};
 
   &:hover {
-    @media ${device.large} {
-      letter-spacing: ${pxToRem(3)};
-    }
+    color: ${({ theme }) => theme.menuBackground};
+    background-size: ${pxToRem(10)} ${pxToRem(60)};
   }
 
-  &:focus,
+  /* &:focus,
   &:active {
     border-color: ${({ theme }) => theme.menuFontColor};
-  }
+  } */
 
   @media ${device.large} {
     font-size: ${pxToRem(50)};

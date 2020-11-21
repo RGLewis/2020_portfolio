@@ -13,18 +13,18 @@ export const StyledOuterContainer = styled.div`
 `;
 
 export const StyledMainContentContainer = styled.main`
-  padding-top: ${pxToRem(100)}; // account for fixed header
+  padding-top: ${pxToRem(90)}; // account for fixed header
   min-height: ${(props) =>
     props.minHeight === '100vh'
-      ? `calc(100vh - ${pxToRem(100)})`
-      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(100)})`};
+      ? `calc(100vh - ${pxToRem(90)})`
+      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
   max-height: ${(props) =>
     (props.splashScreenIsShowing &&
       props.minHeight === '100vh' &&
-      `calc(100vh - ${pxToRem(100)})`) ||
+      `calc(100vh - ${pxToRem(90)})`) ||
     (props.splashScreenIsShowing &&
       props.minHeight !== '100vh' &&
-      `calc(${pxToRem(props.minHeight)} - ${pxToRem(100)})`)};
+      `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`)};
   overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
 
   /* to account for sidebar */
@@ -45,8 +45,8 @@ export const StyledMainContentContainer = styled.main`
 export const StyledFullHeightFlexContainer = styled.div`
   min-height: ${(props) =>
     props.minHeight === '100vh'
-      ? `calc(100vh - ${pxToRem(100)})`
-      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(100)})`};
+      ? `calc(100vh - ${pxToRem(90)})`
+      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
   min-height: ${(props) =>
     (props.isSplash && props.minHeight === '100vh' && `100vh`) ||
     (props.isSplash &&

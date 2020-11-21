@@ -20,7 +20,12 @@ import { Context } from '../../../../context/context';
 
 let isDesktop;
 
-const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
+const NavLinks = ({
+  data,
+  handleShowMainNav,
+  handleShowExperienceNav,
+  toggleMenuState,
+}) => {
   // define context
   const context = useContext(Context);
 
@@ -30,18 +35,12 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
 
     isDesktop = windowWidth >= 992;
 
-    return (
-      <UnorderedList orientation={isDesktop ? 'vertical' : 'horizontal'}>
-        {children}
-      </UnorderedList>
-    );
+    return <UnorderedList orientation="vertical">{children}</UnorderedList>;
   };
 
   // LI
   const RichTextListItem = ({ children }) => (
-    <ListItem orientation={isDesktop ? 'vertical' : 'horizontal'}>
-      {children}
-    </ListItem>
+    <ListItem orientation="vertical">{children}</ListItem>
   );
 
   // PARAGRAPH
@@ -83,6 +82,7 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
                 isExperience ? handleShowExperienceNav : handleShowMainNav
               }
               isActive={isActive}
+              toggleMenuState={toggleMenuState}
             >
               {children}
             </HashLink>
@@ -95,6 +95,7 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
               onClick={
                 isExperience ? handleShowExperienceNav : handleShowMainNav
               }
+              toggleMenuState={toggleMenuState}
             >
               {children}
             </NavLink>
