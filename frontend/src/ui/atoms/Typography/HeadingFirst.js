@@ -17,6 +17,8 @@ export const HeadingFirst = ({
   </StyledHeadingFirst>
 );
 
+export default HeadingFirst;
+
 HeadingFirst.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf([
@@ -35,5 +37,3 @@ HeadingFirst.defaultProps = {
   isUnderlined: false,
   isPageHeading: true,
 };
-
-export default HeadingFirst;

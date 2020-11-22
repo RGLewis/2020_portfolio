@@ -45,7 +45,6 @@ export const StyledHeadingSecond = styled.h2`
   padding-bottom: ${pxToRem(10)};
   text-transform: capitalize;
   letter-spacing: ${pxToRem(0.5)};
-
   margin-bottom: ${pxToRem(10)};
   border-bottom: ${pxToRem(2)} solid ${({ theme }) => theme.accent};
 
@@ -94,7 +93,6 @@ export const StyledHeadingFifth = styled.h3`
 export const StyledBody = styled.p`
   font-weight: ${({ theme, isBold }) => isBold && theme.fontWeights.medium};
   margin-bottom: ${(props) => (props.marginBottom ? pxToRem(10) : '0')};
-
   text-align: ${(props) => props.aligned};
   font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(14))};
   font-size: ${(props) => props.isLarge && pxToRem(18)};

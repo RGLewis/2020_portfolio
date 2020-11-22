@@ -11,4 +11,4 @@ app.listen(port, () => {
 });
 
 // get the contact route
-app.use('/contact', contactRoute);
+app.use('/contact-backend', contactRoute);

@@ -6,6 +6,8 @@ const ErrorBody = ({ children, variant }) => (
   <StyledErrorBody variant={variant}>{children}</StyledErrorBody>
 );
 
+export default ErrorBody;
+
 ErrorBody.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf([
@@ -22,5 +24,3 @@ ErrorBody.propTypes = {
 ErrorBody.defaultProps = {
   variant: 'alert',
 };
-
-export default ErrorBody;

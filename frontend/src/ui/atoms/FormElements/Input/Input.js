@@ -70,7 +70,7 @@ const Input = ({
   // run this useEffect to track value and isValid
   useEffect(() => {
     onInput(id, inputState.value, inputState.isValid); // on change function passed from parent --> pass in the id, value and isValid
-  }, [id, onInput, value, isValid]);
+  }, [id, onInput, value, isValid, inputState.isValid, inputState.value]);
 
   // input change handler
   const changeHandler = (e) => {
@@ -129,8 +129,10 @@ const Input = ({
   );
 };
 
+export default Input;
+
 Input.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   id: PropTypes.string.isRequired,
   elementType: PropTypes.oneOf(['input', 'textarea']),
   type: PropTypes.string,
@@ -144,6 +146,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  label: '',
   elementType: 'input',
   type: 'text',
   rows: 3,
@@ -153,5 +156,3 @@ Input.defaultProps = {
   initialValid: false,
   validators: '',
 };
-
-export default Input;

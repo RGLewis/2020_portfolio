@@ -6,6 +6,8 @@ const HeadingThird = ({ children, variant }) => (
   <StyledHeadingThird variant={variant}>{children}</StyledHeadingThird>
 );
 
+export default HeadingThird;
+
 HeadingThird.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf([
@@ -20,5 +22,3 @@ HeadingThird.propTypes = {
 HeadingThird.defaultProps = {
   variant: 'primaryFont',
 };
-
-export default HeadingThird;

@@ -21,61 +21,62 @@ import {
   TogglerElementContainer,
 } from './SplashScreen.styles';
 
-const SplashScreen = () => {
+const SplashScreen = ({ splashScreenIsShowing, setSplashScreenIsShowing }) => {
   // Context
   const context = useContext(Context);
 
-  // States
+  // Hooks
   const [animate, setAnimate] = useState(false);
   const [content, setContent] = useState(['Rafaela', 'Lewis']);
 
   // on page load, set animate after delay, then proceed to toggle animations
   useEffect(() => {
+    // define functions
+    const toggleAnimate = () => {
+      setTimeout(() => {
+        setAnimate(false);
+        setNextContent(['Front-End', 'Developer']);
+      }, 3000);
+    };
+
+    const setNextContent = (content) => {
+      setTimeout(() => {
+        setContent(content);
+      }, 200);
+
+      setTimeout(() => {
+        setAnimate(true);
+      }, 200);
+    };
+
+    const hideSplashScreen = () => {
+      setTimeout(() => {
+        setSplashScreenIsShowing(false);
+      }, 6000);
+    };
+
+    // after 300ms of blank screen, animate in first content
     setTimeout(() => {
       setAnimate(true);
     }, 300);
 
-    toggleAnimate(3000, ['Front-End', 'Developer']);
+    toggleAnimate();
 
     hideSplashScreen();
-  }, []);
-
-  const toggleAnimate = (time, content) => {
-    setTimeout(() => {
-      setAnimate(false);
-      setNextContent(content);
-    }, time);
-  };
-
-  const setNextContent = (content) => {
-    setTimeout(() => {
-      setContent(content);
-    }, 200);
-
-    setTimeout(() => {
-      setAnimate(true);
-    }, 200);
-  };
-
-  // set context to hide splash screen
-  const hideSplashScreen = () => {
-    setTimeout(() => {
-      context.handleSplashScreenIsShowing();
-    }, 6000);
-  };
+  }, [setSplashScreenIsShowing]);
 
   // define animation
   const animateSplashScreen = useSpring({
     config: { mass: 2, tension: 280, friction: 100, precision: 0.1 },
     to: {
-      zIndex: context.splashScreenIsShowing ? 1000 : -10,
-      marginTop: context.splashScreenIsShowing ? '0vh' : '-150vh', // overshoot to make sure it's totally off screen before it's given a display none on rest
+      zIndex: splashScreenIsShowing ? 1000 : -10,
+      marginTop: splashScreenIsShowing ? '0vh' : '-150vh', // overshoot to make sure it's totally off screen before it's given a display none on rest
     },
 
     onRest: () => {
       const containerEl = document.getElementById('splash-screen-container');
 
-      if (containerEl && !context.splashScreenIsShowing) {
+      if (containerEl && !splashScreenIsShowing) {
         containerEl.style.display = 'none';
       }
     },
@@ -88,7 +89,7 @@ const SplashScreen = () => {
           onChange={() => {
             context.toggleLightMode();
           }}
-          label={'colorMode'}
+          label="colorMode"
           isChecked={!context.isLightMode}
           lightToggleLabel="light"
           darkToggleLabel="dark"

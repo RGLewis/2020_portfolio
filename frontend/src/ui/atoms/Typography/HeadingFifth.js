@@ -6,6 +6,8 @@ const HeadingFifth = ({ children, variant }) => (
   <StyledHeadingFifth variant={variant}>{children}</StyledHeadingFifth>
 );
 
+export default HeadingFifth;
+
 HeadingFifth.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf([
@@ -20,5 +22,3 @@ HeadingFifth.propTypes = {
 HeadingFifth.defaultProps = {
   variant: 'primaryFont',
 };
-
-export default HeadingFifth;

@@ -26,6 +26,7 @@ const ExperienceTemplate = ({ data }) => {
   // define context
   const context = useContext(Context);
 
+  // hooks
   const [experienceData, setExperienceData] = useState();
   const [expandedAccordion, setExpandedAccordion] = useState();
   const [canExecuteAnimation, setCanExecuteAnimation] = useState(true);

@@ -25,6 +25,8 @@ const Body = ({
   </StyledBody>
 );
 
+export default Body;
+
 Body.propTypes = {
   children: PropTypes.node.isRequired,
   isBold: PropTypes.bool,
@@ -53,5 +55,3 @@ Body.defaultProps = {
   isLarge: false,
   textTransform: 'none',
 };
-
-export default Body;

@@ -1,5 +1,6 @@
 // Package Imports
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTrail } from 'react-spring';
 
 // Hook Imports
@@ -50,3 +51,8 @@ const Trail = ({ animate, children, ...props }) => {
 };
 
 export default Trail;
+
+Trail.propTypes = {
+  animate: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+};

@@ -9,3 +9,7 @@ const ErrorMessage = ({ isShowing, children }) => (
 );
 
 export default ErrorMessage;
+
+ErrorMessage.propTypes = {
+  children: PropTypes.node.isRequired,
+};
