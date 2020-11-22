@@ -21,6 +21,8 @@ const FormButton = ({
   );
 };
 
+export default FormButton;
+
 FormButton.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
@@ -34,5 +36,3 @@ FormButton.defaultProps = {
   onClick: () => {},
   type: 'button',
 };
-
-export default FormButton;

@@ -6,8 +6,8 @@ const Uppercase = ({ children }) => (
   <StyledUppercase>{children}</StyledUppercase>
 );
 
+export default Uppercase;
+
 Uppercase.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Uppercase;

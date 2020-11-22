@@ -62,11 +62,6 @@ export const StyledHashLink = styled.a`
     background-size: ${pxToRem(10)} ${pxToRem(60)};
   }
 
-  /* &:focus,
-  &:active {
-    border-color: ${({ theme }) => theme.menuFontColor};
-  } */
-
   @media ${device.large} {
     font-size: ${pxToRem(50)};
   }

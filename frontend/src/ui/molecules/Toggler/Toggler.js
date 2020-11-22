@@ -9,8 +9,8 @@ import { TogglerContainer } from './Toggler.styles';
 
 const Toggler = ({ onChange, isChecked, label, fixed }) => (
   <TogglerContainer fixed={fixed}>
-    <Label for={label}>
-      <Input onChange={onChange} isChecked={isChecked} id={label} />
+    <Label label={label}>
+      <Input onChange={onChange} isChecked={isChecked} label={label} />
       <TogglerSwitch isChecked={isChecked} />
     </Label>
   </TogglerContainer>

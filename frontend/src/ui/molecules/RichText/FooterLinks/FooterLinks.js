@@ -59,3 +59,7 @@ const FooterLinks = ({ data }) => {
 };
 
 export default FooterLinks;
+
+FooterLinks.propTypes = {
+  data: PropTypes.object.isRequired,
+};

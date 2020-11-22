@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
 import { device } from '../../../globalStyles/Breakpoints';
+import { borderRadius } from '../../../globalStyles/Mixins';
 import { animated } from 'react-spring';
 
 export const HeaderInnerContainer = styled.div`
@@ -37,14 +38,15 @@ export const HamburgerSpan = styled.span`
   border-bottom: ${pxToRem(4)} solid ${({ theme }) => theme.headerAccent};
   margin: ${pxToRem(3)} auto;
   transition: all 200ms;
-  border-radius: ${(props) => (props.menuIsOpen ? 0 : '2px')};
+  border-radius: ${(props) =>
+    props.menuIsOpen ? 0 : `${borderRadius(2, false)}`};
 
   &:nth-child(1) {
-    transform: ${(props) => props.menuIsOpen && 'translateY(10px)'};
+    transform: ${(props) => props.menuIsOpen && `translateY(${pxToRem(10)})`};
   }
 
   &:nth-child(3) {
-    transform: ${(props) => props.menuIsOpen && 'translateY(-10px)'};
+    transform: ${(props) => props.menuIsOpen && `translateY(${pxToRem(-10)})`};
   }
 `;
 
@@ -67,8 +69,8 @@ export const NavContainer = styled(animated.div)`
   position: fixed;
   z-index: 10;
   background: ${({ theme }) => theme.menuBackground};
-  border-bottom: ${({ theme, menuIsOpen }) =>
-    menuIsOpen && `${pxToRem(1)} solid ${theme.headerAccent}`};
+  border-bottom: ${({ theme, menuisopen }) =>
+    menuisopen === 'true' && `${pxToRem(1)} solid ${theme.headerAccent}`};
   left: 0;
   right: 0;
 `;

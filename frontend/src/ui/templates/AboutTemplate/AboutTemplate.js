@@ -15,6 +15,7 @@ import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.
 import StaticCopy from '../../../static/copy/copy';
 
 const AboutTemplate = ({ data }) => {
+  // hooks
   const [aboutData, setAboutData] = useState();
 
   // set data

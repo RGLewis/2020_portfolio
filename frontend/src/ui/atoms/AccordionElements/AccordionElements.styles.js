@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
-import { device } from '../../../globalStyles/Breakpoints';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { transition } from '../../../globalStyles/Mixins';
 import { animated } from 'react-spring';

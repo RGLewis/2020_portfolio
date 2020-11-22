@@ -8,7 +8,8 @@ export const StyledLabel = styled.label`
   left: ${pxToRem(10)};
   transform-origin: 0 0;
   font: inherit;
-  font-weight: ${(props) => props.isFloating && 700};
+  font-weight: ${({ theme, isFloating }) =>
+    isFloating && theme.fontWeights.extraBold};
   font-size: ${(props) => props.isFloating && pxToRem(14)};
   ${transition('all', '100ms', 'ease', '0s')};
 `;
@@ -30,7 +31,7 @@ export const StyledInput = styled.input`
   &:focus + ${StyledLabel} {
     top: ${pxToRem(15)};
     font-size: ${pxToRem(14)};
-    font-weight: 700;
+    font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   }
 `;
 
@@ -51,7 +52,7 @@ export const StyledTextArea = styled.textarea`
   &:focus + ${StyledLabel} {
     top: ${pxToRem(15)};
     font-size: ${pxToRem(14)};
-    font-weight: 700;
+    font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   }
 `;
 

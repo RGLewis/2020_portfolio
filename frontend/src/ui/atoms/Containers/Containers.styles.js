@@ -15,19 +15,16 @@ export const StyledOuterContainer = styled.div`
 export const StyledMainContentContainer = styled.main`
   padding-top: ${pxToRem(90)}; // account for fixed header
   min-height: ${(props) =>
-    props.minHeight === '100vh'
-      ? `calc(100vh - ${pxToRem(90)})`
-      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
+    props.minHeight === '100vh' ? `100vh` : `${pxToRem(props.minHeight)}`};
   max-height: ${(props) =>
-    (props.splashScreenIsShowing &&
-      props.minHeight === '100vh' &&
-      `calc(100vh - ${pxToRem(90)})`) ||
+    (props.splashScreenIsShowing && props.minHeight === '100vh' && `100vh`) ||
     (props.splashScreenIsShowing &&
       props.minHeight !== '100vh' &&
-      `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`)};
+      `${pxToRem(props.minHeight)}`)};
   overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
-
-  /* to account for sidebar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* to account for sidebar */
   @media ${device.large} {
     margin-left: ${({ theme }) => pxToRem(theme.globalValues.sidebar)};
     padding-top: 0;

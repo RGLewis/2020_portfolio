@@ -17,6 +17,7 @@ import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.
 import StaticCopy from '../../../static/copy/copy';
 
 const ContactTemplate = ({ data }) => {
+  // hooks
   const [contactData, setContactData] = useState();
   const [formSent, setFormSent] = useState(false);
   const [formResponseLoading, setFormResponseLoading] = useState(false);
@@ -32,7 +33,7 @@ const ContactTemplate = ({ data }) => {
   const handleFormSubmit = (formObj) => {
     setFormResponseLoading(true);
     axios
-      .post('/contact', {
+      .post('/contact-backend', {
         //make an object to be handled from req.body on the backend.
         email: formObj.email,
         name: formObj.name,

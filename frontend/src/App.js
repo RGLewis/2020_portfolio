@@ -1,5 +1,5 @@
 // Package imports
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +17,6 @@ import {
 } from './globalStyles/Global.styles';
 import { Context } from './context/context';
 import { UseColorMode } from './hooks/useColorMode';
-import { UseSplashScreen } from './hooks/useSplashScreen';
 import { UseResponsive } from './hooks/useResponsive';
 import { UseActiveExperienceSection } from './hooks/useActiveExperienceSection';
 import {
@@ -40,18 +39,15 @@ import Footer from './ui/organisms/Footer/Footer';
 import SplashScreen from './ui/organisms/SplashScreen/SplashScreen';
 
 const App = () => {
+  // hooks
+  const [splashScreenIsShowing, setSplashScreenIsShowing] = useState(true);
+
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
 
   // define mobile/desktop
   const { windowWidth } = UseResponsive();
   const isDesktop = windowWidth >= 992;
-
-  // manage Splash Screen
-  const {
-    splashScreenIsShowing,
-    handleSplashScreenIsShowing,
-  } = UseSplashScreen();
 
   // manage active experience section
   const {
@@ -106,15 +102,16 @@ const App = () => {
         toggleLightMode,
         activeExperienceSection,
         setExperienceSection,
-        splashScreenIsShowing,
-        handleSplashScreenIsShowing,
       }}
     >
       <ThemeProvider theme={globalTheme}>
         <ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
           <GlobalStyle />
           <Router>
-            <SplashScreen />
+            <SplashScreen
+              splashScreenIsShowing={splashScreenIsShowing}
+              setSplashScreenIsShowing={setSplashScreenIsShowing}
+            />
 
             <Header navData={navData} />
             <Sidebar navData={navData} footerData={footerData} />
