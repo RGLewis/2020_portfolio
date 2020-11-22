@@ -12,6 +12,7 @@ export const HeaderInnerContainer = styled.div`
 
   @media ${device.large} {
     background: transparent;
+    z-index: inherit;
   }
 `;
 
@@ -62,7 +63,7 @@ export const HamburgerButton = styled.button`
 
 export const NavContainer = styled(animated.div)`
   margin-top: ${pxToRem(70)};
-  padding: 0 ${pxToRem(20)} ${pxToRem(20)} ${pxToRem(20)};
+  padding: ${pxToRem(15)} ${pxToRem(20)} ${pxToRem(20)} ${pxToRem(20)};
   position: fixed;
   z-index: 10;
   background: ${({ theme }) => theme.menuBackground};
