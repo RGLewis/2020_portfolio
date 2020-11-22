@@ -110,7 +110,7 @@ const App = () => {
           <Router>
             <SplashScreen />
 
-            <Header />
+            <Header navData={navData} />
             <Sidebar navData={navData} footerData={footerData} />
 
             <MainContentContainer splashScreenIsShowing={splashScreenIsShowing}>

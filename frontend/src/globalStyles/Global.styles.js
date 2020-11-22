@@ -8,6 +8,7 @@ export const lightTheme = {
   backgroundOpaque: 'rgba(255,255,255, 0.5)',
   primaryFont: '#363636',
   secondaryFont: '#1f4068',
+  headerAccent: '#5cdb95',
   accent: '#1F6CC7',
   contrast: '#050505',
   blackOpaque: 'rgba(5,5,5, 0.2)',
@@ -24,6 +25,7 @@ export const darkTheme = {
   backgroundOpaque: 'rgba(32,12,144, 0.3)',
   primaryFont: '#ffffff',
   secondaryFont: '#D9D9D9',
+  headerAccent: '#5cdb95',
   accent: '#5cdb95',
   contrast: '#ffffff',
   blackOpaque: 'rgba(5,5,5, 0.2)',
@@ -108,7 +110,6 @@ export const GlobalStyle = createGlobalStyle`
     outline: 1px solid transparent;
 
     &:focus, &:active {
-      /* outline: 1px solid ${({ theme }) => theme.secondaryFont}; */
       outline-color: ${({ theme }) => theme.secondaryFont};
     }
   }

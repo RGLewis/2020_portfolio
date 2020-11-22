@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { pxToRem } from '../../../globalStyles/Utils';
+import { device } from '../../../globalStyles/Breakpoints';
 import { transition } from '../../../globalStyles/Mixins';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,11 +17,15 @@ export const StyledTogglerSwitch = styled(FontAwesomeIcon)`
   left: 0;
   right: 0;
   bottom: 0;
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.headerAccent};
   font-size: ${pxToRem(50)};
   padding: ${pxToRem(5)};
   border: ${pxToRem(1)} solid transparent;
   ${transition('all', '100ms', 'ease', '0s')};
+
+  @media ${device.large} {
+    color: ${({ theme }) => theme.accent};
+  }
 `;
 
 export const StyledInput = styled.input`

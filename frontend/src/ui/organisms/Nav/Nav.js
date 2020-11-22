@@ -10,7 +10,7 @@ import ErrorBody from '../../atoms/Typography/ErrorBody';
 import StaticCopy from '../../../static/copy/copy';
 import RichTextFooterLink from '../../atoms/RichTexFooterLink/RichTextFooterLink';
 
-const Nav = ({ data }) => {
+const Nav = ({ data, toggleMenuState }) => {
   // Hooks
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
@@ -166,9 +166,6 @@ const Nav = ({ data }) => {
               <Body variant="menuFontColor">{forwardCta.prompt}</Body>
             </Cta>
           </CtaElementWrapper>
-          {/* {showMainNav && isExperiencePage && ( */}
-
-          {/* )} */}
         </CtaContainer>
 
         {/* Nav Links */}
@@ -177,6 +174,7 @@ const Nav = ({ data }) => {
           isExperienceLink={showMainNav ? false : true}
           handleShowMainNav={handleShowMainNav}
           handleShowExperienceNav={handleShowExperienceNav}
+          toggleMenuState={toggleMenuState}
         />
       </StyledNav>
     );
@@ -200,8 +198,10 @@ Nav.propTypes = {
       }),
     }),
   }).isRequired,
+  toggleMenuState: PropTypes.func,
 };
 
 Nav.defaultProps = {
   data: { error: undefined, fetchedData: undefined },
+  toggleMenuState: undefined,
 };

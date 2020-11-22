@@ -68,7 +68,7 @@ const SplashScreen = () => {
   const animateSplashScreen = useSpring({
     config: { mass: 2, tension: 280, friction: 100, precision: 0.1 },
     to: {
-      zIndex: context.splashScreenIsShowing ? 100 : -10,
+      zIndex: context.splashScreenIsShowing ? 1000 : -10,
       marginTop: context.splashScreenIsShowing ? '0vh' : '-150vh', // overshoot to make sure it's totally off screen before it's given a display none on rest
     },
 
@@ -96,7 +96,7 @@ const SplashScreen = () => {
         />
       </TogglerElementContainer>
       <OuterContainer>
-        <FullHeightFlexContainer>
+        <FullHeightFlexContainer isSplash>
           {content.map((item, i) => (
             <Trail animate={animate} key={`trail${i}`}>
               <>
