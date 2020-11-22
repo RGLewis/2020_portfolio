@@ -7,6 +7,7 @@ import {
   HamburgerSpan,
   HamburgerButton,
   NavContainer,
+  HeaderInnerContainer,
 } from './Header.styles';
 import Toggler from '../../molecules/Toggler/Toggler';
 import { UseResponsive } from '../../../hooks/useResponsive';
@@ -33,8 +34,6 @@ const Header = ({ navData }) => {
     }
   }, [windowWidth, navHeight, navData]);
 
-  console.log({ navHeight });
-
   const toggleMenuState = () => {
     setMenuIsOpen((prevState) => !prevState);
   };
@@ -48,8 +47,8 @@ const Header = ({ navData }) => {
   });
 
   return (
-    <>
-      <HeaderContainer>
+    <HeaderContainer>
+      <HeaderInnerContainer>
         <HeaderTopRowContainer>
           {!isDesktop && (
             <HamburgerButton onClick={toggleMenuState}>
@@ -69,13 +68,13 @@ const Header = ({ navData }) => {
             darkToggleLabel="dark"
           />
         </HeaderTopRowContainer>
-      </HeaderContainer>
+      </HeaderInnerContainer>
       {!isDesktop && (
-        <NavContainer ref={navRef} style={animateNav}>
+        <NavContainer ref={navRef} style={animateNav} menuIsOpen={menuIsOpen}>
           <Nav data={navData} toggleMenuState={toggleMenuState} />
         </NavContainer>
       )}
-    </>
+    </HeaderContainer>
   );
 };
 

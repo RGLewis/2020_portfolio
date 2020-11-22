@@ -3,28 +3,26 @@ import { pxToRem } from '../../../globalStyles/Utils';
 import { device } from '../../../globalStyles/Breakpoints';
 import { animated } from 'react-spring';
 
-export const HeaderContainer = styled.header`
+export const HeaderInnerContainer = styled.div`
   width: 100%;
   padding: ${pxToRem(20)};
   position: fixed;
   background: ${({ theme }) => theme.menuBackground};
-  border-bottom: ${pxToRem(3)} solid ${({ theme }) => theme.accent};
   z-index: 100;
 
   @media ${device.large} {
-    border-bottom-color: transparent;
     background: transparent;
   }
 `;
 
+export const HeaderContainer = styled.header``;
+
 export const HeaderTopRowContainer = styled.div`
   width: 100%;
-  /* padding: ${pxToRem(20)}; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: ${pxToRem(50)};
-  /* z-index: 100; */
 
   @media ${device.large} {
     justify-content: flex-end;
@@ -64,10 +62,12 @@ export const HamburgerButton = styled.button`
 
 export const NavContainer = styled(animated.div)`
   margin-top: ${pxToRem(70)};
-  padding: ${pxToRem(20)};
+  padding: 0 ${pxToRem(20)} ${pxToRem(20)} ${pxToRem(20)};
   position: fixed;
   z-index: 10;
   background: ${({ theme }) => theme.menuBackground};
+  border-bottom: ${({ theme, menuIsOpen }) =>
+    menuIsOpen && `${pxToRem(1)} solid ${theme.headerAccent}`};
   left: 0;
   right: 0;
 `;
