@@ -8,13 +8,13 @@ import {
 } from '../../atoms/Containers/Containers';
 import Loader from '../../molecules/Loader/Loader';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
-import HeadingThird from '../../atoms/Typography/HeadingThird';
 import ErrorBody from '../../atoms/Typography/ErrorBody';
 import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
 import ErrorImg from '../../../static/assets/matthew-henry-hnYMacpvKZY-unsplash.jpg';
 import StaticCopy from '../../../static/copy/copy';
 
 const HomeTemplate = ({ data }) => {
+  // hooks
   const [homeData, setHomeData] = useState();
 
   // set data
@@ -27,9 +27,9 @@ const HomeTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <FullHeightFlexContainer>
-          <Loader />
-        </FullHeightFlexContainer>
+        {/* <FullHeightFlexContainer> */}
+        <Loader />
+        {/* </FullHeightFlexContainer> */}
       </OuterContainer>
     );
   }
@@ -54,7 +54,7 @@ const HomeTemplate = ({ data }) => {
           <ErrorBody>
             {data.error ? StaticCopy.general.body : StaticCopy.form.body}{' '}
             <RichTextWriteUpLink
-              href="mailto:rafaela.codes@gmail.com"
+              href={`mailto:${process.env.REACT_APP_GMAIL}`}
               variant="alert"
             >
               send an email

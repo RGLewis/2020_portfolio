@@ -7,7 +7,6 @@ import { Emoji } from '../../atoms/FormElements/FormButton/FormButton.styles';
 import { FormContainer } from '../../atoms/FormElements/FormElements.styles';
 import Input from '../../atoms/FormElements/Input/Input';
 import Loader from '../../molecules/Loader/Loader';
-
 import { useForm } from '../../../hooks/useForm';
 
 const ContactForm = ({ data, handleFormSubmit, formResponseLoading }) => {
@@ -22,7 +21,13 @@ const ContactForm = ({ data, handleFormSubmit, formResponseLoading }) => {
   };
 
   // define emoji
-  const wave = <Emoji aria-label="waving emoji">👋</Emoji>;
+  const wave = (
+    <Emoji>
+      <span role="img" aria-label="waving emoji -- send contact form">
+        👋
+      </span>
+    </Emoji>
+  );
 
   // define the form inputs
   let formObject = {};
@@ -49,7 +54,6 @@ const ContactForm = ({ data, handleFormSubmit, formResponseLoading }) => {
           validators={input.regex}
           onInput={inputHandler}
           errorMessage={input.errorMessage}
-          // initialValid={input.initialValid}
           name={input.title}
         />
       ))}

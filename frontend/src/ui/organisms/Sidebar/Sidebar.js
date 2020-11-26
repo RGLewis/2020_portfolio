@@ -5,12 +5,14 @@ import Footer from '../Footer/Footer';
 
 import { StyledSidebar } from './Sidebar.styles';
 
-const Sidebar = ({ navData, footerData }) => (
-  <StyledSidebar>
-    <Nav data={navData} />
-    <Footer data={footerData} />
-  </StyledSidebar>
-);
+const Sidebar = ({ navData, footerData }) => {
+  return (
+    <StyledSidebar>
+      <Nav data={navData} />
+      <Footer data={footerData} />
+    </StyledSidebar>
+  );
+};
 
 export default Sidebar;
 

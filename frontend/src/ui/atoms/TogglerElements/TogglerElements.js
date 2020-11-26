@@ -12,6 +12,11 @@ export const Label = ({ children, label }) => (
   <StyledLabel htmlFor={label}>{children}</StyledLabel>
 );
 
+Label.propTypes = {
+  children: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+};
+
 export const Input = ({ onChange, isChecked, label }) => (
   <StyledInput
     type="checkbox"
@@ -21,4 +26,16 @@ export const Input = ({ onChange, isChecked, label }) => (
   />
 );
 
-export const TogglerSwitch = ({isChecked}) => <StyledTogglerSwitch icon={isChecked ? faSun : faMoon }/>;
+Input.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+};
+
+export const TogglerSwitch = ({ isChecked }) => (
+  <StyledTogglerSwitch icon={isChecked ? faSun : faMoon} />
+);
+
+TogglerSwitch.propTypes = {
+  isChecked: PropTypes.bool.isRequired,
+};

@@ -8,12 +8,13 @@ export const lightTheme = {
   backgroundOpaque: 'rgba(255,255,255, 0.5)',
   primaryFont: '#363636',
   secondaryFont: '#1f4068',
+  headerAccent: '#5cdb95',
   accent: '#1F6CC7',
   contrast: '#050505',
   blackOpaque: 'rgba(5,5,5, 0.2)',
   menuBackground: '#1F6CC7',
   menuBorder: '#1F6CC7',
-  menuFontColor: '#ffffff',
+  white: '#ffffff',
   black: '#050505',
   opaqueContrast: 'rgba(31,108,199, 0.7)',
   alert: '#cf1b1b',
@@ -24,12 +25,13 @@ export const darkTheme = {
   backgroundOpaque: 'rgba(32,12,144, 0.3)',
   primaryFont: '#ffffff',
   secondaryFont: '#D9D9D9',
+  headerAccent: '#5cdb95',
   accent: '#5cdb95',
   contrast: '#ffffff',
   blackOpaque: 'rgba(5,5,5, 0.2)',
   menuBackground: '#200C90',
   menuBorder: '#ffffff',
-  menuFontColor: '#ffffff',
+  white: '#ffffff',
   black: '#050505',
   opaqueContrast: 'rgba(255,255,255, 0.3)',
   alert: '#cf1b1b',
@@ -46,7 +48,6 @@ export const globalTheme = {
     regular: '400',
     medium: '500',
     extraBold: '700',
-    black: '900',
   },
   breakpoints: {
     small: '576',
@@ -98,9 +99,9 @@ export const GlobalStyle = createGlobalStyle`
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
-    -moz-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.background} inset;
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.white} inset;
+    -moz-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.white} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.white} inset;
   }
 
   a {
@@ -108,7 +109,6 @@ export const GlobalStyle = createGlobalStyle`
     outline: 1px solid transparent;
 
     &:focus, &:active {
-      /* outline: 1px solid ${({ theme }) => theme.secondaryFont}; */
       outline-color: ${({ theme }) => theme.secondaryFont};
     }
   }

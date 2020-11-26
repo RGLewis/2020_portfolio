@@ -1,5 +1,5 @@
 // Package imports
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +17,7 @@ import {
 } from './globalStyles/Global.styles';
 import { Context } from './context/context';
 import { UseColorMode } from './hooks/useColorMode';
+import { UseResponsive } from './hooks/useResponsive';
 import { UseActiveExperienceSection } from './hooks/useActiveExperienceSection';
 import {
   UsePrefetchPage,
@@ -34,11 +35,21 @@ import Contact from './ui/pages/Contact';
 import { MainContentContainer } from './ui/atoms/Containers/Containers';
 import Sidebar from './ui/organisms/Sidebar/Sidebar';
 import Header from './ui/organisms/Header/Header';
+import Footer from './ui/organisms/Footer/Footer';
+import SplashScreen from './ui/organisms/SplashScreen/SplashScreen';
 
 const App = () => {
+  // hooks
+  const [splashScreenIsShowing, setSplashScreenIsShowing] = useState(true);
+
   // manage light/dark mode
   const { isLightMode, toggleLightMode } = UseColorMode();
 
+  // define mobile/desktop
+  const { windowWidth } = UseResponsive();
+  const isDesktop = windowWidth >= 992;
+
+  // manage active experience section
   const {
     activeExperienceSection,
     setExperienceSection,
@@ -97,9 +108,18 @@ const App = () => {
         <ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
           <GlobalStyle />
           <Router>
-            <Header />
+            <SplashScreen
+              splashScreenIsShowing={splashScreenIsShowing}
+              setSplashScreenIsShowing={setSplashScreenIsShowing}
+            />
+
+            <Header navData={navData} />
             <Sidebar navData={navData} footerData={footerData} />
-            <MainContentContainer>{routes}</MainContentContainer>
+
+            <MainContentContainer splashScreenIsShowing={splashScreenIsShowing}>
+              {routes}
+              {!isDesktop && <Footer data={footerData} />}
+            </MainContentContainer>
           </Router>
         </ThemeProvider>
       </ThemeProvider>

@@ -8,20 +8,22 @@ export const StyledLabel = styled.label`
   left: ${pxToRem(10)};
   transform-origin: 0 0;
   font: inherit;
-  font-weight: ${(props) => props.isFloating && 700};
+  color: ${({ theme }) => theme.black};
+  font-weight: ${({ theme, isFloating }) =>
+    isFloating && theme.fontWeights.extraBold};
   font-size: ${(props) => props.isFloating && pxToRem(14)};
   ${transition('all', '100ms', 'ease', '0s')};
 `;
 
 export const StyledInput = styled.input`
   border: ${pxToRem(1)} solid
-    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryAccent)};
+    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryFont)};
   font: inherit;
   width: 100%;
   padding: ${pxToRem(25)} ${pxToRem(10)};
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.white};
   margin-top: ${pxToRem(10)};
-  color: ${({ theme }) => theme.primaryFont};
+  color: ${({ theme }) => theme.black};
 
   &::placeholder {
     color: transparent;
@@ -30,19 +32,19 @@ export const StyledInput = styled.input`
   &:focus + ${StyledLabel} {
     top: ${pxToRem(15)};
     font-size: ${pxToRem(14)};
-    font-weight: 700;
+    font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   }
 `;
 
 export const StyledTextArea = styled.textarea`
   border: ${pxToRem(1)} solid
-    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryAccent)};
+    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryFont)};
   font: inherit;
   width: 100%;
   padding: ${pxToRem(25)} ${pxToRem(10)};
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.white};
   margin-top: ${pxToRem(10)};
-  color: ${({ theme }) => theme.primaryFont};
+  color: ${({ theme }) => theme.black};
 
   &::placeholder {
     color: transparent;
@@ -51,7 +53,7 @@ export const StyledTextArea = styled.textarea`
   &:focus + ${StyledLabel} {
     top: ${pxToRem(15)};
     font-size: ${pxToRem(14)};
-    font-weight: 700;
+    font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   }
 `;
 

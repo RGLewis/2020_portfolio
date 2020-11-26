@@ -3,10 +3,10 @@ import { pxToRem } from '../../../globalStyles/Utils';
 import { device } from '../../../globalStyles/Breakpoints';
 
 export const StyledHeadingFirst = styled.h1`
-  font-weight: ${({ theme }) => theme.fontWeights.black};
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   font-family: ${({ theme }) => theme.fonts.montserrat};
   line-height: 1.4;
-  font-size: ${pxToRem(55)};
+  font-size: ${pxToRem(40)};
   color: ${({ theme, variant }) => theme[variant]};
   text-transform: ${(props) =>
     props.isPageHeading ? 'uppercase' : 'capitalize'};
@@ -17,33 +17,34 @@ export const StyledHeadingFirst = styled.h1`
   border-bottom-color: ${({ theme, isUnderlined }) =>
     isUnderlined && theme.accent};
   letter-spacing: ${(props) => props.isPageHeading && pxToRem(2)};
-  margin-top: ${(props) => props.isPageHeading && pxToRem(-90)};
+  margin-top: ${(props) => props.isPageHeading && pxToRem(-35)};
   text-shadow: ${({ theme, isPageHeading }) =>
     isPageHeading &&
     `${pxToRem(0)} ${pxToRem(5)} ${pxToRem(30)} ${theme.black}`};
 
-  @media ${device.large} {
-    font-size: ${pxToRem(70)};
-    padding-bottom: 0;
+  @media ${device.medium} {
+    font-size: ${pxToRem(55)};
+    margin-top: ${(props) => props.isPageHeading && pxToRem(-45)};
   }
 
   @media ${device.large} {
-    font-size: ${(props) => (props.isPageHeading ? pxToRem(90) : pxToRem(50))};
+    font-size: ${(props) => (props.isPageHeading ? pxToRem(60) : pxToRem(50))};
+    margin-top: ${(props) => props.isPageHeading && pxToRem(-50)};
   }
 
   @media ${device.extraLarge} {
-    font-size: ${(props) => (props.isPageHeading ? pxToRem(100) : pxToRem(70))};
+    margin-top: ${(props) => props.isPageHeading && pxToRem(-70)};
+    font-size: ${(props) => (props.isPageHeading ? pxToRem(80) : pxToRem(70))};
   }
 `;
 
 export const StyledHeadingSecond = styled.h2`
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   font-size: ${pxToRem(25)};
   color: ${({ theme }) => theme.primaryFont};
   padding-bottom: ${pxToRem(10)};
   text-transform: capitalize;
   letter-spacing: ${pxToRem(0.5)};
-
   margin-bottom: ${pxToRem(10)};
   border-bottom: ${pxToRem(2)} solid ${({ theme }) => theme.accent};
 
@@ -92,7 +93,6 @@ export const StyledHeadingFifth = styled.h3`
 export const StyledBody = styled.p`
   font-weight: ${({ theme, isBold }) => isBold && theme.fontWeights.medium};
   margin-bottom: ${(props) => (props.marginBottom ? pxToRem(10) : '0')};
-
   text-align: ${(props) => props.aligned};
   font-size: ${(props) => (props.isSmall ? pxToRem(12) : pxToRem(14))};
   font-size: ${(props) => props.isLarge && pxToRem(18)};

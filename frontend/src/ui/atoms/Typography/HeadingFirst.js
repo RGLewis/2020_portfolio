@@ -17,13 +17,15 @@ export const HeadingFirst = ({
   </StyledHeadingFirst>
 );
 
+export default HeadingFirst;
+
 HeadingFirst.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf([
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
   ]),
   isUnderlined: PropTypes.bool,
@@ -35,5 +37,3 @@ HeadingFirst.defaultProps = {
   isUnderlined: false,
   isPageHeading: true,
 };
-
-export default HeadingFirst;

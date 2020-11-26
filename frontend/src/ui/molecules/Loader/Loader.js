@@ -7,7 +7,7 @@ import {
 } from '../../atoms/LoaderElements/LoaderElements';
 
 const Loader = ({ isButton, variant }) => (
-  <LoaderElementContainer>
+  <LoaderElementContainer isButton={isButton}>
     <LoaderContentContainer>
       <Dot isButton={isButton} variant={variant} />
       <Dot isButton={isButton} variant={variant} />
@@ -20,7 +20,7 @@ export default Loader;
 
 Loader.propTypes = {
   isButton: PropTypes.bool,
-  variant: PropTypes.oneOf(['menuFontColor', 'accent']),
+  variant: PropTypes.oneOf(['white', 'accent']),
 };
 
 Loader.defaultProps = {

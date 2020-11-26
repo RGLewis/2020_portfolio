@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 export const UseResponsive = () => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -20,7 +19,7 @@ export const UseResponsive = () => {
       return () => {
         window.removeEventListener('resize', () => handleResize);
       };
-    } else {
+    } else if (typeof window === 'undefined') {
       setWindowWidth('100vw');
       setWindowHeight('100vh');
     }

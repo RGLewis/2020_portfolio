@@ -24,9 +24,7 @@ const FooterLinks = ({ data }) => {
   );
 
   // P
-  const Paragraph = ({ children }) => (
-    <Body variant="menuFontColor">{children}</Body>
-  );
+  const Paragraph = ({ children }) => <Body variant="white">{children}</Body>;
 
   // render the types
   const options = {
@@ -59,3 +57,7 @@ const FooterLinks = ({ data }) => {
 };
 
 export default FooterLinks;
+
+FooterLinks.propTypes = {
+  data: PropTypes.object.isRequired,
+};

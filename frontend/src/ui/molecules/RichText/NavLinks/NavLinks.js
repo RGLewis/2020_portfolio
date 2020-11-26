@@ -6,42 +6,30 @@ import {
   NavLink,
   HashLink,
 } from '../../../atoms/NavLinkElements/NavLinkElements';
-import {
-  NavLinksContainer,
-  StyledParagraph,
-  Underline,
-} from './NavLinks.styles';
+import { NavLinksContainer, StyledParagraph } from './NavLinks.styles';
 import {
   UnorderedList,
   ListItem,
 } from '../../../atoms/UnorderedListElements/UnorderedListElements';
-import { UseResponsive } from '../../../../hooks/useResponsive';
 import { Context } from '../../../../context/context';
 
-let isDesktop;
-
-const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
+const NavLinks = ({
+  data,
+  handleShowMainNav,
+  handleShowExperienceNav,
+  toggleMenuState,
+}) => {
   // define context
   const context = useContext(Context);
 
   // UL
   const RichTextUnorderedList = ({ children }) => {
-    const { windowWidth } = UseResponsive();
-
-    isDesktop = windowWidth >= 992;
-
-    return (
-      <UnorderedList orientation={isDesktop ? 'vertical' : 'horizontal'}>
-        {children}
-      </UnorderedList>
-    );
+    return <UnorderedList orientation="vertical">{children}</UnorderedList>;
   };
 
   // LI
   const RichTextListItem = ({ children }) => (
-    <ListItem orientation={isDesktop ? 'vertical' : 'horizontal'}>
-      {children}
-    </ListItem>
+    <ListItem orientation="vertical">{children}</ListItem>
   );
 
   // PARAGRAPH
@@ -56,11 +44,7 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
         <RichTextUnorderedList>{children}</RichTextUnorderedList>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => (
-        <RichTextListItem>
-          {children}
-
-          {/* {isActive && <Underline />} */}
-        </RichTextListItem>
+        <RichTextListItem>{children}</RichTextListItem>
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
       [INLINES.HYPERLINK]: (node, children) => {
@@ -83,6 +67,7 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
                 isExperience ? handleShowExperienceNav : handleShowMainNav
               }
               isActive={isActive}
+              toggleMenuState={toggleMenuState}
             >
               {children}
             </HashLink>
@@ -95,6 +80,7 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
               onClick={
                 isExperience ? handleShowExperienceNav : handleShowMainNav
               }
+              toggleMenuState={toggleMenuState}
             >
               {children}
             </NavLink>
@@ -112,3 +98,14 @@ const NavLinks = ({ data, handleShowMainNav, handleShowExperienceNav }) => {
 };
 
 export default NavLinks;
+
+NavLinks.propTypes = {
+  data: PropTypes.object,
+  handleShowMainNav: PropTypes.func.isRequired,
+  handleShowExperienceNav: PropTypes.func.isRequired,
+  toggleMenuState: PropTypes.func,
+};
+
+NavLinks.defaultProps = {
+  toggleMenuState: () => {},
+};

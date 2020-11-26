@@ -10,7 +10,7 @@ import ErrorBody from '../../atoms/Typography/ErrorBody';
 import StaticCopy from '../../../static/copy/copy';
 import RichTextFooterLink from '../../atoms/RichTexFooterLink/RichTextFooterLink';
 
-const Nav = ({ data }) => {
+const Nav = ({ data, toggleMenuState }) => {
   // Hooks
   const [navData, setNavData] = useState();
   const [linksToRender, setLinksToRender] = useState();
@@ -107,7 +107,7 @@ const Nav = ({ data }) => {
   if (data.loading) {
     return (
       <StyledNav>
-        <Loader variant="menuFontColor" />
+        <Loader variant="white" />
       </StyledNav>
     );
   }
@@ -115,9 +115,9 @@ const Nav = ({ data }) => {
   if (data.error) {
     return (
       <StyledNav>
-        <ErrorBody variant="menuFontColor">
+        <ErrorBody variant="white">
           {StaticCopy.navAndFooter.body}{' '}
-          <RichTextFooterLink href="mailto:rafaela.codes@gmail.com">
+          <RichTextFooterLink href={`mailto:${process.env.REACT_APP_GMAIL}`}>
             send an email
           </RichTextFooterLink>
           .
@@ -145,9 +145,9 @@ const Nav = ({ data }) => {
               ariaLabel={backCta.prompt}
               // must be string for Font Awesome icon
               iconLeads={backCta.iconLeads ? 'true' : 'false'}
-              variant={'menuFontColor'}
+              variant={'white'}
             >
-              <Body variant="menuFontColor">{backCta.prompt}</Body>
+              <Body variant="white">{backCta.prompt}</Body>
             </Cta>
           </CtaElementWrapper>
 
@@ -161,14 +161,11 @@ const Nav = ({ data }) => {
               ariaLabel={forwardCta.prompt}
               // must be string for Font Awesome icon
               iconLeads={forwardCta.iconLeads ? 'true' : 'false'}
-              variant={'menuFontColor'}
+              variant={'white'}
             >
-              <Body variant="menuFontColor">{forwardCta.prompt}</Body>
+              <Body variant="white">{forwardCta.prompt}</Body>
             </Cta>
           </CtaElementWrapper>
-          {/* {showMainNav && isExperiencePage && ( */}
-
-          {/* )} */}
         </CtaContainer>
 
         {/* Nav Links */}
@@ -177,6 +174,7 @@ const Nav = ({ data }) => {
           isExperienceLink={showMainNav ? false : true}
           handleShowMainNav={handleShowMainNav}
           handleShowExperienceNav={handleShowExperienceNav}
+          toggleMenuState={toggleMenuState}
         />
       </StyledNav>
     );
@@ -200,8 +198,10 @@ Nav.propTypes = {
       }),
     }),
   }).isRequired,
+  toggleMenuState: PropTypes.func,
 };
 
 Nav.defaultProps = {
   data: { error: undefined, fetchedData: undefined },
+  toggleMenuState: undefined,
 };

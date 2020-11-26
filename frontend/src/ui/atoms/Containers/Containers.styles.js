@@ -13,25 +13,38 @@ export const StyledOuterContainer = styled.div`
 `;
 
 export const StyledMainContentContainer = styled.main`
-  min-height: ${(props) =>
-    props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
-
-  /* to account for sidebar */
+  padding-top: ${pxToRem(90)}; // account for fixed header
+  min-height: 100vh;
+  max-height: ${(props) => props.splashScreenIsShowing && `100vh`};
+  overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* to account for sidebar */
   @media ${device.large} {
     margin-left: ${({ theme }) => pxToRem(theme.globalValues.sidebar)};
+    padding-top: 0;
   }
 `;
 
 export const StyledFullHeightFlexContainer = styled.div`
   min-height: ${(props) =>
-    props.minHeight === '100vh' ? '100vh' : pxToRem(props.minHeight)};
+    props.minHeight === '100vh'
+      ? `calc(100vh - ${pxToRem(90)})`
+      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
+  min-height: ${(props) =>
+    props.isSplash ? '100vh' : `calc(100vh - ${pxToRem(90)})`};
   padding-bottom: ${pxToRem(20)};
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
-  padding: ${pxToRem(20)} 0;
+
+  @media ${device.large} {
+    padding-top: 0;
+
+    min-height: 100vh;
+  }
 `;
 
 export const StyledPageContainer = styled.div`
