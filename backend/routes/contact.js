@@ -43,27 +43,27 @@ contactRouter.post('/', (req, res, next) => {
 
     ${req.body.message}`,
 
-    html: `
-    <html>
-      <body>
-        <div>
-          <div style="width: 100%; background: #1F6CC7; padding: 10px 0; text-align: center">
-            <h1 style="font-family:Impact, Charcoal, sans-serif; color: white; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; padding-bottom: 5px; border-bottom: 1px solid #200C90; margin-bottom: 5px">You've got mail!</h1>
-            <span style="margin: 0 auto; font-size: 40px">✉️</span>
-          </div>
+    // html: `
+    // <html>
+    //   <body>
+    //     <div>
+    //       <div style="width: 100%; background: #1F6CC7; padding: 10px 0; text-align: center">
+    //         <h1 style="font-family:Impact, Charcoal, sans-serif; color: white; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; padding-bottom: 5px; border-bottom: 1px solid #200C90; margin-bottom: 5px">You've got mail!</h1>
+    //         <span style="margin: 0 auto; font-size: 40px">✉️</span>
+    //       </div>
 
-          <div style="padding: 10px">
-            <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>From:</b> ${req.body.name}</p>
-            <div style="height: 10px"/>
-            <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>Contact:</b> ${req.body.email}</p>
-            <div style="height: 10px"/>
-            <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>Message:</b> ${req.body.message}</p>
-            <div style="height: 10px"/>
-          </div>
-        </div>
-      </body>
-    </html>
-    `,
+    //       <div style="padding: 10px">
+    //         <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>From:</b> ${req.body.name}</p>
+    //         <div style="height: 10px"/>
+    //         <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>Contact:</b> ${req.body.email}</p>
+    //         <div style="height: 10px"/>
+    //         <p style="font-family: sans-serif; text-align: left; font-size: 16px"><b>Message:</b> ${req.body.message}</p>
+    //         <div style="height: 10px"/>
+    //       </div>
+    //     </div>
+    //   </body>
+    // </html>
+    // `,
   };
 
   // error handling goes here.

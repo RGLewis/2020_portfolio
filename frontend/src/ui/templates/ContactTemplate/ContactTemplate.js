@@ -42,6 +42,7 @@ const ContactTemplate = ({ data }) => {
           setFormSent(true);
           setFormResponseLoading(false);
         } else if (response.data.status === 'fail') {
+          console.log({ response });
           setFormSent(true);
           setFormError(true);
           setFormResponseLoading(false);
@@ -58,6 +59,7 @@ const ContactTemplate = ({ data }) => {
   }
 
   if (data.error || formError) {
+    console.log({ formError });
     return (
       <ContactPageContainer>
         <HeroImage
