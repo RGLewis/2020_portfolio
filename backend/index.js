@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 4444;
+const port = process.env.PORT || 4444;
 const contactRoute = require('./routes/contact');
 
 // define app
