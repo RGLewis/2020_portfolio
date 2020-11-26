@@ -48,6 +48,10 @@ export const HamburgerSpan = styled.span`
   &:nth-child(3) {
     transform: ${(props) => props.menuIsOpen && `translateY(${pxToRem(-10)})`};
   }
+
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
 export const HamburgerButton = styled.button`
@@ -61,6 +65,10 @@ export const HamburgerButton = styled.button`
   background: transparent;
   border-radius: 50%;
   cursor: pointer;
+
+  @media ${device.large} {
+    display: none;
+  }
 `;
 
 export const NavContainer = styled(animated.div)`
@@ -73,4 +81,8 @@ export const NavContainer = styled(animated.div)`
     menuisopen === 'true' && `${pxToRem(1)} solid ${theme.headerAccent}`};
   left: 0;
   right: 0;
+
+  @media ${device.large} {
+    display: none;
+  }
 `;

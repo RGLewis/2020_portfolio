@@ -14,7 +14,7 @@ HeadingFifth.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
   ]),
 };

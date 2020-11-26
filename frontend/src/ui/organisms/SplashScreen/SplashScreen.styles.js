@@ -32,7 +32,7 @@ export const ItemContainer = styled(animated.div)`
 `;
 
 export const StyledSplashScreenFont = styled(StyledHeadingFirst)`
-  font-weight: ${({ theme }) => theme.fontWeights.black};
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   font-family: ${({ theme }) => theme.fonts.montserrat};
   font-size: ${pxToRem(40)};
   line-height: 1;

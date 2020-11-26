@@ -6,12 +6,19 @@ import {
   StyledDot,
 } from './LoaderElements.styles';
 
-export const LoaderElementContainer = ({ children }) => (
-  <StyledLoaderElementContainer>{children}</StyledLoaderElementContainer>
+export const LoaderElementContainer = ({ children, isButton }) => (
+  <StyledLoaderElementContainer isButton={isButton}>
+    {children}
+  </StyledLoaderElementContainer>
 );
 
 LoaderElementContainer.propTypes = {
   children: PropTypes.node.isRequired,
+  isButton: PropTypes.bool,
+};
+
+LoaderElementContainer.defaultProps = {
+  isButton: false,
 };
 
 export const LoaderContentContainer = ({ children }) => (
@@ -28,7 +35,7 @@ export const Dot = ({ isButton, variant }) => (
 
 Dot.propTypes = {
   isButton: PropTypes.bool,
-  variant: PropTypes.oneOf(['menuFontColor', 'accent']),
+  variant: PropTypes.oneOf(['white', 'accent']),
 };
 
 Dot.defaultProps = {

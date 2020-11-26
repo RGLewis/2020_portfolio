@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AboutPageContainer } from './AboutTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import {
-  OuterContainer,
-  FullHeightFlexContainer,
-} from '../../atoms/Containers/Containers';
+import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
 import ErrorBody from '../../atoms/Typography/ErrorBody';
@@ -28,9 +25,9 @@ const AboutTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <FullHeightFlexContainer>
-          <Loader />
-        </FullHeightFlexContainer>
+        {/* <FullHeightFlexContainer> */}
+        <Loader />
+        {/* </FullHeightFlexContainer> */}
       </OuterContainer>
     );
   }
@@ -44,14 +41,14 @@ const AboutTemplate = ({ data }) => {
           isVerticalTop={false}
         />
         <OuterContainer>
-          <HeadingFirst isPageHeading variant="menuFontColor">
+          <HeadingFirst isPageHeading variant="white">
             {StaticCopy.general.headline}
           </HeadingFirst>
 
           <ErrorBody>
             {StaticCopy.general.body}{' '}
             <RichTextWriteUpLink
-              href="mailto:rafaela.codes@gmail.com"
+              href={`mailto:${process.env.REACT_APP_GMAIL}`}
               variant="alert"
             >
               send an email
@@ -75,7 +72,7 @@ const AboutTemplate = ({ data }) => {
           description={aboutData.page.image.description}
         />
         <OuterContainer>
-          <HeadingFirst isPageHeading variant="menuFontColor">
+          <HeadingFirst isPageHeading variant="white">
             {aboutData.page.title}
           </HeadingFirst>
           <RichTextWriteUp

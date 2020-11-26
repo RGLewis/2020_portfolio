@@ -14,13 +14,8 @@ export const StyledOuterContainer = styled.div`
 
 export const StyledMainContentContainer = styled.main`
   padding-top: ${pxToRem(90)}; // account for fixed header
-  min-height: ${(props) =>
-    props.minHeight === '100vh' ? `100vh` : `${pxToRem(props.minHeight)}`};
-  max-height: ${(props) =>
-    (props.splashScreenIsShowing && props.minHeight === '100vh' && `100vh`) ||
-    (props.splashScreenIsShowing &&
-      props.minHeight !== '100vh' &&
-      `${pxToRem(props.minHeight)}`)};
+  min-height: 100vh;
+  max-height: ${(props) => props.splashScreenIsShowing && `100vh`};
   overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
   display: flex;
   flex-direction: column;
@@ -28,14 +23,6 @@ export const StyledMainContentContainer = styled.main`
   @media ${device.large} {
     margin-left: ${({ theme }) => pxToRem(theme.globalValues.sidebar)};
     padding-top: 0;
-
-    min-height: ${(props) =>
-      props.minHeight === '100vh' ? `100vh` : pxToRem(props.minHeight)};
-    max-height: ${(props) =>
-      (props.splashScreenIsShowing && props.minHeight === '100vh' && `100vh`) ||
-      (props.splashScreenIsShowing &&
-        props.minHeight !== '100vh' &&
-        pxToRem(props.minHeight))};
   }
 `;
 
@@ -45,10 +32,7 @@ export const StyledFullHeightFlexContainer = styled.div`
       ? `calc(100vh - ${pxToRem(90)})`
       : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
   min-height: ${(props) =>
-    (props.isSplash && props.minHeight === '100vh' && `100vh`) ||
-    (props.isSplash &&
-      props.minHeight !== '100vh' &&
-      pxToRem(props.minHeight))};
+    props.isSplash ? '100vh' : `calc(100vh - ${pxToRem(90)})`};
   padding-bottom: ${pxToRem(20)};
   width: 100%;
   display: flex;
@@ -59,8 +43,7 @@ export const StyledFullHeightFlexContainer = styled.div`
   @media ${device.large} {
     padding-top: 0;
 
-    min-height: ${(props) =>
-      props.minHeight === '100vh' ? `100vh` : pxToRem(props.minHeight)};
+    min-height: 100vh;
   }
 `;
 

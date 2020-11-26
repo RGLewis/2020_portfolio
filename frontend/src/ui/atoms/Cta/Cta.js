@@ -92,7 +92,7 @@ Cta.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
   ]),
   to: PropTypes.string,

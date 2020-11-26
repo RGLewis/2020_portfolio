@@ -6,15 +6,15 @@ import { transition } from '../../../globalStyles/Mixins';
 
 export const StyledNavLink = styled(NavLink)`
   font-size: ${pxToRem(20)};
-  color: ${({ theme }) => theme.menuFontColor};
+  color: ${({ theme }) => theme.white};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   padding: 0 ${pxToRem(10)};
   letter-spacing: ${pxToRem(2)};
   text-transform: uppercase;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.menuFontColor} 0%,
-    ${({ theme }) => theme.menuFontColor} 100%
+    ${({ theme }) => theme.white} 0%,
+    ${({ theme }) => theme.white} 100%
   );
   background-position: 0 100%;
   background-repeat: repeat-x;
@@ -40,7 +40,7 @@ export const StyledNavLink = styled(NavLink)`
 export const StyledHashLink = styled.a`
   font-size: ${pxToRem(20)};
   color: ${({ theme, isActive }) =>
-    isActive ? theme.menuBackground : theme.menuFontColor};
+    isActive ? theme.menuBackground : theme.white};
   padding: ${pxToRem(5)};
   font-weight: ${({ theme, isActive }) =>
     isActive ? theme.fontWeights.medium : theme.fontWeights.regular};
@@ -48,8 +48,8 @@ export const StyledHashLink = styled.a`
   text-transform: uppercase;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.menuFontColor} 0%,
-    ${({ theme }) => theme.menuFontColor} 100%
+    ${({ theme }) => theme.white} 0%,
+    ${({ theme }) => theme.white} 100%
   );
   background-position: 0 100%;
   background-repeat: repeat-x;

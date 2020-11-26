@@ -8,6 +8,7 @@ export const StyledLabel = styled.label`
   left: ${pxToRem(10)};
   transform-origin: 0 0;
   font: inherit;
+  color: ${({ theme }) => theme.black};
   font-weight: ${({ theme, isFloating }) =>
     isFloating && theme.fontWeights.extraBold};
   font-size: ${(props) => props.isFloating && pxToRem(14)};
@@ -16,13 +17,13 @@ export const StyledLabel = styled.label`
 
 export const StyledInput = styled.input`
   border: ${pxToRem(1)} solid
-    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryAccent)};
+    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryFont)};
   font: inherit;
   width: 100%;
   padding: ${pxToRem(25)} ${pxToRem(10)};
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.white};
   margin-top: ${pxToRem(10)};
-  color: ${({ theme }) => theme.primaryFont};
+  color: ${({ theme }) => theme.black};
 
   &::placeholder {
     color: transparent;
@@ -37,13 +38,13 @@ export const StyledInput = styled.input`
 
 export const StyledTextArea = styled.textarea`
   border: ${pxToRem(1)} solid
-    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryAccent)};
+    ${({ theme, isAlert }) => (isAlert ? theme.alert : theme.secondaryFont)};
   font: inherit;
   width: 100%;
   padding: ${pxToRem(25)} ${pxToRem(10)};
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.white};
   margin-top: ${pxToRem(10)};
-  color: ${({ theme }) => theme.primaryFont};
+  color: ${({ theme }) => theme.black};
 
   &::placeholder {
     color: transparent;

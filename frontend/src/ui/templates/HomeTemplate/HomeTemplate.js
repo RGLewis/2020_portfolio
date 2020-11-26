@@ -27,9 +27,9 @@ const HomeTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <FullHeightFlexContainer>
-          <Loader />
-        </FullHeightFlexContainer>
+        {/* <FullHeightFlexContainer> */}
+        <Loader />
+        {/* </FullHeightFlexContainer> */}
       </OuterContainer>
     );
   }
@@ -54,7 +54,7 @@ const HomeTemplate = ({ data }) => {
           <ErrorBody>
             {data.error ? StaticCopy.general.body : StaticCopy.form.body}{' '}
             <RichTextWriteUpLink
-              href="mailto:rafaela.codes@gmail.com"
+              href={`mailto:${process.env.REACT_APP_GMAIL}`}
               variant="alert"
             >
               send an email

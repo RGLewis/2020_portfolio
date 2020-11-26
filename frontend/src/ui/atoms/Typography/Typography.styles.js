@@ -3,7 +3,7 @@ import { pxToRem } from '../../../globalStyles/Utils';
 import { device } from '../../../globalStyles/Breakpoints';
 
 export const StyledHeadingFirst = styled.h1`
-  font-weight: ${({ theme }) => theme.fontWeights.black};
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   font-family: ${({ theme }) => theme.fonts.montserrat};
   line-height: 1.4;
   font-size: ${pxToRem(40)};
@@ -39,7 +39,7 @@ export const StyledHeadingFirst = styled.h1`
 `;
 
 export const StyledHeadingSecond = styled.h2`
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.extraBold};
   font-size: ${pxToRem(25)};
   color: ${({ theme }) => theme.primaryFont};
   padding-bottom: ${pxToRem(10)};

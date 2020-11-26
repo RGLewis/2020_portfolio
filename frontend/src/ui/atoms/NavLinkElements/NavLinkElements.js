@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Context } from '../../../context/context';
 import PropTypes from 'prop-types';
 import { StyledNavLink, StyledHashLink } from './NavLinkElements.styles';
-import { UseResponsive } from '../../../hooks/useResponsive';
 
 export const NavLink = ({
   to,
@@ -55,9 +54,6 @@ export const HashLink = ({
   isActive,
   toggleMenuState,
 }) => {
-  const { windowWidth } = UseResponsive();
-  const isDesktop = windowWidth >= 992;
-
   const splitString = to.split('#');
 
   // the second element in the array
@@ -75,7 +71,7 @@ export const HashLink = ({
     const elementPosition = elementRect - bodyRect;
     const offsetPosition = elementPosition - offset;
 
-    const scrollPosition = isDesktop ? elementPosition : offsetPosition;
+    const scrollPosition = offsetPosition;
 
     // run smooth scroll
     window.scrollTo({

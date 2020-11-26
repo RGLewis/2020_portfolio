@@ -21,6 +21,7 @@ export const StyledLoaderElementContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: ${(props) => (props.isButton ? 0 : pxToRem(40))};
 `;
 
 export const StyledLoaderContentContainer = styled.div`

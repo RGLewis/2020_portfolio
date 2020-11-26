@@ -101,7 +101,7 @@ const SplashScreen = ({ splashScreenIsShowing, setSplashScreenIsShowing }) => {
           {content.map((item, i) => (
             <Trail animate={animate} key={`trail${i}`}>
               <>
-                <StyledSplashScreenFont variant="menuFontColor">
+                <StyledSplashScreenFont variant="white">
                   {item}
                 </StyledSplashScreenFont>
               </>

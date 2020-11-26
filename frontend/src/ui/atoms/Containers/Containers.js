@@ -6,7 +6,6 @@ import {
   StyledFullHeightFlexContainer,
   StyledPageContainer,
 } from './Containers.styles';
-import { UseResponsive } from '../../../hooks/useResponsive';
 
 export const OuterContainer = ({ children }) => (
   <StyledOuterContainer>{children}</StyledOuterContainer>
@@ -17,13 +16,8 @@ OuterContainer.propTypes = {
 };
 
 export const MainContentContainer = ({ children, splashScreenIsShowing }) => {
-  const { windowHeight } = UseResponsive();
-
   return (
-    <StyledMainContentContainer
-      minHeight={windowHeight}
-      splashScreenIsShowing={splashScreenIsShowing}
-    >
+    <StyledMainContentContainer splashScreenIsShowing={splashScreenIsShowing}>
       {children}
     </StyledMainContentContainer>
   );
@@ -48,11 +42,8 @@ export const FullHeightFlexContainer = ({
   align,
   isSplash,
 }) => {
-  const { windowHeight } = UseResponsive();
-
   return (
     <StyledFullHeightFlexContainer
-      minHeight={windowHeight}
       justify={justify}
       align={align}
       isSplash={isSplash}

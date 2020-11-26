@@ -19,7 +19,7 @@ export const UseResponsive = () => {
       return () => {
         window.removeEventListener('resize', () => handleResize);
       };
-    } else {
+    } else if (typeof window === 'undefined') {
       setWindowWidth('100vw');
       setWindowHeight('100vh');
     }

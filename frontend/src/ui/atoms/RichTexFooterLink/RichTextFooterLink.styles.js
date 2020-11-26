@@ -13,7 +13,7 @@ export const StyledLink = styled.a`
     height: ${pxToRem(2)};
     bottom: 0;
     left: 0;
-    background-color: ${({ theme }) => theme.menuFontColor};
+    background-color: ${({ theme }) => theme.white};
     visibility: hidden;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);

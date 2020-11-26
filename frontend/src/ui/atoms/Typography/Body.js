@@ -35,7 +35,7 @@ Body.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
     'background',
     'alert',

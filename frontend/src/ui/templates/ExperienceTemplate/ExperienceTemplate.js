@@ -1,12 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Context } from '../../../context/context';
-import { UseResponsive } from '../../../hooks/useResponsive';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import {
-  OuterContainer,
-  FullHeightFlexContainer,
-} from '../../atoms/Containers/Containers';
+import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import HeadingSecond from '../../atoms/Typography/HeadingSecond';
 import RichTextWriteUp from '../../molecules/RichText/RichTextWriteUp/RIchTextWriteUp';
@@ -32,9 +28,6 @@ const ExperienceTemplate = ({ data }) => {
   const [canExecuteAnimation, setCanExecuteAnimation] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  // use responsive
-  const { windowHeight, windowWidth } = UseResponsive();
-
   // Set data
   useEffect(() => {
     if (data.fetchedData) {
@@ -57,7 +50,7 @@ const ExperienceTemplate = ({ data }) => {
     window.addEventListener('scroll', onScroll);
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollPosition, windowWidth, windowHeight]);
+  }, [scrollPosition]);
 
   const GetHeight = (ref) => {
     const [height, setHeight] = useState(0);
@@ -68,7 +61,9 @@ const ExperienceTemplate = ({ data }) => {
 
         setHeight(elementRect.height);
       }
-    }, [windowWidth, ref, height, scrollPosition, experienceData]);
+      // IGNORING ESLINT AS EXPERIENCE DATA IS REQUIRED FOR INITIAL PAINT (NEEDS TO UPDATE WHEN THERE'S DATA)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ref, height, experienceData]);
 
     return height;
   };
@@ -83,7 +78,10 @@ const ExperienceTemplate = ({ data }) => {
       const withOffset = calcTotal - offset; // calculate with offset to account for last section of page
 
       setTotal(withOffset);
-    }, [intro, profile, work, skills, education]);
+
+      // IGNORING ESLINT AS INDIVIDUAL ELEMENTS (INTRO, PROFILE, ETC.) ARE NEEDED TO GET AN ACCURATE DISTANCE FROM TOP
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [intro, profile, work, skills, education, elements, lastSection]);
 
     return total;
   };
@@ -145,6 +143,8 @@ const ExperienceTemplate = ({ data }) => {
         '/experience#education'
       );
     }
+    // IGNORING ESLINT ONLY SCROLL POSITION NEEDED TO GET AN ACCURATE DISTANCE FROM TOP
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scrollPosition]);
 
   // define experience content sections
@@ -187,9 +187,7 @@ const ExperienceTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <FullHeightFlexContainer>
-          <Loader />
-        </FullHeightFlexContainer>
+        <Loader />
       </OuterContainer>
     );
   }
@@ -203,14 +201,14 @@ const ExperienceTemplate = ({ data }) => {
           isVerticalTop={false}
         />
         <OuterContainer>
-          <HeadingFirst isPageHeading variant="menuFontColor">
+          <HeadingFirst isPageHeading variant="white">
             {StaticCopy.general.headline}
           </HeadingFirst>
 
           <ErrorBody>
             {StaticCopy.general.body}{' '}
             <RichTextWriteUpLink
-              href="mailto:rafaela.codes@gmail.com"
+              href={`mailto:${process.env.REACT_APP_GMAIL}`}
               variant="alert"
             >
               send an email
@@ -235,7 +233,7 @@ const ExperienceTemplate = ({ data }) => {
             description={experienceData.page.image.description}
           />
           <OuterContainer>
-            <HeadingFirst isPageHeading variant="menuFontColor">
+            <HeadingFirst isPageHeading variant="white">
               {experienceData.page.title}
             </HeadingFirst>
           </OuterContainer>

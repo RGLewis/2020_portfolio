@@ -14,7 +14,7 @@ ErrorBody.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
     'background',
     'alert',

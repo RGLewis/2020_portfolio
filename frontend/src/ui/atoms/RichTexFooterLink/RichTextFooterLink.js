@@ -22,12 +22,12 @@ RichTextFooterLink.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
     'alert',
   ]),
 };
 
 RichTextFooterLink.defaultProps = {
-  variant: 'menuFontColor',
+  variant: 'white',
 };

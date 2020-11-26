@@ -107,7 +107,7 @@ const Nav = ({ data, toggleMenuState }) => {
   if (data.loading) {
     return (
       <StyledNav>
-        <Loader variant="menuFontColor" />
+        <Loader variant="white" />
       </StyledNav>
     );
   }
@@ -115,9 +115,9 @@ const Nav = ({ data, toggleMenuState }) => {
   if (data.error) {
     return (
       <StyledNav>
-        <ErrorBody variant="menuFontColor">
+        <ErrorBody variant="white">
           {StaticCopy.navAndFooter.body}{' '}
-          <RichTextFooterLink href="mailto:rafaela.codes@gmail.com">
+          <RichTextFooterLink href={`mailto:${process.env.REACT_APP_GMAIL}`}>
             send an email
           </RichTextFooterLink>
           .
@@ -145,9 +145,9 @@ const Nav = ({ data, toggleMenuState }) => {
               ariaLabel={backCta.prompt}
               // must be string for Font Awesome icon
               iconLeads={backCta.iconLeads ? 'true' : 'false'}
-              variant={'menuFontColor'}
+              variant={'white'}
             >
-              <Body variant="menuFontColor">{backCta.prompt}</Body>
+              <Body variant="white">{backCta.prompt}</Body>
             </Cta>
           </CtaElementWrapper>
 
@@ -161,9 +161,9 @@ const Nav = ({ data, toggleMenuState }) => {
               ariaLabel={forwardCta.prompt}
               // must be string for Font Awesome icon
               iconLeads={forwardCta.iconLeads ? 'true' : 'false'}
-              variant={'menuFontColor'}
+              variant={'white'}
             >
-              <Body variant="menuFontColor">{forwardCta.prompt}</Body>
+              <Body variant="white">{forwardCta.prompt}</Body>
             </Cta>
           </CtaElementWrapper>
         </CtaContainer>

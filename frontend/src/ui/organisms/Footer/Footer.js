@@ -34,7 +34,7 @@ const Footer = ({ data }) => {
   if (data.loading) {
     return (
       <StyledFooter>
-        <Loader variant="menuFontColor" />
+        <Loader variant="white" />
       </StyledFooter>
     );
   }
@@ -53,10 +53,10 @@ const Footer = ({ data }) => {
         <FooterLinks
           data={footerData.footer.footerItemsCollection.items[0].linksList.json}
         />
-        <Body variant="menuFontColor" isSmall>
+        <Body variant="white" isSmall>
           {footerData.footer.techStack}
         </Body>
-        <Body variant="menuFontColor" isSmall>
+        <Body variant="white" isSmall>
           {footerData.footer.copyright}
         </Body>
       </StyledFooter>

@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ContactPageContainer } from './ContactTemplate.styles';
 import HeroImage from '../../atoms/HeroImage/HeroImage';
-import {
-  OuterContainer,
-  FullHeightFlexContainer,
-} from '../../atoms/Containers/Containers';
+import { OuterContainer } from '../../atoms/Containers/Containers';
 import HeadingFirst from '../../atoms/Typography/HeadingFirst';
 import ErrorBody from '../../atoms/Typography/ErrorBody';
 import RichTextWriteUpLink from '../../atoms/RichTextWriteUpLink/RichTextWriteUpLink';
@@ -33,7 +30,7 @@ const ContactTemplate = ({ data }) => {
   const handleFormSubmit = (formObj) => {
     setFormResponseLoading(true);
     axios
-      .post('/contact-backend', {
+      .post(process.env.REACT_APP_BACKEND, {
         //make an object to be handled from req.body on the backend.
         email: formObj.email,
         name: formObj.name,
@@ -55,9 +52,7 @@ const ContactTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        <FullHeightFlexContainer>
-          <Loader />
-        </FullHeightFlexContainer>
+        <Loader />
       </OuterContainer>
     );
   }
@@ -71,14 +66,14 @@ const ContactTemplate = ({ data }) => {
           isVerticalTop={false}
         />
         <OuterContainer>
-          <HeadingFirst isPageHeading variant="menuFontColor">
+          <HeadingFirst isPageHeading variant="white">
             {StaticCopy.general.headline}
           </HeadingFirst>
 
           <ErrorBody>
             {data.error ? StaticCopy.general.body : StaticCopy.form.body}{' '}
             <RichTextWriteUpLink
-              href="mailto:rafaela.codes@gmail.com"
+              href={`mailto:${process.env.REACT_APP_GMAIL}`}
               variant="alert"
             >
               send an email
@@ -114,7 +109,7 @@ const ContactTemplate = ({ data }) => {
           isVerticalTop={false}
         />
         <OuterContainer>
-          <HeadingFirst isPageHeading variant="menuFontColor">
+          <HeadingFirst isPageHeading variant="white">
             {contactData.page.title}
           </HeadingFirst>
           {formSent ? (

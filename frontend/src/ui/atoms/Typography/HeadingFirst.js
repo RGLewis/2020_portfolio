@@ -25,7 +25,7 @@ HeadingFirst.propTypes = {
     'primaryFont',
     'secondaryFont',
     'contrast',
-    'menuFontColor',
+    'white',
     'accent',
   ]),
   isUnderlined: PropTypes.bool,
