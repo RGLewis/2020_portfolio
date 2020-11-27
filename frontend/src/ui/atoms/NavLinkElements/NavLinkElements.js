@@ -78,9 +78,6 @@ export const HashLink = ({
       top: scrollPosition,
       behavior: 'smooth',
     });
-
-    // update url
-    // window.history.pushState(id.toUpperCase(), id.toUpperCase(), to);
   };
 
   const onLinkClick = (e) => {
