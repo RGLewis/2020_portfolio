@@ -30,7 +30,7 @@ const ContactTemplate = ({ data }) => {
   const handleFormSubmit = (formObj) => {
     setFormResponseLoading(true);
     axios
-      .post('https://rafaela-lewisportfolio-backend.herokuapp.com/api', {
+      .post(process.env.REACT_APP_BACKEND, {
         //make an object to be handled from req.body on the backend.
         email: formObj.email,
         name: formObj.name,
