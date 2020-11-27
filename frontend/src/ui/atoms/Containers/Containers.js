@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyledOuterContainer,
@@ -16,8 +16,32 @@ OuterContainer.propTypes = {
 };
 
 export const MainContentContainer = ({ children, splashScreenIsShowing }) => {
+  // NOTE: Run window height function in containers to avoid memory leaks
+  const [windowHeight, setWindowHeight] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const heightCheck = () => window.innerHeight;
+      const handleResize = () => {
+        setWindowHeight(heightCheck);
+      };
+      handleResize(); // Set width/height on load.
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', () => handleResize);
+      };
+    } else if (typeof window === 'undefined') {
+      setWindowHeight('100vh');
+    }
+  }, []);
+
   return (
-    <StyledMainContentContainer splashScreenIsShowing={splashScreenIsShowing}>
+    <StyledMainContentContainer
+      splashScreenIsShowing={splashScreenIsShowing}
+      windowHeight={windowHeight}
+    >
       {children}
     </StyledMainContentContainer>
   );
@@ -42,11 +66,32 @@ export const FullHeightFlexContainer = ({
   align,
   isSplash,
 }) => {
+  const [windowHeight, setWindowHeight] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const heightCheck = () => window.innerHeight;
+      const handleResize = () => {
+        setWindowHeight(heightCheck);
+      };
+      handleResize(); // Set width/height on load.
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', () => handleResize);
+      };
+    } else if (typeof window === 'undefined') {
+      setWindowHeight('100vh');
+    }
+  }, []);
+
   return (
     <StyledFullHeightFlexContainer
       justify={justify}
       align={align}
       isSplash={isSplash}
+      windowHeight={windowHeight}
     >
       {children}
     </StyledFullHeightFlexContainer>

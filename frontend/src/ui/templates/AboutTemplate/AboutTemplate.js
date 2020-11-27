@@ -25,9 +25,7 @@ const AboutTemplate = ({ data }) => {
   if (data.loading) {
     return (
       <OuterContainer>
-        {/* <FullHeightFlexContainer> */}
         <Loader />
-        {/* </FullHeightFlexContainer> */}
       </OuterContainer>
     );
   }

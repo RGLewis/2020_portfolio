@@ -17,6 +17,7 @@ export const StyledHeadingFirst = styled.h1`
   border-bottom-color: ${({ theme, isUnderlined }) =>
     isUnderlined && theme.accent};
   letter-spacing: ${(props) => props.isPageHeading && pxToRem(2)};
+  text-align: ${(props) => !props.isPageHeading && 'center'};
   margin-top: ${(props) => props.isPageHeading && pxToRem(-35)};
   text-shadow: ${({ theme, isPageHeading }) =>
     isPageHeading &&
