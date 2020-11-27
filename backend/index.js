@@ -28,13 +28,13 @@ app.get('/', (req, res) => {
 // set up the transport object
 const transport = {
   //all of the configuration for making a site send an email.
-
   host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
+  port: 465,
+  secure: true,
   auth: {
+    type: 'OAuth2',
     user: process.env.USER,
-    pass: process.env.PASS,
+    accessToken: process.env.ACCESS_TOKEN,
   },
 };
 
