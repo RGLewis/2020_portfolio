@@ -14,8 +14,13 @@ export const StyledOuterContainer = styled.div`
 
 export const StyledMainContentContainer = styled.main`
   padding-top: ${pxToRem(90)}; // account for fixed header
-  min-height: 100vh;
-  max-height: ${(props) => props.splashScreenIsShowing && `100vh`};
+  min-height: ${(props) =>
+    props.windowHeight === '100vh' ? '100vh' : pxToRem(props.windowHeight)};
+  max-height: ${(props) =>
+    (props.splashScreenIsShowing &&
+      props.windowHeight === '100vh' &&
+      `100vh`) ||
+    (props.splashScreenIsShowing && pxToRem(props.windowHeight))};
   overflow: ${(props) => props.splashScreenIsShowing && 'hidden'};
   display: flex;
   flex-direction: column;
@@ -28,11 +33,12 @@ export const StyledMainContentContainer = styled.main`
 
 export const StyledFullHeightFlexContainer = styled.div`
   min-height: ${(props) =>
-    props.minHeight === '100vh'
+    props.windowHeight === '100vh'
       ? `calc(100vh - ${pxToRem(90)})`
-      : `calc(${pxToRem(props.minHeight)} - ${pxToRem(90)})`};
+      : `calc(${pxToRem(props.windowHeight)} - ${pxToRem(90)})`};
   min-height: ${(props) =>
-    props.isSplash ? '100vh' : `calc(100vh - ${pxToRem(90)})`};
+    (props.isSplash && props.windowHeight === '100vh' && `100vh`) ||
+    (props.isSplash && `${pxToRem(props.windowHeight)}`)};
   padding-bottom: ${pxToRem(20)};
   width: 100%;
   display: flex;
@@ -43,7 +49,10 @@ export const StyledFullHeightFlexContainer = styled.div`
   @media ${device.large} {
     padding-top: 0;
 
-    min-height: 100vh;
+    min-height: ${(props) =>
+      props.windowHeight === '100vh'
+        ? `100vh`
+        : `${pxToRem(props.windowHeight)}`};
   }
 `;
 

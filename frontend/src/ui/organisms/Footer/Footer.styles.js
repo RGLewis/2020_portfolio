@@ -6,7 +6,13 @@ export const StyledFooter = styled.footer`
   background: ${({ theme }) => theme.menuBackground};
   padding: ${pxToRem(20)};
   border-top: ${pxToRem(1)} solid ${({ theme }) => theme.accent};
+  display: flex;
+  flex-direction: column;
   display: ${(props) => props.isHomepage && 'none'};
+
+  @media ${device.small} {
+    align-items: center;
+  }
 
   @media ${device.large} {
     background: transparent;

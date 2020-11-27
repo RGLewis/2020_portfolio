@@ -35,7 +35,7 @@ const SplashScreen = ({ splashScreenIsShowing, setSplashScreenIsShowing }) => {
     const toggleAnimate = () => {
       setTimeout(() => {
         setAnimate(false);
-        setNextContent(['Front-End', 'Developer']);
+        setNextContent(['Front End', 'Developer']);
       }, 3000);
     };
 
