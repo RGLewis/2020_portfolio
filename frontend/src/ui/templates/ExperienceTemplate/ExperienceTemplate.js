@@ -111,7 +111,7 @@ const ExperienceTemplate = ({ data }) => {
       context.setExperienceSection('Intro');
 
       // update url
-      window.history.pushState('Experience', 'Experience', '/experience');
+      // window.history.pushState('Experience', 'Experience', '/experience');
     } else if (
       scrollPosition > intro - 200 &&
       scrollPosition <= profileHeight
@@ -119,17 +119,17 @@ const ExperienceTemplate = ({ data }) => {
       context.setExperienceSection('Profile');
 
       // update url
-      window.history.pushState('Profile', 'Profile', '/experience#profile');
+      // window.history.pushState('Profile', 'Profile', '/experience#profile');
     } else if (scrollPosition > profileHeight && scrollPosition <= workHeight) {
       context.setExperienceSection('Work');
 
       // update url
-      window.history.pushState('Work', 'Work', '/experience#work');
+      // window.history.pushState('Work', 'Work', '/experience#work');
     } else if (scrollPosition > workHeight && scrollPosition <= skillsHeight) {
       context.setExperienceSection('Skills');
 
       // update url
-      window.history.pushState('Skills', 'Skills', '/experience#skills');
+      // window.history.pushState('Skills', 'Skills', '/experience#skills');
     } else if (
       scrollPosition > skillsHeight &&
       scrollPosition <= educationHeight
@@ -137,11 +137,11 @@ const ExperienceTemplate = ({ data }) => {
       context.setExperienceSection('Education');
 
       // update url
-      window.history.pushState(
-        'Education',
-        'Education',
-        '/experience#education'
-      );
+      // window.history.pushState(
+      //   'Education',
+      //   'Education',
+      //   '/experience#education'
+      // );
     }
     // IGNORING ESLINT ONLY SCROLL POSITION NEEDED TO GET AN ACCURATE DISTANCE FROM TOP
     // eslint-disable-next-line react-hooks/exhaustive-deps

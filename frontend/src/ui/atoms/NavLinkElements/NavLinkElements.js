@@ -80,7 +80,7 @@ export const HashLink = ({
     });
 
     // update url
-    window.history.pushState(id.toUpperCase(), id.toUpperCase(), to);
+    // window.history.pushState(id.toUpperCase(), id.toUpperCase(), to);
   };
 
   const onLinkClick = (e) => {
