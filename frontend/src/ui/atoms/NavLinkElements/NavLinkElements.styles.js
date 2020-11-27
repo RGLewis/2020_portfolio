@@ -41,10 +41,9 @@ export const StyledHashLink = styled.a`
   font-size: ${pxToRem(20)};
   color: ${({ theme, isActive }) =>
     isActive ? theme.menuBackground : theme.white};
-  padding: ${pxToRem(5)};
+  padding: 0 ${pxToRem(10)};
   font-weight: ${({ theme, isActive }) =>
     isActive ? theme.fontWeights.medium : theme.fontWeights.regular};
-  padding: 0 ${pxToRem(10)};
   text-transform: uppercase;
   background: linear-gradient(
     to bottom,
@@ -54,7 +53,8 @@ export const StyledHashLink = styled.a`
   background-position: 0 100%;
   background-repeat: repeat-x;
   background-size: ${pxToRem(0)} ${pxToRem(0)};
-  background-size: ${(props) => props.isActive && pxToRem(60)};
+  background-size: ${(props) =>
+    props.isActive && `${pxToRem(60)} ${pxToRem(60)}`};
   ${transition('all', '200ms', 'ease-in-out', '0s')};
 
   &:hover {

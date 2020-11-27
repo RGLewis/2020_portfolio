@@ -2,17 +2,14 @@ import { useEffect, useState } from 'react';
 
 export const UseResponsive = () => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const widthCheck = () => window.innerWidth;
-      const heightCheck = () => window.innerHeight;
       const handleResize = () => {
         setWindowWidth(widthCheck);
-        setWindowHeight(heightCheck);
       };
-      handleResize(); // Set width/height on load.
+      handleResize(); // Set width on load.
 
       window.addEventListener('resize', handleResize);
 
@@ -21,14 +18,13 @@ export const UseResponsive = () => {
       };
     } else if (typeof window === 'undefined') {
       setWindowWidth('100vw');
-      setWindowHeight('100vh');
     }
   }, []);
 
-  return { windowWidth, windowHeight };
+  return { windowWidth };
 };
 
 // Usage
 // import { UseResponsive } from '<filepath>'
 
-// const {windowHeight, windowWidth} = UseResponsive()
+// const {windowWidth} = UseResponsive()
