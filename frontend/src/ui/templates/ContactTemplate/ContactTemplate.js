@@ -30,7 +30,7 @@ const ContactTemplate = ({ data }) => {
   const handleFormSubmit = (formObj) => {
     setFormResponseLoading(true);
     axios
-      .post(process.env.REACT_APP_BACKEND, {
+      .post('https://rafaela-lewisportfolio-backend.herokuapp.com/api', {
         //make an object to be handled from req.body on the backend.
         email: formObj.email,
         name: formObj.name,
@@ -42,7 +42,6 @@ const ContactTemplate = ({ data }) => {
           setFormSent(true);
           setFormResponseLoading(false);
         } else if (response.data.status === 'fail') {
-          console.log({ response });
           setFormSent(true);
           setFormError(true);
           setFormResponseLoading(false);
@@ -59,7 +58,6 @@ const ContactTemplate = ({ data }) => {
   }
 
   if (data.error || formError) {
-    console.log({ formError });
     return (
       <ContactPageContainer>
         <HeroImage
