@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const sgMail = require('@sendgrid/mail');
 
 // define app
 const app = express();
@@ -25,30 +25,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to my api');
 });
 
-// set up the transport object
-const transport = {
-  //all of the configuration for making a site send an email.
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    type: 'OAuth2',
-    user: process.env.USER,
-    accessToken: process.env.ACCESS_TOKEN,
-  },
-};
-
-// call transporter function
-const transporter = nodemailer.createTransport(transport);
-transporter.verify((error, success) => {
-  if (error) {
-    //if error happened code ends here
-    console.error(error);
-  } else {
-    //this means success
-    console.log('Ready to email!');
-  }
-});
+//define sendgrid API
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.post('/api', (req, res, next) => {
   //make mailable object
@@ -89,16 +67,16 @@ app.post('/api', (req, res, next) => {
     `,
   };
 
-  // error handling goes here.
-  transporter.sendMail(mail, (err, data) => {
-    if (err) {
-      res.json({
-        status: 'fail',
-      });
-    } else {
+  sgMail
+    .send(mail)
+    .then(() => {
       res.json({
         status: 'success',
       });
-    }
-  });
+    })
+    .catch((error) => {
+      res.json({
+        status: 'fail',
+      });
+    });
 });
