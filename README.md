@@ -1,5 +1,7 @@
 # Rafaela Lewis | Front End Developer
 
+[https://www.rafaelacodes.com](https://www.rafaelacodes.com)
+
 ## About the site:
 
 This site was built with built with React, Styled Components, Contentful & Apollo GraphQL on the Front End and Express.js on the Back End.
