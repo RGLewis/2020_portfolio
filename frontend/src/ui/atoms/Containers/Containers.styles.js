@@ -13,6 +13,7 @@ export const StyledOuterContainer = styled.div`
 `;
 
 export const StyledMainContentContainer = styled.main`
+  background: ${({ theme }) => theme.background};
   padding-top: ${pxToRem(90)}; // account for fixed header
   min-height: ${(props) =>
     props.windowHeight === '100vh' ? '100vh' : pxToRem(props.windowHeight)};

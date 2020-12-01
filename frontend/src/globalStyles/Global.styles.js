@@ -124,6 +124,6 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: ${({ theme }) => theme.fontWeights.light};
     color: ${({ theme }) => theme.primaryFont};
     line-height: 1.6;
-    background: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.menuBackground};
   }
 `;
